@@ -8,7 +8,6 @@ export default function Home() {
         <title>Louisa Johnston</title>
         <link rel="icon" href="/portfolio_favicon_squareheavy.png" />
       </Head>
-
       <h1>Hello!</h1>
       <div>
         <p>I am a software engineer specializing in front-end 

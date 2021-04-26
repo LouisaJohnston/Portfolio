@@ -3,7 +3,10 @@
 html,
 body {
   padding: 0;
-  margin: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 a {
@@ -16,7 +19,7 @@ a {
   font-family: 'Nunito Sans', sans-serif;
 }
 
-title {
+h1 {
   color: #4C2B42;
 }
 
