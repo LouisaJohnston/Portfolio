@@ -5,10 +5,16 @@ export default function Navbar() {
     return (
         <nav>
             <Link href='/'>
-                <a>Home</a>
+                <a>About Me</a>
             </Link>
             <Link href='/about'>
-                <a>About</a>
+                <a>Projects</a>
+            </Link>
+            <Link href='/meep'>
+                <a>Languages/Frameworks</a>
+            </Link>
+            <Link href='/moop'>
+                <a>Resume</a>
             </Link>
         </nav>
     )

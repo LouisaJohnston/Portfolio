@@ -23,4 +23,9 @@ h1 {
   color: #4C2B42;
 }
 
+nav {
+  display: flex;
+  justify-content: space-around;
+
+}
 
