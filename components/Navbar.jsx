@@ -4,16 +4,16 @@ import Link from 'next/link'
 export default function Navbar() {
     return (
         <nav>
-            <Link href='/'>
+            <Link href='#about-container'>
                 <a>About Me</a>
             </Link>
-            <Link href='/about'>
+            <Link href='#projects-container'>
                 <a>Projects</a>
             </Link>
-            <Link href='/meep'>
+            <Link href='#languages-container'>
                 <a>Languages/Frameworks</a>
             </Link>
-            <Link href='/moop'>
+            <Link href='#resume-container'>
                 <a>Resume</a>
             </Link>
         </nav>
