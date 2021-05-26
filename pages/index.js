@@ -31,43 +31,50 @@ export default function Home() {
         </div>
       </div>
 
-      <div id="projects-container">
-        <h2>Projects</h2>
-        <p>Wake: Yer fond of me lobster aint’ ye? I seen it -- yer fond of me lobster! Say it! Say it. Say it!
-
-Winslow: I don’t have to say nothin’.
-
-Wake: Damn ye! Let Neptune strike ye dead Winslow! HAAARK!
-
-Hark Triton, hark! Bellow, bid our father the Sea King rise from the depths full foul in his fury! Black waves teeming with salt foam to smother this young mouth with pungent slime, to choke ye, engorging your organs til’ ye turn blue and bloated with bilge and brine and can scream no more -- only when he, crowned in cockle shells with slitherin’ tentacle tail and steaming beard take up his fell be-finned arm, his coral-tine trident screeches banshee-like in the tempest and plunges right through yer gullet, bursting ye -- a bulging bladder no more, but a blasted bloody film now and nothing for the harpies and the souls of dead sailors to peck and claw and feed upon only to be lapped up and swallowed by the infinite waters of the Dread Emperor himself -- forgotten to any man, to any time, forgotten to any god or devil, forgotten even to the sea, for any stuff for part of Winslow, even any scantling of your soul is Winslow no more, but is now itself the sea!
-
-Winslow: Alright, have it your way. I like your cookin’.</p>
-      </div>
-
       <div id="languages-container">
         <h2>Languages/Frameworks</h2>
-        <p>Wake: Yer fond of me lobster aint’ ye? I seen it -- yer fond of me lobster! Say it! Say it. Say it!
-
-Winslow: I don’t have to say nothin’.
-
-Wake: Damn ye! Let Neptune strike ye dead Winslow! HAAARK!
-
-Hark Triton, hark! Bellow, bid our father the Sea King rise from the depths full foul in his fury! Black waves teeming with salt foam to smother this young mouth with pungent slime, to choke ye, engorging your organs til’ ye turn blue and bloated with bilge and brine and can scream no more -- only when he, crowned in cockle shells with slitherin’ tentacle tail and steaming beard take up his fell be-finned arm, his coral-tine trident screeches banshee-like in the tempest and plunges right through yer gullet, bursting ye -- a bulging bladder no more, but a blasted bloody film now and nothing for the harpies and the souls of dead sailors to peck and claw and feed upon only to be lapped up and swallowed by the infinite waters of the Dread Emperor himself -- forgotten to any man, to any time, forgotten to any god or devil, forgotten even to the sea, for any stuff for part of Winslow, even any scantling of your soul is Winslow no more, but is now itself the sea!
-
-Winslow: Alright, have it your way. I like your cookin’.</p>
+        <p>Languages | Python, ReactJS, Mongoose, MongoDB, ExpressJS, NodeJS, SQL, PostgreSQL, EJS, Axios, JavaScript, CSS3, and  HTML5
+Other | Heroku, GitHub, Pygame, Adobe Photoshop, Adobe InDesign, Adobe Premiere, WordPress, Squarespace, NationBuilder, Google Analytics, Cargo, and Canva</p>
       </div>
 
-      <div id="resume-container">
-        <h2>Resume</h2>
-        <p>Wake: Yer fond of me lobster aint’ ye? I seen it -- yer fond of me lobster! Say it! Say it. Say it!
+      <div id="projects-container">
+        <h2>Projects</h2>
+        
+        <a><h3>Bot Noggle</h3></a>                                                                                                                                                              
+        <h4>Python, Pygame</h4>
+        <ul>
+          <li>Built a downloadable version of Boggle using Python and Pygame to render a 4x4 grid out of a two-dimensional array of randomized letters corresponding to real Boggle dice</li>
+          <li>Allowed users to check whether a given word exists in adjacent grid tiles (up, down, diagonally, forwards, and backwards)</li>
+          <li>Inserted dictionary information into a trie data structure to check against user input and optimize the projects time complexity</li>
+        </ul>
+        <a><p>Project Repo</p></a>
 
-Winslow: I don’t have to say nothin’.
+        <h3>Paw-Tel (Group Project)</h3>
+        <h4>ReactJS, Mongoose, MongoDB, and MERN auth</h4>
+        <ul>
+          <li>Designed a full-stack MERN app using complex authorization routes allowing users to register as either pet owner or as a pet hotel owner to help pet owners connect with pet hotels</li>
+          <li>Employed React components to render information from a local API pertaining to user-specific pets or hotels, depending on the authorization route, with the ability to update and delete data fields</li>
+          <li>Saved user input through server-side Mongoose database using MongoDB</li>
+        </ul>
+        <a><p>Project Repo</p></a>
 
-Wake: Damn ye! Let Neptune strike ye dead Winslow! HAAARK!
+        <h3>Flick Picks</h3>
+        <h4>EJS, ExpressJS, Axios, NodeJS, and PostgreSQL</h4>
+        <ul>
+          <li>Created a web app using NodeJS and ExpressJS with the ability for users to create an account or login with encrypted cookie storage and password hashing</li>
+          <li>Applied EJS templates and Axios to render information from a third-party film API and allow users to save movies to personal lists</li>
+          <li>Stored multiple user inputs (login information and movie comments/reviews) as database information fields through PostgreSQL with the ability for users to update them directly</li>
+        </ul>
+        <a><p>Project Repo</p></a>
 
-Hark Triton, hark! Bellow, bid our father the Sea King rise from the depths full foul in his fury! Black waves teeming with salt foam to smother this young mouth with pungent slime, to choke ye, engorging your organs til’ ye turn blue and bloated with bilge and brine and can scream no more -- only when he, crowned in cockle shells with slitherin’ tentacle tail and steaming beard take up his fell be-finned arm, his coral-tine trident screeches banshee-like in the tempest and plunges right through yer gullet, bursting ye -- a bulging bladder no more, but a blasted bloody film now and nothing for the harpies and the souls of dead sailors to peck and claw and feed upon only to be lapped up and swallowed by the infinite waters of the Dread Emperor himself -- forgotten to any man, to any time, forgotten to any god or devil, forgotten even to the sea, for any stuff for part of Winslow, even any scantling of your soul is Winslow no more, but is now itself the sea!
-
-Winslow: Alright, have it your way. I like your cookin’.</p>
+        <h3>Word-cross’d Puzzler</h3>
+        <h4>JavaScript, CSS3, and HTML5</h4>
+        <ul>
+          <li>Designed a grid-based 5x5 puzzle to run on in-browser for desktop computers</li>
+          <li>Utilized CSS and HTML properties to approximate the experience of a pen-and-paper puzzle with front-end styling considerations implemented through Flexbox</li>
+          <li>Developed functionality through JavaScript array manipulation to show time elapsed, toggle between vertical and horizontal input focus flow, check answers, reveal the puzzle, and restart the game through DOM event listeners</li>
+        </ul>
+        <a><p>Project Repo</p></a>
       </div>
     </div>
   )
