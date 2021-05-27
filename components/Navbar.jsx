@@ -7,20 +7,20 @@ export default function Navbar() {
             <Link href='#about-container'>
                 <a>About Me</a>
             </Link>
-            <Link href='#languages-container'>
-                <a>Languages/Frameworks</a>
-            </Link>
             <Link href='#projects-container'>
                 <a>Projects</a>
             </Link>
-            <Link href='#resume-container'>
-                <a>Github</a>
+            <Link href='#languages-container'>
+                <a>Languages/Frameworks</a>
             </Link>
-            <Link href='#resume-container'>
-                <a>Resume</a>
+            <Link href='https://github.com/LouisaJohnston'>
+                <a target='_blank'>Github</a>
             </Link>
-            <Link href='#resume-container'>
-                <a>LinkedIn</a>
+            <Link href='https://www.linkedin.com/in/louisa-johnston/'>
+                <a target='_blank'>LinkedIn</a>
+            </Link>
+            <Link href='/LouisaJohnston_Resume.pdf'>
+                <a target='_blank' download>Download Resume</a>
             </Link>
         </nav>
     )
