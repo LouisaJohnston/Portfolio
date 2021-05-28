@@ -3,10 +3,8 @@
 html,
 body {
   padding: 0;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 0;
-  padding-top: 0;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -24,7 +22,16 @@ h1 {
 }
 
 nav {
+  background: #669999;
+  margin: 0;
+}
+
+#nav-links {
   display: flex;
   justify-content: space-around;
 }
 
+#main {
+  margin-left: 10%;
+  margin-right: 10%;
+}
