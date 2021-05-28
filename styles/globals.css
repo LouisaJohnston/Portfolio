@@ -29,6 +29,12 @@ nav {
 #nav-links {
   display: flex;
   justify-content: space-around;
+  margin-left: 7%;
+  margin-right: 7%;
+  padding: 2%;
+  color: #FBCC32;
+  font-weight: 700;
+  font-size: 1.4em;
 }
 
 #main {
