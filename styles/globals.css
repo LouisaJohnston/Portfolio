@@ -4,7 +4,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-  padding: 0;
 }
 
 a {
@@ -24,14 +23,17 @@ h1 {
 nav {
   background: #669999;
   margin: 0;
+  position: fixed; 
+  width: 100vw;
 }
 
 #nav-links {
   display: flex;
-  justify-content: space-around;
-  margin-left: 7%;
-  margin-right: 7%;
-  padding: 2%;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: .2%;
   color: #FBCC32;
   font-weight: 700;
   font-size: 1.4em;
@@ -40,4 +42,5 @@ nav {
 #main {
   margin-left: 10%;
   margin-right: 10%;
+  margin-top: 7%;
 }

@@ -1,10 +1,17 @@
-// built in link component
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Navbar() {
     return (
         <nav>
             <div id='nav-links'>
+                <Image 
+                    src='/portfolio_logotransparent.png'
+                    alt='LJ'
+                    width={80}
+                    height={80}
+                />
+                
                 <Link href='#about'>
                     <a>About Me</a>
                 </Link>
@@ -24,7 +31,7 @@ export default function Navbar() {
                 <Link href='https://www.linkedin.com/in/louisa-johnston/'>
                     <a target='_blank'>LinkedIn</a>
                 </Link>
-                
+
                 <Link href='/LouisaJohnston_Resume.pdf'>
                     <a target='_blank' download>Download Resume</a>
                 </Link>
