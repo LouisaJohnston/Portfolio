@@ -44,3 +44,28 @@ nav {
   margin-right: 10%;
   margin-top: 7%;
 }
+
+#footer {
+  background: #4D2B43;
+  color: #C66403;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#my-deets {
+  margin: 1.5%;
+}
+
+#contact-deets {
+  margin: 1.5%;
+}
+
+.flush-top {
+  padding: 0;
+  margin: 0;
+}
+
+.block {
+  display: block;
+}

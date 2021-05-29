@@ -32,6 +32,10 @@ export default function Home() {
           </div>
         </div>
 
+        <div id="languages">
+          <h2>Languages/Frameworks/Misc. Know-How</h2>
+          <p>Python, ReactJS, Mongoose, MongoDB, ExpressJS, NodeJS, SQL, PostgreSQL, EJS, Axios, JavaScript, CSS3, HTML5, Heroku, GitHub, Pygame, Adobe Photoshop, Adobe InDesign, Adobe Premiere, WordPress, Squarespace, NationBuilder, Google Analytics, Cargo, and Canva</p>
+        </div>
 
         <div id="projects">
           <h2>Projects</h2>
@@ -74,10 +78,6 @@ export default function Home() {
           <a href="https://github.com/LouisaJohnston/Word-crossd_Puzzler" target="_blank"><p>Project Repo</p></a>
         </div>
 
-        <div id="languages">
-          <h2>Languages/Frameworks/Misc. Know-How</h2>
-          <p>Python, ReactJS, Mongoose, MongoDB, ExpressJS, NodeJS, SQL, PostgreSQL, EJS, Axios, JavaScript, CSS3, HTML5, Heroku, GitHub, Pygame, Adobe Photoshop, Adobe InDesign, Adobe Premiere, WordPress, Squarespace, NationBuilder, Google Analytics, Cargo, and Canva</p>
-        </div>
       </div>
     </div>
   )
