@@ -16,7 +16,7 @@ export default function Navbar() {
                     <a>About Me</a>
                 </Link>
 
-                <Link href='#skills'>
+                <Link href='#languages'>
                     <a>Languages et al.</a>
                 </Link>
 

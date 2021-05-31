@@ -24,10 +24,34 @@ h1 {
   display: none;
 }
 
+#about p {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
 #main {
-  margin-left: 10%;
-  margin-right: 10%;
   margin-top: 7%;
+  display: block;
+}
+
+#hello {
+  display: inline;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+h2 {
+  color: #4C2B42;
+  font-size: 1.5em;
+  font-weight: 900;
+  padding-top: 2%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+h3, h4, p, li {
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 /******** Nav ********/ 
@@ -43,7 +67,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   margin-left: 2%;
-  margin-right: 2%;
+  margin-right: 6%;
   padding: .2%;
   color: #FBCC32;
   font-weight: 700;
@@ -57,6 +81,20 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+#footer h2 {
+  color: #C66403;
+}
+
+#footer p {
+  color: #C66403;
+  font-weight: 700;
+}
+
+#footer a {
+  color: #C66403;
+  font-weight: 700;
 }
 
 #personal {

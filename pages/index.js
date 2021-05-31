@@ -13,8 +13,7 @@ export default function Home() {
 
         <div id="about">
           <div>
-            <h2 id="intro">Hello!</h2>
-            <p>I am a full-stack engineer with a particular interest is in ventures 
+            <p><span id="hello">Hello!</span> I am a full-stack engineer with a particular interest is in ventures 
             with an orientation towards social equity and the arts.</p>   
           </div>
           <div>
@@ -44,7 +43,7 @@ export default function Home() {
           <p>Heroku, GitHub, Pygame, Adobe Photoshop, Adobe InDesign, Adobe Premiere, WordPress, Squarespace, NationBuilder, Google Analytics, Cargo, and Canva</p>
         </div>
 
-        <div id="projects">
+        <div id="skills">
           <h2>Projects</h2>
           
           <a><h3>Bot Noggle</h3></a>                                                                                                                                                              
