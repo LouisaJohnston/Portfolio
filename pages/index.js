@@ -13,9 +13,8 @@ export default function Home() {
 
         <div id="about">
           <div>
-            <h2>Greetings!</h2>
-            <p>I am a full-stack engineer specializing in front-end 
-            development. My particular interest is in ventures 
+            <h2 id="intro">Hello!</h2>
+            <p>I am a full-stack engineer with a particular interest is in ventures 
             with an orientation towards social equity and the arts.</p>   
           </div>
           <div>
@@ -33,8 +32,16 @@ export default function Home() {
         </div>
 
         <div id="languages">
-          <h2>Languages/Frameworks/Misc. Know-How</h2>
-          <p>Python, ReactJS, Mongoose, MongoDB, ExpressJS, NodeJS, SQL, PostgreSQL, EJS, Axios, JavaScript, CSS3, HTML5, Heroku, GitHub, Pygame, Adobe Photoshop, Adobe InDesign, Adobe Premiere, WordPress, Squarespace, NationBuilder, Google Analytics, Cargo, and Canva</p>
+          <h2>Languages et al.</h2>
+          
+          <h4>Languages/Frameworks</h4>
+          <p>Python, JavaScript, CSS3, HTML5, SQL, ExpressJS, and PostgreSQL</p>
+
+          <h4>Libraries/Templating Languages/Database Systems/Environments</h4>
+          <p>ReactJS, Axios, Mongoose, EJS, MongoDB, and NodeJS</p>
+
+          <h4>Misc. Know-How</h4>
+          <p>Heroku, GitHub, Pygame, Adobe Photoshop, Adobe InDesign, Adobe Premiere, WordPress, Squarespace, NationBuilder, Google Analytics, Cargo, and Canva</p>
         </div>
 
         <div id="projects">

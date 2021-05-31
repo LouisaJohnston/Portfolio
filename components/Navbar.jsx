@@ -11,13 +11,13 @@ export default function Navbar() {
                     width={80}
                     height={80}
                 />
-                
+
                 <Link href='#about'>
                     <a>About Me</a>
                 </Link>
 
-                <Link href='#languages'>
-                    <a>Languages/Frameworks</a>
+                <Link href='#skills'>
+                    <a>Languages et al.</a>
                 </Link>
 
                 <Link href='#projects'>
@@ -30,10 +30,6 @@ export default function Navbar() {
 
                 <Link href='https://www.linkedin.com/in/louisa-johnston/'>
                     <a target='_blank'>LinkedIn</a>
-                </Link>
-
-                <Link href='/LouisaJohnston_Resume.pdf'>
-                    <a target='_blank' download>Download Resume</a>
                 </Link>
             </div>
         </nav>

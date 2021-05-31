@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;900&display=swap');
 
+/******** Global ********/ 
 html,
 body {
   padding: 0;
@@ -16,10 +17,20 @@ a {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+/******** Body ********/ 
+/* Included for SEO but hidden for stylistic purposes*/
 h1 {
   color: #4C2B42;
+  display: none;
 }
 
+#main {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 7%;
+}
+
+/******** Nav ********/ 
 nav {
   background: #669999;
   margin: 0;
@@ -39,12 +50,7 @@ nav {
   font-size: 1.4em;
 }
 
-#main {
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 7%;
-}
-
+/******** Footer ********/ 
 #footer {
   background: #4D2B43;
   color: #C66403;
@@ -53,11 +59,11 @@ nav {
   align-items: center;
 }
 
-#my-deets {
+#personal {
   margin: 1.5%;
 }
 
-#contact-deets {
+#contact {
   margin: 1.5%;
 }
 
