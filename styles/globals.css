@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;900&display=swap');
 
+/******** Global ********/ 
 html,
 body {
   padding: 0;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 0;
-  padding-top: 0;
+  margin: 0;
 }
 
 a {
@@ -19,12 +17,178 @@ a {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+.block {
+  display: block;
+}
+
+/******** Body ********/ 
+/* Included for SEO but hidden for stylistic purposes*/
 h1 {
-  color: #4C2B42;
+  display: none;
 }
 
+#about {
+  padding-top: 100px;
+}
+
+#about p {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+#main {
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+
+#hello {
+  display: inline;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #C66403;
+}
+
+
+h2 {
+  color: #C66403;
+  font-size: 1.7em;
+  font-weight: 900;
+  padding-top: 2%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 1%;
+}
+
+h3 {
+  color: #4D2B43;
+}
+
+h3, h4, p, li {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+#main a {
+  margin-left: 20%;
+  margin-right: 20%;
+  color: #669999;
+}
+
+#main a:hover {
+  color: #FBCC32;
+}
+
+.top-anchor {
+  padding-top: 87px;
+  margin-top: -87px;
+  -webkit-background-clip: content-box;
+  background-clip: content-box;
+}
+
+.anchor {
+  padding-top: 50px;
+  margin-top: -50px;
+  -webkit-background-clip: content-box;
+  background-clip: content-box;
+}
+
+.italic {
+  font-style: italic;
+  font-size: .95em
+}
+
+.flush {
+  padding-top: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.less-flush {
+  padding-top: 5px;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.even-less-flush {
+  padding-top: 20px;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.offset {
+  padding-left: 15px;
+}
+
+/******** Nav ********/ 
 nav {
-  display: flex;
-  justify-content: space-around;
+  background: #669999;
+  margin: 0;
+  position: fixed; 
+  width: 100vw;
 }
 
+#nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2%;
+  margin-right: 6%;
+  padding: .2%;
+  color: #FBCC32;
+  font-weight: 700;
+  font-size: 1.4em;
+}
+
+nav a:hover {
+  color: #4D2B43;
+}
+
+/******** Footer ********/ 
+#footer {
+  background: #4D2B43;
+  color: #C66403;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#footer h2 {
+  color: #C66403;
+}
+
+#footer p {
+  color: #C66403;
+  font-weight: 700;
+}
+
+#footer a {
+  color: #C66403;
+  font-weight: 700;
+}
+
+#footer a:hover {
+  color: #669999;
+}
+
+#personal {
+  margin: 2.5%;
+}
+
+#contact {
+  margin: 2.5%;
+  font-size: 1.3em;
+}
+
+.flush-foot {
+  padding: 0;
+  margin: 0;
+}
+
+/******** Mobile ********/ 
+@media screen and (max-width: 767px) {
+
+  }
+  
