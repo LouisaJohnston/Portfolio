@@ -54,6 +54,20 @@ h3, h4, p, li {
   margin-right: 20%;
 }
 
+.anchor {
+  padding-top: 50px;
+  margin-top: -50px;
+  -webkit-background-clip: content-box;
+  background-clip: content-box;
+}
+
+.top-anchor {
+  padding-top: 87px;
+  margin-top: -87px;
+  -webkit-background-clip: content-box;
+  background-clip: content-box;
+}
+
 /******** Nav ********/ 
 nav {
   background: #669999;

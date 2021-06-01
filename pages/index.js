@@ -11,13 +11,13 @@ export default function Home() {
       <div id="main">
         <h1>Louisa Johnston</h1>
 
-        <div id="about">
+        <div class="top-anchor" id="about">
           <div>
             <p><span id="hello">Hello!</span> I am a full-stack engineer with a particular interest is in ventures 
             with an orientation towards social equity and the arts.</p>   
           </div>
           <div>
-            <p>I am a huge fan of breaking problems down into their 
+            <p>I am passionate about breaking problems down into their 
             smallest parts in order to build successful interventions. 
             My background in nonprofit marketing has taught me the 
             value of metrics-driven work, creative workarounds, and 
@@ -30,7 +30,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div id="languages">
+        <div class="anchor" id="languages">
           <h2>Languages et al.</h2>
           
           <h4>Languages/Frameworks</h4>
@@ -43,7 +43,7 @@ export default function Home() {
           <p>Heroku, GitHub, Pygame, Adobe Photoshop, Adobe InDesign, Adobe Premiere, WordPress, Squarespace, NationBuilder, Google Analytics, Cargo, and Canva</p>
         </div>
 
-        <div id="skills">
+        <div class="anchor" id="projects">
           <h2>Projects</h2>
           
           <a><h3>Bot Noggle</h3></a>                                                                                                                                                              
