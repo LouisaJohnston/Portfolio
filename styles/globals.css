@@ -17,11 +17,18 @@ a {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+.block {
+  display: block;
+}
+
 /******** Body ********/ 
 /* Included for SEO but hidden for stylistic purposes*/
 h1 {
-  color: #4C2B42;
   display: none;
+}
+
+#about {
+  padding-top: 100px;
 }
 
 #about p {
@@ -30,28 +37,52 @@ h1 {
 }
 
 #main {
-  margin-top: 7%;
-  display: block;
+  margin-top: 10%;
+  margin-bottom: 5%;
 }
 
 #hello {
   display: inline;
   font-size: 1.5em;
   font-weight: 700;
+  color: #C66403;
 }
 
+
 h2 {
-  color: #4C2B42;
-  font-size: 1.5em;
+  color: #C66403;
+  font-size: 1.7em;
   font-weight: 900;
   padding-top: 2%;
   margin-left: 15%;
   margin-right: 15%;
+  margin-bottom: 1%;
+}
+
+h3 {
+  color: #4D2B43;
 }
 
 h3, h4, p, li {
   margin-left: 20%;
   margin-right: 20%;
+}
+
+#main a {
+  margin-left: 20%;
+  margin-right: 20%;
+  color: #669999;
+}
+
+#main a:hover {
+  color: #FBCC32;
+}
+
+.top-anchor {
+  padding-top: 87px;
+  margin-top: -87px;
+  -webkit-background-clip: content-box;
+  background-clip: content-box;
 }
 
 .anchor {
@@ -61,11 +92,34 @@ h3, h4, p, li {
   background-clip: content-box;
 }
 
-.top-anchor {
-  padding-top: 87px;
-  margin-top: -87px;
-  -webkit-background-clip: content-box;
-  background-clip: content-box;
+.italic {
+  font-style: italic;
+  font-size: .95em
+}
+
+.flush {
+  padding-top: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.less-flush {
+  padding-top: 5px;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.even-less-flush {
+  padding-top: 20px;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.offset {
+  padding-left: 15px;
 }
 
 /******** Nav ********/ 
@@ -86,6 +140,10 @@ nav {
   color: #FBCC32;
   font-weight: 700;
   font-size: 1.4em;
+}
+
+nav a:hover {
+  color: #4D2B43;
 }
 
 /******** Footer ********/ 
@@ -111,19 +169,26 @@ nav {
   font-weight: 700;
 }
 
+#footer a:hover {
+  color: #669999;
+}
+
 #personal {
-  margin: 1.5%;
+  margin: 2.5%;
 }
 
 #contact {
-  margin: 1.5%;
+  margin: 2.5%;
+  font-size: 1.3em;
 }
 
-.flush-top {
+.flush-foot {
   padding: 0;
   margin: 0;
 }
 
-.block {
-  display: block;
-}
+/******** Mobile ********/ 
+@media screen and (max-width: 767px) {
+
+  }
+  

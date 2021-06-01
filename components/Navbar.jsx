@@ -25,7 +25,7 @@ export default function Navbar() {
                 </Link>
 
                 <Link href='https://github.com/LouisaJohnston'>
-                    <a target='_blank'>Github</a>
+                    <a target='_blank'>GitHub</a>
                 </Link>
 
                 <Link href='https://www.linkedin.com/in/louisa-johnston/'>

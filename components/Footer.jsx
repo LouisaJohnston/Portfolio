@@ -4,9 +4,9 @@ export default function Footer() {
     return (
         <div id='footer'>
             <div id='personal'>
-                <h2 class ="flush-top">Louisa Johnston</h2>
-                <p class ="flush-top">Pronouns: she, her, hers</p>
-                <p class ="flush-top">Oakland, CA</p>
+                <h2 class ="flush-foot">Louisa Johnston</h2>
+                <p class ="flush-foot">Pronouns: she, her, hers</p>
+                <p class ="flush-foot">Oakland, CA</p>
             </div>
             <div id='contact'>
                 <Link href='mailto:louisa.latham.johnston@gmail.com?subject=Hello!'>
