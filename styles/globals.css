@@ -5,6 +5,8 @@ html,
 body {
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
+  overflow: overlay;
 }
 
 a {
@@ -72,10 +74,12 @@ h3, h4, p, li {
   margin-left: 20%;
   margin-right: 20%;
   color: #669999;
+  font-weight: 700;
 }
 
 #main a:hover {
-  color: #FBCC32;
+  font-style: italic;
+  font-weight: 900;
 }
 
 .top-anchor {
@@ -185,6 +189,16 @@ nav a:hover {
 .flush-foot {
   padding: 0;
   margin: 0;
+}
+
+/******** Scroll Bar ********/ 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FBCC32;
+  border-radius: 8px;
 }
 
 /******** Mobile ********/ 
