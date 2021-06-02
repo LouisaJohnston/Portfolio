@@ -9,7 +9,7 @@ export default function Home() {
         <link rel="icon" href="/portfolio_favicon_squareheavy.png" />
       </Head>
       <div id="main">
-        <h1>Louisa Johnston</h1>
+        <h1 className="hide">Louisa Johnston</h1>
 
         <div className="top-anchor" id="about">
           <div>

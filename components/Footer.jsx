@@ -4,13 +4,13 @@ export default function Footer() {
     return (
         <div id='footer'>
             <div id='personal'>
-                <h2 class ="flush-foot">Louisa Johnston</h2>
-                <p class ="flush-foot">Pronouns: she, her, hers</p>
-                <p class ="flush-foot">Oakland, CA</p>
+                <h2 className ="flush-foot">Louisa Johnston</h2>
+                <p className ="flush-foot">Pronouns: she, her, hers</p>
+                <p className ="flush-foot">Oakland, CA</p>
             </div>
             <div id='contact'>
                 <Link href='mailto:louisa.latham.johnston@gmail.com?subject=Hello!'>
-                    <a class="block">Send an Email</a>
+                    <a className="block">Send an Email</a>
                 </Link>
 
                 <Link href='/LouisaJohnston_Resume.pdf'>
