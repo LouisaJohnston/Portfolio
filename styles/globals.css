@@ -314,18 +314,17 @@ nav a:hover {
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 1%;
+    overflow-wrap: break-word;
   }
   
-
-  
   h3, h4, p, li {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 7%;
+    margin-right: 7%;
   }
   
   #main a {
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-left: 4%;
+    margin-right: 4%;
     font-weight: 700;
   }
 
