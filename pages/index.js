@@ -25,8 +25,7 @@ export default function Home() {
           </div>
           <div>
             <p>In my spare time, I enjoy caring for my brood of houseplants, 
-            an inordinate amount of crossword puzzles, and inundating friends
-            and family with my excess baked goods.</p>
+            employing the phone-a-friend approach to crossword solving, and Vincent Price movies.</p>
           </div>
         </div>
 
@@ -46,7 +45,7 @@ export default function Home() {
           <h3 className="less-flush">Bot Noggle</h3>                                                                                                                                                             
           <h4 className="italic flush">Python, Pygame</h4>
           <ul className="less-flush">
-            <li>Built a version of Boggle using Python and Pygame to render a 4x4 grid out of a two-dimensional array of randomized letters corresponding to real Boggle dice</li>
+            <li>Built a version of Boggle using Python and Pygame to render a 4x4 grid from a two-dimensional array of randomized letters corresponding to real Boggle dice</li>
             <li>Allowed users to check whether a given word exists in adjacent grid tiles (up, down, diagonally, forwards, and backwards)</li>
             <li>Inserted dictionary information into a trie data structure to check against user input and optimize the project's time complexity</li>
           </ul>
@@ -55,7 +54,7 @@ export default function Home() {
           <h3 className="even-less-flush">Paw-Tel (Group Project)</h3>
           <h4 className="italic flush">ReactJS, Mongoose, MongoDB, and MERN auth</h4>
           <ul className="less-flush">
-            <li>Designed a full-stack MERN app using complex authorization routes allowing users to register as either pet owner or as a pet hotel owner to help pet owners connect with pet hotels</li>
+            <li>Designed a full-stack MERN app using complex authorization routes allowing users to register as either a pet owner or a pet hotel owner to help pet owners connect with pet hotels</li>
             <li>Employed React components to render information from a local API pertaining to user-specific pets or hotels, depending on the authorization route, with the ability to update and delete data fields</li>
             <li>Saved user input through server-side Mongoose database using MongoDB</li>
           </ul>
