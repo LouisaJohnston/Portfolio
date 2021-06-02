@@ -38,7 +38,7 @@ a {
 
 #main {
   margin-top: 10%;
-  margin-bottom: 5%;
+  margin-bottom: 10%;
 }
 
 #hello {
@@ -221,7 +221,7 @@ nav a:hover {
     margin: 0;
     scroll-behavior: smooth;
     overflow: overlay;
-    width: 100vw;
+    width: 100%;
   }
 
   .top-anchor {
@@ -302,8 +302,35 @@ nav a:hover {
     margin-top: 5%;
   }
 
+  #about p {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  h2 {
+    font-size: 1.6em;
+    font-weight: 900;
+    padding-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 1%;
+  }
+  
+
+  
+  h3, h4, p, li {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  
+  #main a {
+    margin-left: 2%;
+    margin-right: 2%;
+    font-weight: 700;
+  }
+
   #footer {
-    font-size: 10px;
+    font-size: 12px;
     width: 100vw;
   }
   }
