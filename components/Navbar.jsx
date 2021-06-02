@@ -9,8 +9,6 @@ export default function Navbar() {
 
     const handleOpen = () => {
         setOpen(!isOpen);
-        const element = document.getElementById("mobile-links");
-        element.classList.toggle("hide");
     }
 
     const closeMenu = () => {
