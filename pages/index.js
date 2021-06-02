@@ -13,7 +13,7 @@ export default function Home() {
 
         <div className="top-anchor" id="about">
           <div>
-            <p><span id="hello">Hello!</span> I am a full-stack engineer with a particular interest is in ventures 
+            <p><span id="hello">Hello!</span> I am a full-stack developer with a particular interest is in ventures 
             with an orientation towards social equity and the arts.</p>   
           </div>
           <div>
