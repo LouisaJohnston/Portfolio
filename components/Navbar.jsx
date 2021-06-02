@@ -30,36 +30,46 @@ export default function Navbar() {
                             className="relative"
                         />
                     </div>
+                    <div>
+                        <NavHashLink 
+                            smooth to='#about'
+                            activeClassName="selected"
+                            activeStyle={{ 'font-size': '1.5em' }}>
+                            <a className="desktop-nav">About Me</a>
+                        </NavHashLink>
+                    </div>
 
-                    <NavHashLink 
-                        smooth to='#about'
-                        activeClassName="selected"
-                        activeStyle={{ 'font-size': '1.5em' }}>
-                        <a className="desktop-nav">About Me</a>
-                    </NavHashLink>
-
-                    <NavHashLink 
+                    <div>
+                        <NavHashLink 
                         smooth to='#languages'
-                        activeClassName="selected"
-                        activeStyle={{ 'font-size': '1.5em' }}>
-                        <a className="desktop-nav">Languages</a>
-                    </NavHashLink>
+                            activeClassName="selected"
+                            activeStyle={{ 'font-size': '1.5em' }}>
+                            <a className="desktop-nav">Languages</a>
+                        </NavHashLink>
+                    </div>
 
-                    <NavHashLink 
-                        smooth to='#projects'
-                        activeClassName="selected"
-                        activeStyle={{ 'font-size': '1.5em' }}>
-                        <a className="desktop-nav">Projects</a>
-                    </NavHashLink>
+                    <div>
+                        <NavHashLink 
+                            smooth to='#projects'
+                            activeClassName="selected"
+                            activeStyle={{ 'font-size': '1.5em' }}>
+                            <a className="desktop-nav">Projects</a>
+                        </NavHashLink>
+                    </div>
 
-                    <a href='https://github.com/LouisaJohnston' 
-                        className="desktop-nav" 
-                        target='_blank'>GitHub</a>
+                    <div>
+                        <Link href='https://github.com/LouisaJohnston'>
+                            <a className="desktop-nav" 
+                                target='_blank'>GitHub</a>
+                        </Link>
+                    </div>
+                        <Link href='https://www.linkedin.com/in/louisa-johnston/'>
+                            <a className="desktop-nav" 
+                                target='_blank'>LinkedIn</a>
+                        </Link>
+                    <div>
 
-                    <a href='https://www.linkedin.com/in/louisa-johnston/' 
-                    className="desktop-nav" 
-                    target='_blank'>LinkedIn</a>
-                    
+                    </div>
                 </div>
                 
                 <div>
