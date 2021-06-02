@@ -52,13 +52,14 @@ export default function Navbar() {
                         <a className="desktop-nav">Projects</a>
                     </NavHashLink>
 
-                    <Link href='https://github.com/LouisaJohnston'>
-                        <a className="desktop-nav" target='_blank'>GitHub</a>
-                    </Link>
+                    <a href='https://github.com/LouisaJohnston' 
+                        className="desktop-nav" 
+                        target='_blank'>GitHub</a>
+
+                    <a href='https://www.linkedin.com/in/louisa-johnston/' 
+                    className="desktop-nav" 
+                    target='_blank'>LinkedIn</a>
                     
-                    <Link href='https://www.linkedin.com/in/louisa-johnston/'>
-                        <a className="desktop-nav" target='_blank'>LinkedIn</a>
-                    </Link>
                 </div>
                 
                 <div>
