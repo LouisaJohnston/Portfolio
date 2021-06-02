@@ -55,7 +55,7 @@ export default function Home() {
           <h3 className="even-less-flush">Paw-Tel (Group Project)</h3>
           <h4 className="italic flush">ReactJS, Mongoose, MongoDB, and MERN auth</h4>
           <ul className="less-flush">
-            <li>Designed a full-stack MERN app using complex authorization routes allowing users to register as either pet owner or as a pet hotel owner to help pet owners connect with pet hotels</li>
+            <li>Designed a full-stack MERN app using complex authorization routes allowing users to register as either a pet owner or as a pet hotel owner to help pet owners connect with pet hotels</li>
             <li>Employed React components to render information from a local API pertaining to user-specific pets or hotels, depending on the authorization route, with the ability to update and delete data fields</li>
             <li>Saved user input through server-side Mongoose database using MongoDB</li>
           </ul>

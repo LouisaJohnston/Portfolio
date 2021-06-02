@@ -286,12 +286,12 @@ nav a:hover {
   .menuNav.showMenu {
     display: block;
     width: 100vw;
-    height: 20vh;
+    height: 30vh;
     background: #669999;
     color: #FBCC32;
     margin-top: 0px;
     margin-bottom: 0px;
-    
+
     box-shadow: 0px 1px 20px 0px rgba(102, 153, 153);
   }
 
