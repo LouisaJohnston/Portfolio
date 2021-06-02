@@ -35,7 +35,7 @@ export default function Navbar() {
                     </Link>
 
                     <Link href='#languages'>
-                        <a className="desktop-nav">Languages et al.</a>
+                        <a className="desktop-nav">Languages</a>
                     </Link>
 
                     <Link href='#projects'>
@@ -74,7 +74,7 @@ export default function Navbar() {
 
                     <li>
                         <Link href='#languages'>
-                            <a onClick={() => closeMenu()}>Languages et al.</a>
+                            <a onClick={() => closeMenu()}>Languages</a>
                         </Link>
                     </li>
 
