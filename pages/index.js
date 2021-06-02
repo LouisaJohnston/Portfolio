@@ -33,7 +33,7 @@ export default function Home() {
         <div className="anchor" id="languages">
           <h2>Languages et al.</h2>
           
-          <h3 className="less-flush">Languages/FrameworksLibraries/Database Systems</h3>
+          <h3 className="less-flush web-edge">Languages/Frameworks/Libraries<br className="mobile-break"></br>/Database Systems</h3>
           <p className="flush">Python, JavaScript, CSS3, HTML5, SQL, Express.js, Next.js, PostgreSQL, React, Axios, Mongoose, and MongoDB</p>
       
           <h3 className="even-less-flush">Misc. Know-How</h3>

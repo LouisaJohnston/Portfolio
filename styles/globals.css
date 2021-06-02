@@ -212,6 +212,10 @@ nav a:hover {
     display: none!important;
     width: 0;
   }
+
+  .mobile-break {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -314,14 +318,13 @@ nav a:hover {
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 1%;
-    overflow-wrap: break-word;
   }
   
   h3, h4, p, li {
     margin-left: 7%;
     margin-right: 7%;
   }
-  
+
   #main a {
     margin-left: 4%;
     margin-right: 4%;
