@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from "react"
+import { useState } from 'react'
+import { NavHashLink } from 'react-router-hash-link';
 import Hamburger from 'hamburger-react'
 
 export default function Navbar() {
@@ -30,22 +31,31 @@ export default function Navbar() {
                         />
                     </div>
 
-                    <Link href='#about'>
+                    <NavHashLink 
+                        smooth to='#about'
+                        activeClassName="selected"
+                        activeStyle={{ 'font-size': '1.5em' }}>
                         <a className="desktop-nav">About Me</a>
-                    </Link>
+                    </NavHashLink>
 
-                    <Link href='#languages'>
+                    <NavHashLink 
+                        smooth to='#languages'
+                        activeClassName="selected"
+                        activeStyle={{ 'font-size': '1.5em' }}>
                         <a className="desktop-nav">Languages</a>
-                    </Link>
+                    </NavHashLink>
 
-                    <Link href='#projects'>
+                    <NavHashLink 
+                        smooth to='#projects'
+                        activeClassName="selected"
+                        activeStyle={{ 'font-size': '1.5em' }}>
                         <a className="desktop-nav">Projects</a>
-                    </Link>
+                    </NavHashLink>
 
                     <Link href='https://github.com/LouisaJohnston'>
                         <a className="desktop-nav" target='_blank'>GitHub</a>
                     </Link>
-
+                    
                     <Link href='https://www.linkedin.com/in/louisa-johnston/'>
                         <a className="desktop-nav" target='_blank'>LinkedIn</a>
                     </Link>
