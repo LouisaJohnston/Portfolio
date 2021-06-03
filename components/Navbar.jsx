@@ -21,14 +21,17 @@ export default function Navbar() {
             <div id="future-flex">
                 <div id='nav-links'>
                     <div id="logo">
-                        <Image 
-                            src='/portfolio_logotransparent.png'
-                            alt='LJ'
-                            width={80}
-                            height={80}
-                            label="Show menu"
-                            className="relative"
-                        />
+                        <NavHashLink
+                            smooth to='#top'
+                            >
+                            <Image 
+                                src='/portfolio_logotransparent.png'
+                                alt='LJ'
+                                width={80}
+                                height={80}
+                                label="Show menu"
+                            />
+                        </NavHashLink>
                     </div>
                     <div>
                         <NavHashLink 
@@ -41,7 +44,7 @@ export default function Navbar() {
 
                     <div>
                         <NavHashLink 
-                        smooth to='#languages'
+                            smooth to='#languages'
                             activeClassName="selected"
                             activeStyle={{ 'font-size': '1.5em' }}>
                             <a className="desktop-nav">Languages</a>

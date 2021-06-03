@@ -31,8 +31,12 @@ a {
 }
 
 #about p {
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+#languages {
+  margin-top: 1%;
 }
 
 #main {
@@ -42,8 +46,8 @@ a {
 
 #hello {
   display: inline;
-  font-size: 1.5em;
-  font-weight: 700;
+  font-size: 1.3em;
+  font-weight: 900;
   color: #C66403;
 }
 
@@ -52,9 +56,9 @@ h2 {
   color: #C66403;
   font-size: 1.7em;
   font-weight: 900;
-  padding-top: 2%;
-  margin-left: 15%;
-  margin-right: 15%;
+  padding-top: 5%;
+  margin-left: 20%;
+  margin-right: 20%;
   margin-bottom: 1%;
 }
 
@@ -63,15 +67,17 @@ h3 {
 }
 
 h3, h4, p, li {
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 25%;
+  margin-right: 25%;
+  font-size: 1.3em;
 }
 
 #main a {
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 25%;
+  margin-right: 25%;
   color: #669999;
   font-weight: 700;
+  font-size: 1.05em;
 }
 
 #main a:hover {
@@ -80,8 +86,8 @@ h3, h4, p, li {
 }
 
 .top-anchor {
-  padding-top: 87px;
-  margin-top: -87px;
+  padding-top: 10px;
+  margin-top: -10px;
   -webkit-background-clip: content-box;
   background-clip: content-box;
 }
@@ -106,14 +112,14 @@ h3, h4, p, li {
 }
 
 .less-flush {
-  padding-top: 5px;
+  padding-top: 10px;
   margin-top: 0;
   padding-bottom: 0;
   margin-bottom: 0;
 }
 
 .even-less-flush {
-  padding-top: 20px;
+  padding-top: 30px;
   margin-top: 0;
   padding-bottom: 0;
   margin-bottom: 0;
@@ -150,8 +156,7 @@ nav a:hover {
 #logo {
   position: relative;
   display: inline;
-  margin: 0;
-  padding-right: 50;
+  /* margin: 0; */
 }
 
 /******** Footer ********/ 
@@ -255,8 +260,6 @@ nav a:hover {
   #nav-links {
     position: relative;
     display: inline;
-    margin: 0;
-    padding-right: 50;
   }
 
   .hamburger {
@@ -333,10 +336,6 @@ nav a:hover {
     margin-left: 4%;
     margin-right: 4%;
     font-weight: 700;
-  }
-
-  ul {
-    padding-inline-start: 0;
   }
 
   #footer {
