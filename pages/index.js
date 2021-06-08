@@ -41,13 +41,13 @@ export default function Home() {
         </div>
 
         <div className="anchor" id="languages">
-          <h2>Languages et al.</h2>
+          <h2>Tech Stack</h2>
           
-          <h3 className="less-flush web-edge">Languages/Frameworks/Libraries<br className="mobile-break"></br>/Database Systems</h3>
-          <p className="flush">Python, JavaScript, CSS3, HTML5, SQL, Express.js, Next.js, PostgreSQL, React, Axios, Mongoose, and MongoDB</p>
+          <h3 className="less-flush web-edge">Tech Stack<br className="mobile-break"></br>/Database Systems</h3>
+          <p className="flush">Python, JavaScript, CSS, HTML, SQL, Express.js, Next.js, EJS, node.js, PostgreSQL, React, Axios, Mongoose, and MongoDB</p>
       
           <h3 className="even-less-flush">Misc. Know-How</h3>
-          <p className="flush">EJS, Node.js, Heroku, GitHub, Pygame, Adobe Photoshop, Adobe InDesign, Adobe Premiere, WordPress, Squarespace, NationBuilder, Google Analytics, Cargo, and Canva</p>
+          <p className="flush">Heroku, Pygame, Adobe Photoshop, Adobe InDesign, Adobe Premiere, Wordpress, Squarespace, NationBuilder, Google Analytics, Cargo.site, and Canva</p>
         </div>
 
         <div className="anchor" id="projects">
