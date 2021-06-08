@@ -13,7 +13,7 @@ export default function Home() {
 
         <div className="top-anchor" id="about">
           <div>
-            <p><span id="hello">Hello!</span> I am a full-stack developer with a particular interest is in ventures 
+            <p><span id="hello">Hello!</span> I am a full-stack developer with a particular interest in ventures 
             with an orientation towards social equity and the arts.</p>   
           </div>
           <div>
@@ -36,7 +36,7 @@ export default function Home() {
           <p className="flush">Python, JavaScript, CSS3, HTML5, SQL, Express.js, Next.js, PostgreSQL, React, Axios, Mongoose, and MongoDB</p>
       
           <h3 className="even-less-flush">Misc. Know-How</h3>
-          <p className="flush">EJS, Nods.js, Heroku, GitHub, Pygame, Adobe Photoshop, Adobe InDesign, Adobe Premiere, WordPress, Squarespace, NationBuilder, Google Analytics, Cargo, and Canva</p>
+          <p className="flush">EJS, Node.js, Heroku, GitHub, Pygame, Adobe Photoshop, Adobe InDesign, Adobe Premiere, WordPress, Squarespace, NationBuilder, Google Analytics, Cargo, and Canva</p>
         </div>
 
         <div className="anchor" id="projects">
@@ -52,7 +52,7 @@ export default function Home() {
           <a href="https://github.com/LouisaJohnston/project4" target="_blank" className="less-flush offset">Bot Noggle Repo</a>
 
           <h3 className="even-less-flush">Paw-Tel (Group Project)</h3>
-          <h4 className="italic flush">ReactJS, Mongoose, MongoDB, and MERN auth</h4>
+          <h4 className="italic flush">React, Mongoose, MongoDB, and MERN auth</h4>
           <ul className="less-flush">
             <li>Designed a full-stack MERN app using complex authorization routes allowing users to register as either a pet owner or a pet hotel owner to help pet owners connect with pet hotels</li>
             <li>Employed React components to render information from a local API pertaining to user-specific pets or hotels, depending on the authorization route, with the ability to update and delete data fields</li>
@@ -62,7 +62,7 @@ export default function Home() {
           <a href="https://github.com/LouisaJohnston/pawtel-client" target="_blank" className="flush offset">Paw-Tel Client-Side Repo</a>
 
           <h3 className="even-less-flush">Flick Picks</h3>
-          <h4 className="italic flush">EJS, ExpressJS, Axios, NodeJS, and PostgreSQL</h4>
+          <h4 className="italic flush">EJS, ExpressJS, Axios, and PostgreSQL</h4>
           <ul className="less-flush">
             <li>Created a web app using NodeJS and ExpressJS with the ability for users to create an account or login with encrypted cookie storage and password hashing</li>
             <li>Applied EJS templates and Axios to render information from a third-party film API and allow users to save movies to personal lists</li>
