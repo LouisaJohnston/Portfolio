@@ -375,6 +375,10 @@ nav a:hover {
     padding-top: 8%;
   }
 
+  #personal {
+    font-size: 1.2em;
+  }
+
   #contact a {
     border: 2px solid #669999;
     padding: 3px;

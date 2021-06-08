@@ -14,7 +14,7 @@ export default function Navbar() {
 
     const closeMenu = () => {
         setOpen(false)
-      }
+    }
 
     return (
         <nav className="navBar">
