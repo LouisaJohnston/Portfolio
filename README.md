@@ -1,1 +1,1 @@
-A mobile-responsive portfolio using Next.js, React, JavaScript, HTML5 and CSS3
+A mobile-responsive portfolio using Next.js, React, JavaScript, HTML and CSS
