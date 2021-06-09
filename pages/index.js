@@ -43,7 +43,7 @@ export default function Home() {
         <div className="anchor" id="languages">
           <h2>Tech Stack</h2>
           
-          <h3 className="less-flush web-edge">Tech Stack<br className="mobile-break"></br>/Database Systems</h3>
+          <h3 className="less-flush web-edge">Tech Stack et al.</h3>
           <p className="flush">Python, JavaScript, CSS, HTML, SQL, Express.js, Next.js, EJS, node.js, PostgreSQL, React, Axios, Mongoose, and MongoDB</p>
       
           <h3 className="even-less-flush">Misc. Know-How</h3>
@@ -82,10 +82,10 @@ export default function Home() {
 
           <div>
             <h3 className="even-less-flush">Flick Picks</h3>
-            <h4 className="italic flush">EJS, ExpressJS, Axios, and PostgreSQL</h4>
+            <h4 className="italic flush">EJS, Express.js, node.js, Axios, and PostgreSQL</h4>
             <div>
               <ul className="less-flush">
-                <li>Created a web app using NodeJS and ExpressJS with the ability for users to create an account or login with encrypted cookie storage and password hashing</li>
+                <li>Created a web app using node.js and Express.js with the ability for users to create an account or login with encrypted cookie storage and password hashing</li>
                 <li>Applied EJS templates and Axios to render information from a third-party film API and allow users to save movies to personal lists</li>
                 <li>Stored multiple user inputs (login information and movie comments/reviews) as database information fields through PostgreSQL with the ability for users to update them directly</li>
               </ul>
@@ -95,7 +95,7 @@ export default function Home() {
 
           <div>
             <h3 className="even-less-flush">Word-cross’d Puzzler</h3>
-            <h4 className="italic flush">JavaScript, CSS3, and HTML5</h4>
+            <h4 className="italic flush">JavaScript, CSS, and HTML</h4>
             <div>
               <ul className="less-flush">
                 <li>Designed a grid-based 5x5 puzzle to run on in-browser for desktop computers</li>
