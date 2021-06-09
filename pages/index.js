@@ -41,9 +41,9 @@ export default function Home() {
         </div>
 
         <div className="anchor" id="languages">
-          <h2>Tech Stack</h2>
+          <h2>Skills</h2>
           
-          <h3 className="less-flush web-edge">Tech Stack et al.</h3>
+          <h3 className="less-flush web-edge">Tech Stack</h3>
           <p className="flush">Python, JavaScript, CSS, HTML, SQL, Express.js, Next.js, EJS, node.js, PostgreSQL, React, Axios, Mongoose, and MongoDB</p>
       
           <h3 className="even-less-flush">Misc. Know-How</h3>
