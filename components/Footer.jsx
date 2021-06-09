@@ -5,7 +5,6 @@ export default function Footer() {
         <div id='footer'>
             <div id='personal'>
                 <h2 className ="flush-foot">Louisa Johnston</h2>
-                <p className ="flush-foot">Pronouns: she, her, hers</p>
                 <p className ="flush-foot">Oakland, CA</p>
             </div>
             <div id='contact'>
