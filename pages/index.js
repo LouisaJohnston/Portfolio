@@ -54,7 +54,7 @@ export default function Home() {
           <h2>Projects</h2>
 
           <div>
-            <h3 className="even-less-flush">Word-cross’d Puzzler</h3>
+            <a href="https://louisajohnston.github.io/" target="_blank"><h3 className="even-less-flush">Word-cross’d Puzzler</h3></a>
             <h4 className="italic flush">JavaScript, CSS, and HTML</h4>
             <div>
               <ul className="less-flush">
@@ -62,12 +62,12 @@ export default function Home() {
                 <li>Utilized CSS and HTML properties to approximate the experience of a pen-and-paper puzzle with front-end styling considerations implemented through Flexbox</li>
                 <li>Developed functionality through JavaScript array manipulation to show time elapsed, toggle between vertical and horizontal input focus flow, check answers, reveal the puzzle, and restart the game through DOM event listeners</li>
               </ul>
-              <a href="https://github.com/LouisaJohnston/Word-crossd_Puzzler" target="_blank" className="less-flush offset">Word-cross’d Puzzler Repo</a>
+              <a href="https://github.com/LouisaJohnston/Word-crossd_Puzzler" target="_blank" className="repo less-flush offset">Word-cross’d Puzzler Repo</a>
             </div>
           </div>
 
           <div>
-            <h3 className="even-less-flush">Flick Picks</h3>
+            <a href="https://flickpicks-project2.herokuapp.com/" target="_blank"><h3 className="even-less-flush">Flick Picks</h3></a>
             <h4 className="italic flush">EJS, Express.js, node.js, Axios, and PostgreSQL</h4>
             <div>
               <ul className="less-flush">
@@ -75,26 +75,27 @@ export default function Home() {
                 <li>Applied EJS templates and Axios to render information from a third-party film API and allow users to save movies to personal lists</li>
                 <li>Stored multiple user inputs (login information and movie comments/reviews) as database information fields through PostgreSQL with the ability for users to update them directly</li>
               </ul>
-              <a href="https://github.com/LouisaJohnston/project2" target="_blank" className="less-flush offset">Flick Picks Repo</a>
+              <a href="https://github.com/LouisaJohnston/Flick_Picks" target="_blank" className="repo less-flush offset">Flick Picks Repo</a>
             </div>
           </div>
         </div>
 
           <div>
-            <a href="dist/botNoggle.app/Contents/MacOS/botNoggle" download><h3 className="less-flush">Bot Noggle</h3></a>                                                                                                                                                             
+            <h3 className="less-flush">Bot Noggle</h3>                                                                                                                                                        
             <h4 className="italic flush">Python, Pygame</h4>
             <div>
                 <ul className="less-flush">
-                  <li>Built a downloadable version of Boggle using Python and Pygame to render a 4x4 grid from a two-dimensional array of randomized letters corresponding to real Boggle dice</li>
+                  <li>Built a version of Boggle using Python and Pygame to render a 4x4 grid from a two-dimensional array of randomized letters corresponding to real Boggle dice</li>
                   <li>Allowed users to check whether a given word exists in adjacent grid tiles (up, down, diagonally, forwards, and backwards)</li>
                   <li>Inserted dictionary information into a trie data structure to check against user input and optimize the project's time complexity</li>
                 </ul>
-                <a href="https://github.com/LouisaJohnston/project4" target="_blank" className="less-flush offset">Bot Noggle Repo</a>
+                <a href="https://www.youtube.com/watch?v=MCWT7-8a7iE&ab_channel=LouisaJohnston" target="_blank" className="repo less-flush offset block">See Bot Noggle in Action</a>
+                <a href="https://github.com/LouisaJohnston/botNoggle" target="_blank" className="repo flush offset">Bot Noggle Repo</a>
               </div>
           </div>
 
           <div>
-            <h3 className="even-less-flush">Paw-Tel (Group Project)</h3>
+            <a href= "https://pawtel-application.herokuapp.com/" target="_blank"><h3 className="even-less-flush">Paw-Tel (Group Project)</h3></a>
             <h4 className="italic flush">React, Mongoose, MongoDB, and MERN auth</h4>
             <div>
               <ul className="less-flush">
@@ -102,11 +103,11 @@ export default function Home() {
                 <li>Employed React components to render information from a local API pertaining to user-specific pets or hotels, depending on the authorization route, with the ability to update and delete data fields</li>
                 <li>Saved user input through server-side Mongoose database using MongoDB</li>
               </ul>
-              <a href="https://github.com/LouisaJohnston/Paw-tel" target="_blank" className="less-flush offset block">Paw-Tel Server-Side Repo</a>
-              <a href="https://github.com/LouisaJohnston/pawtel-client" target="_blank" className="flush offset">Paw-Tel Client-Side Repo</a>
+              <a href="https://github.com/LouisaJohnston/Paw-tel" target="_blank" className="repo less-flush offset block">Paw-Tel Server-Side Repo</a>
+              <a href="https://github.com/LouisaJohnston/pawtel-client" target="_blank" className="repo flush offset">Paw-Tel Client-Side Repo</a>
             </div>
           </div>
       </div>
-    </div>
+    </div>  
   )
 }
