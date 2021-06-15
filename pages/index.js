@@ -37,10 +37,12 @@ export default function Home() {
       <div id="main">
         <h1 className="hide">Louisa Johnston</h1>
 
+        {/******** ABOUT ME *********/}
+
         <div className="top-anchor" id="about">
           <div>
             <p><span id="hello">Hello!</span> I am a full-stack developer with 
-            particular interest in ventures oriented towards social equity 
+            particular interest in ventures oriented towards social impact 
             and the arts.</p>   
           </div>
           <div>
@@ -57,60 +59,87 @@ export default function Home() {
           </div>
         </div>
 
+        {/******** SKILLS *********/}
+
         <div className="anchor" id="languages">
           <h2>Skills</h2>
           <div id="lang-specs">
             <h3 className="less-flush web-edge">Tech Stack</h3>
-            <p className="flush">Python, JavaScript, CSS, HTML, SQL, Express.js, 
-              Next.js, EJS, node.js, PostgreSQL, React, Axios, Mongoose, and MongoDB</p>
+            <p className="flush">Python, JavaScript, CSS, HTML, SQL, 
+              Express.js, Next.js, EJS, node.js, PostgreSQL, React, Axios, 
+              Mongoose, and MongoDB</p>
         
             <h3 className="even-less-flush">Misc. Know-How</h3>
             <p className="flush">Heroku, Pygame, Adobe Photoshop, Adobe InDesign, 
-              Adobe Premiere, Wordpress, Squarespace, NationBuilder, Google Analytics, 
-              Cargo.site, and Canva</p>
+              Adobe Premiere, Wordpress, Squarespace, NationBuilder, 
+              Google Analytics, Cargo.site, and Canva</p>
           </div>
         </div>
+
+        {/******** PROJECTS *********/}
 
         <div className="anchor" id="projects">
           <h2>Projects</h2>
-
+          {/* WORD-CROSS'D PUZZLER */}
           <div className="project-box">
-          <h3 className="even-less-flush"><a href="https://louisajohnston.github.io/" target="_blank">Word-cross’d Puzzler</a></h3>
-            <h4 className="italic flush">JavaScript, CSS, and HTML</h4>
-            <div>
-              <div className= "details" onClick={ puzzlerClick }>{ showPuzzler ? <a>Hide Details</a> : <a>Show Details</a> }</div>
-              { showPuzzler ? <Puzzler /> : null }
-            </div>
+            <h3 className="even-less-flush">
+              <a href="https://louisajohnston.github.io/" target="_blank">
+                Word-cross’d Puzzler</a>
+            </h3>
+              <h4 className="italic flush">JavaScript, CSS, and HTML</h4>
+              <div>
+                <div className= "details" onClick={ puzzlerClick }>
+                  { showPuzzler ? <a>Hide Details</a> : <a>Show Details</a> }
+                </div>
+                { showPuzzler ? <Puzzler /> : null }
+              </div>
           </div>
-
+          
+          {/* FLICK PICKS */}
           <div className="project-box">
-          <h3 className="even-less-flush"><a href="https://flickpicks-project2.herokuapp.com/" target="_blank">Flick Picks</a></h3>
-            <h4 className="italic flush">EJS, Express.js, node.js, Axios, and PostgreSQL</h4>
-            <div>
-              <div className= "details" onClick={ flickClick }>{ showFlick ? <a>Hide Details</a> : <a>Show Details</a> }</div>
-              { showFlick ? <Flick /> : null }
+            <h3 className="even-less-flush">
+              <a href="https://flickpicks-project2.herokuapp.com/" target="_blank">
+                Flick Picks</a>
+            </h3>
+              <h4 className="italic flush">EJS, Express.js, node.js, Axios, and PostgreSQL</h4>
+              <div>
+                <div className= "details" onClick={ flickClick }>
+                  { showFlick ? <a>Hide Details</a> : <a>Show Details</a> }
+                </div>
+                { showFlick ? <Flick /> : null }
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div className="project-box">
-          <h3 className="even-less-flush"><a href= "https://pawtel-application.herokuapp.com/" target="_blank">Paw-Tel (Group Project)</a></h3>
+          
+          {/* PAW-TEL */}
+          <div className="project-box">
+            <h3 className="even-less-flush">
+              <a href= "https://pawtel-application.herokuapp.com/" target="_blank">
+                Paw-Tel (Group Project)</a>
+            </h3>
             <h4 className="italic flush">React, Mongoose, MongoDB, and MERN auth</h4>
             <div>
-              <div className= "details" onClick={ pawClick }>{ showPaw ? <a>Hide Details</a> : <a>Show Details</a> }</div>
+              <div className= "details" onClick={ pawClick }>
+                { showPaw ? <a>Hide Details</a> : <a>Show Details</a> }
+              </div>
               { showPaw ? <Pawtel /> : null }
             </div>
           </div>
-
-        <div className="project-box">
-          <h3 className="even-less-flush"><a href="https://www.youtube.com/watch?v=MCWT7-8a7iE&ab_channel=LouisaJohnston" target="_blank">Bot Noggle</a></h3>                                                                                                                                                        
-          <h4 className="italic flush">Python, Pygame</h4>
-          <div>
-              <div className= "details" onClick={ botClick }>{ showBot ? <a>Hide Details</a> : <a>Show Details</a> }</div>
+          
+          {/* BOT NOGGLE */}
+          <div className="project-box">
+            <h3 className="even-less-flush">
+              <a href="https://www.youtube.com/watch?v=MCWT7-8a7iE&ab_channel=LouisaJohnston" target="_blank">
+                Bot Noggle</a>
+            </h3>                                                                                                                                                        
+            <h4 className="italic flush">Python, Pygame</h4>
+            <div>
+              <div className= "details" onClick={ botClick }>
+                { showBot ? <a>Hide Details</a> : <a>Show Details</a> }
+              </div>
               { showBot ? <Bot /> : null }
+            </div>
           </div>
         </div>
-
       </div>
     </div>  
   )
