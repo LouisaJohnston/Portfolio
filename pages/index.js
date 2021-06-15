@@ -75,7 +75,7 @@ export default function Home() {
           <h2>Projects</h2>
 
           <div className="project-box">
-            <a href="https://louisajohnston.github.io/" target="_blank"><h3 className="even-less-flush">Word-cross’d Puzzler</h3></a>
+          <h3 className="even-less-flush"><a href="https://louisajohnston.github.io/" target="_blank">Word-cross’d Puzzler</a></h3>
             <h4 className="italic flush">JavaScript, CSS, and HTML</h4>
             <div>
               <div className= "details" onClick={ puzzlerClick }>{ showPuzzler ? <a>Hide Details</a> : <a>Show Details</a> }</div>
@@ -84,7 +84,7 @@ export default function Home() {
           </div>
 
           <div className="project-box">
-            <a href="https://flickpicks-project2.herokuapp.com/" target="_blank"><h3 className="even-less-flush">Flick Picks</h3></a>
+          <h3 className="even-less-flush"><a href="https://flickpicks-project2.herokuapp.com/" target="_blank">Flick Picks</a></h3>
             <h4 className="italic flush">EJS, Express.js, node.js, Axios, and PostgreSQL</h4>
             <div>
               <div className= "details" onClick={ flickClick }>{ showFlick ? <a>Hide Details</a> : <a>Show Details</a> }</div>
@@ -94,7 +94,7 @@ export default function Home() {
         </div>
 
         <div className="project-box">
-            <a href= "https://pawtel-application.herokuapp.com/" target="_blank"><h3 className="even-less-flush">Paw-Tel (Group Project)</h3></a>
+          <h3 className="even-less-flush"><a href= "https://pawtel-application.herokuapp.com/" target="_blank">Paw-Tel (Group Project)</a></h3>
             <h4 className="italic flush">React, Mongoose, MongoDB, and MERN auth</h4>
             <div>
               <div className= "details" onClick={ pawClick }>{ showPaw ? <a>Hide Details</a> : <a>Show Details</a> }</div>
@@ -103,7 +103,7 @@ export default function Home() {
           </div>
 
         <div className="project-box">
-          <a href="https://www.youtube.com/watch?v=MCWT7-8a7iE&ab_channel=LouisaJohnston" target="_blank"><h3 className="even-less-flush">Bot Noggle</h3></a>                                                                                                                                                        
+          <h3 className="even-less-flush"><a href="https://www.youtube.com/watch?v=MCWT7-8a7iE&ab_channel=LouisaJohnston" target="_blank">Bot Noggle</a></h3>                                                                                                                                                        
           <h4 className="italic flush">Python, Pygame</h4>
           <div>
               <div className= "details" onClick={ botClick }>{ showBot ? <a>Hide Details</a> : <a>Show Details</a> }</div>
