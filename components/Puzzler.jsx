@@ -1,5 +1,4 @@
 export default function Puzzler() {
-
     return (
         <div>
             <ul className="less-flush">

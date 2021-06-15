@@ -111,7 +111,7 @@ h4, p, li {
 
 .italic {
   font-style: italic;
-  font-size: .95em
+  font-size: 1.1em
 }
 
 .flush {
@@ -364,17 +364,31 @@ nav a:hover {
 
   #main h3 {
     font-size: 1.4em;
+    display: inline;
   }
 
   #main h4 {
     font-size: 1.1em;
+    margin-left: 11%;
   }
+
 
   #main a {
     margin-left: 4%;
     margin-right: 4%;
     font-weight: 700;
     font-size: 1.15em;
+  }
+
+  #lang-specs {
+    margin-left: 8%;
+    margin-right: 8%;
+  }
+
+  .details {
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-bottom: 5%;
   }
 
   #footer {
