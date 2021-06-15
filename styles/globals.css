@@ -54,7 +54,7 @@ a {
 
 h2 {
   color: #C66403;
-  font-size: 1.7em;
+  font-size: 2em;
   font-weight: 900;
   padding-top: 5%;
   margin-left: 20%;
@@ -64,12 +64,23 @@ h2 {
 
 h3 {
   color: #4D2B43;
+  margin-left: 25%;
+  margin-right: 25%;
+  font-size: 1.7em;
 }
 
-h3, h4, p, li {
+h4, p, li {
   margin-left: 25%;
   margin-right: 25%;
   font-size: 1.3em;
+}
+
+.details {
+  margin-left: 25%;
+  margin-right: 25%;
+  color: #4D2B43;
+  font-weight: 700;
+  font-size: 1.05em;
 }
 
 .repo {

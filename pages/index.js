@@ -1,17 +1,15 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react'
+import Puzzler from '../components/Puzzler.jsx'
 
 export default function Home() {
-  const [isOpen, setOpen] = useState(false)
+  const [showPuzzler, setPuzzler] = useState(false)
 
-  const handleOpen = () => {
-    setOpen(!isOpen);
-  }
+  const puzzlerClick = () => {
+      setPuzzler(!showPuzzler)
 
-  const closeProject = () => {
-      setOpen(false)
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -24,8 +22,9 @@ export default function Home() {
 
         <div className="top-anchor" id="about">
           <div>
-            <p><span id="hello">Hello!</span> I am a full-stack developer with a particular interest in ventures 
-            with an orientation towards social equity and the arts.</p>   
+            <p><span id="hello">Hello!</span> I am a full-stack developer with 
+            particular interest in ventures oriented towards social equity 
+            and the arts.</p>   
           </div>
           <div>
             <p>I am passionate about breaking problems down into their 
@@ -36,7 +35,8 @@ export default function Home() {
           </div>
           <div>
             <p>In my spare time, I enjoy caring for my brood of houseplants, 
-            employing the phone-a-friend approach to crossword solving, and Vincent Price movies.</p>
+            employing the phone-a-friend approach to crossword solving, and 
+            Vincent Price movies.</p>
           </div>
         </div>
 
@@ -44,10 +44,13 @@ export default function Home() {
           <h2>Skills</h2>
           
           <h3 className="less-flush web-edge">Tech Stack</h3>
-          <p className="flush">Python, JavaScript, CSS, HTML, SQL, Express.js, Next.js, EJS, node.js, PostgreSQL, React, Axios, Mongoose, and MongoDB</p>
+          <p className="flush">Python, JavaScript, CSS, HTML, SQL, Express.js, 
+            Next.js, EJS, node.js, PostgreSQL, React, Axios, Mongoose, and MongoDB</p>
       
           <h3 className="even-less-flush">Misc. Know-How</h3>
-          <p className="flush">Heroku, Pygame, Adobe Photoshop, Adobe InDesign, Adobe Premiere, Wordpress, Squarespace, NationBuilder, Google Analytics, Cargo.site, and Canva</p>
+          <p className="flush">Heroku, Pygame, Adobe Photoshop, Adobe InDesign, 
+            Adobe Premiere, Wordpress, Squarespace, NationBuilder, Google Analytics, 
+            Cargo.site, and Canva</p>
         </div>
 
         <div className="anchor" id="projects">
@@ -57,12 +60,8 @@ export default function Home() {
             <a href="https://louisajohnston.github.io/" target="_blank"><h3 className="even-less-flush">Word-cross’d Puzzler</h3></a>
             <h4 className="italic flush">JavaScript, CSS, and HTML</h4>
             <div>
-              <ul className="less-flush">
-                <li>Designed a grid-based 5x5 puzzle to run on in-browser for desktop computers</li>
-                <li>Utilized CSS and HTML properties to approximate the experience of a pen-and-paper puzzle with front-end styling considerations implemented through Flexbox</li>
-                <li>Developed functionality through JavaScript array manipulation to show time elapsed, toggle between vertical and horizontal input focus flow, check answers, reveal the puzzle, and restart the game through DOM event listeners</li>
-              </ul>
-              <a href="https://github.com/LouisaJohnston/Word-crossd_Puzzler" target="_blank" className="repo less-flush offset">Word-cross’d Puzzler Repo</a>
+              <div className= "details" id="puzzle-button" onClick={ puzzlerClick }>{ showPuzzler ? <a>Hide Details</a> : <a>Show Details</a> }</div>
+              { showPuzzler ? <Puzzler /> : null }
             </div>
           </div>
 
