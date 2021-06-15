@@ -6,7 +6,7 @@ export default function Bot() {
                 <li>Allowed users to check whether a given word exists in adjacent grid tiles (up, down, diagonally, forwards, and backwards)</li>
                 <li>Inserted dictionary information into a trie data structure to check against user input and optimize the project's time complexity</li>
               </ul>
-              <a href="https://github.com/LouisaJohnston/botNoggle" target="_blank" className="repo flush offset">Bot Noggle Repo</a>
+              <a href="https://github.com/LouisaJohnston/botNoggle" target="_blank" className="repo flush offset det-link">Bot Noggle Repo</a>
         </div>
     )
 }

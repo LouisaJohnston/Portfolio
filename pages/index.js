@@ -74,7 +74,7 @@ export default function Home() {
         <div className="anchor" id="projects">
           <h2>Projects</h2>
 
-          <div>
+          <div className="project-box">
             <a href="https://louisajohnston.github.io/" target="_blank"><h3 className="even-less-flush">Word-cross’d Puzzler</h3></a>
             <h4 className="italic flush">JavaScript, CSS, and HTML</h4>
             <div>
@@ -83,7 +83,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div>
+          <div className="project-box">
             <a href="https://flickpicks-project2.herokuapp.com/" target="_blank"><h3 className="even-less-flush">Flick Picks</h3></a>
             <h4 className="italic flush">EJS, Express.js, node.js, Axios, and PostgreSQL</h4>
             <div>
@@ -93,7 +93,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div>
+        <div className="project-box">
             <a href= "https://pawtel-application.herokuapp.com/" target="_blank"><h3 className="even-less-flush">Paw-Tel (Group Project)</h3></a>
             <h4 className="italic flush">React, Mongoose, MongoDB, and MERN auth</h4>
             <div>
@@ -102,7 +102,7 @@ export default function Home() {
             </div>
           </div>
 
-        <div>
+        <div className="project-box">
           <a href="https://www.youtube.com/watch?v=MCWT7-8a7iE&ab_channel=LouisaJohnston" target="_blank"><h3 className="even-less-flush">Bot Noggle</h3></a>                                                                                                                                                        
           <h4 className="italic flush">Python, Pygame</h4>
           <div>
