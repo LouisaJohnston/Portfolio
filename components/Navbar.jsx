@@ -47,7 +47,7 @@ export default function Navbar() {
                             smooth to='#languages'
                             activeClassName="selected"
                             activeStyle={{ 'font-size': '1.5em' }}>
-                            <a className="desktop-nav">Tech Stack</a>
+                            <a className="desktop-nav">Skills</a>
                         </NavHashLink>
                     </div>
 
@@ -98,7 +98,7 @@ export default function Navbar() {
 
                     <li>
                         <Link href='#languages'>
-                            <a onClick={() => closeMenu()}>Tech Stack</a>
+                            <a onClick={() => closeMenu()}>Skills</a>
                         </Link>
                     </li>
 

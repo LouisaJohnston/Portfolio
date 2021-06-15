@@ -54,7 +54,7 @@ a {
 
 h2 {
   color: #C66403;
-  font-size: 1.7em;
+  font-size: 2em;
   font-weight: 900;
   padding-top: 5%;
   margin-left: 20%;
@@ -64,15 +64,26 @@ h2 {
 
 h3 {
   color: #4D2B43;
+  margin-left: 25%;
+  margin-right: 25%;
+  font-size: 1.7em;
 }
 
-h3, h4, p, li {
+h4, p, li {
   margin-left: 25%;
   margin-right: 25%;
   font-size: 1.3em;
 }
 
-#main a {
+.details {
+  margin-left: 25%;
+  margin-right: 25%;
+  color: #4D2B43;
+  font-weight: 700;
+  font-size: 1.05em;
+}
+
+.repo {
   margin-left: 25%;
   margin-right: 25%;
   color: #669999;
@@ -82,6 +93,19 @@ h3, h4, p, li {
 
 #main a:hover {
   font-style: italic;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+  color: #669999;
 }
 
 .top-anchor {
@@ -100,7 +124,7 @@ h3, h4, p, li {
 
 .italic {
   font-style: italic;
-  font-size: .95em
+  font-size: 1.1em
 }
 
 .flush {
@@ -184,7 +208,7 @@ nav a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1em;
+  font-size: .9em;
 }
 
 #footer h2 {
@@ -345,7 +369,7 @@ nav a:hover {
     margin-bottom: 1%;
   }
   
-  #main h3, h4, p, li {
+  #main h3, h4, p, li{
     margin-left: 7%;
     margin-right: 7%;
     font-size: 1.3em;
@@ -353,26 +377,49 @@ nav a:hover {
 
   #main h3 {
     font-size: 1.4em;
+    display: inline;
+    margin-left: 2%;
+    margin-right: 4%;
   }
 
   #main h4 {
     font-size: 1.1em;
+    margin-left: 9%;
   }
 
+
   #main a {
-    margin-left: 4%;
-    margin-right: 4%;
+    margin-left: 7%;
     font-weight: 700;
     font-size: 1.15em;
+  }
+
+  #lang-specs {
+    margin-left: 8%;
+    margin-right: 8%;
+  }
+
+  .project-box {
+    margin-bottom: 5%;
+  }
+
+  .details {
+    margin-left: 3%!important;
+    margin-right: 6%;
+  }
+
+  .bottom {
+    margin-bottom: 5%;
   }
 
   #footer {
     font-size: 12px;
     width: 100vw;
     height: 20vh;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-around;
     padding-top: 8%;
+    padding-bottom: 8%;
   }
 
   #personal {
@@ -381,8 +428,8 @@ nav a:hover {
 
   #contact a {
     border: 2px solid #669999;
-    padding: 3px;
-    margin: 3px;
+    padding: 1.5px;
+    margin: 2px;
     color: #669999;
     display: block;
     text-align: center;
