@@ -35,10 +35,6 @@ a {
   margin-right: 20%;
 }
 
-#languages {
-  margin-top: 1%;
-}
-
 #main {
   margin-top: 10%;
   margin-bottom: 10%;
@@ -60,6 +56,7 @@ h2 {
   margin-left: 20%;
   margin-right: 20%;
   margin-bottom: 1%;
+  margin-top: 8%;
 }
 
 h3 {
@@ -116,9 +113,16 @@ h4, p, li {
   background-clip: content-box;
 }
 
-.anchor {
+.skill-anchor {
   padding-top: 50px;
   margin-top: -50px;
+  -webkit-background-clip: content-box;
+  background-clip: content-box;
+}
+
+.project-anchor {
+  padding-top: 1px;
+  margin-top: -1px;
   -webkit-background-clip: content-box;
   background-clip: content-box;
 }
