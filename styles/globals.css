@@ -22,6 +22,10 @@ a {
   display: block;
 }
 
+.inline {
+  display: inline-block;
+}
+
 .hide {
   display: none;
 }
@@ -33,10 +37,6 @@ a {
 #about p {
   margin-left: 20%;
   margin-right: 20%;
-}
-
-#languages {
-  margin-top: 1%;
 }
 
 #main {
@@ -60,6 +60,7 @@ h2 {
   margin-left: 20%;
   margin-right: 20%;
   margin-bottom: 1%;
+  margin-top: 8%;
 }
 
 h3 {
@@ -79,22 +80,25 @@ h4, p, li {
   margin-left: 25%;
   margin-right: 25%;
   color: #4D2B43;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1.05em;
   cursor: pointer;
 }
 
 .repo {
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: 26%;
   color: #669999;
   font-weight: 700;
-  font-size: 1.05em;
+  font-size: 1.2em;
+}
+#main a:hover {
+  color: #669999;
 }
 
-#main a:hover {
-  font-style: italic;
+.repo:hover {
+  color: #C66403!important;
 }
+
 
 #main ul {
   list-style: none;
@@ -116,16 +120,24 @@ h4, p, li {
   background-clip: content-box;
 }
 
-.anchor {
+.skill-anchor {
   padding-top: 50px;
   margin-top: -50px;
   -webkit-background-clip: content-box;
   background-clip: content-box;
 }
 
+.project-anchor {
+  padding-top: 1px;
+  margin-top: -1px;
+  -webkit-background-clip: content-box;
+  background-clip: content-box;
+}
+
 .italic {
   font-style: italic;
-  font-size: 1.1em
+  font-size: 1.2em;
+  font-weight: 400;
 }
 
 .flush {
@@ -151,6 +163,61 @@ h4, p, li {
 
 .offset {
   padding-left: 15px;
+}
+
+#bot-border {
+  border: 3px solid #FBCC32;
+  height: 286px;
+  border-radius: 1px;
+}
+
+#bot-play {
+  width: 100%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  position: relative;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+}
+
+/******** Carousel ********/ 
+
+.carousel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 22%;
+  margin-right: 22%;
+}
+
+.image-slide {
+	transition: background-image .3s ease-in-out;
+  height: 50vh;
+  width: 85vh;
+  padding: 2%;
+  border: 3px solid #FBCC32;
+  margin: 1%;
+  border-radius: 1px;
+}
+
+.slide-arrow {
+	color: #C66403;
+	cursor: pointer;
+	font-size: 2rem;
+	top: 50%;
+}
+
+.slide-arrow:hover {
+	color: #669999;
+}
+
+.slide-arrow.right {
+	right: 1rem;
+}
+
+.slide-arrow.left {
+	left: 1rem;
 }
 
 /******** Nav ********/ 
@@ -437,4 +504,9 @@ nav a:hover {
     border-radius: 3px;
   }
 }
+
+
+
+
+
   

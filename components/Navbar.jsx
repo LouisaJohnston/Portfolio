@@ -35,7 +35,7 @@ export default function Navbar() {
                     </div>
                     <div>
                         <NavHashLink 
-                            smooth to='#about'
+                            smooth to='#top'
                             activeClassName="selected"
                             activeStyle={{ 'font-size': '1.5em' }}>
                             <a className="desktop-nav">About Me</a>

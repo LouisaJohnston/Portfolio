@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react'
-import Puzzler from '../components/Puzzler.jsx'
-import Flick from '../components/Flick.jsx'
-import Pawtel from '../components/Pawtel.jsx'
-import Bot from '../components/Bot.jsx'
+import Puzzler from '../components/puzzler/Puzzler.jsx'
+import Flick from '../components/flick/Flick.jsx'
+import Pawtel from '../components/pawtel/Pawtel.jsx'
+import Bot from '../components/bot/Bot.jsx'
 
 export default function Home() {
   const [showPuzzler, setPuzzler] = useState(false);
@@ -46,7 +46,7 @@ export default function Home() {
             and the arts.</p>   
           </div>
           <div>
-            <p>I am passionate about breaking problems down into their 
+            <p>I love breaking problems down into their 
             smallest parts in order to build successful interventions. 
             My background in nonprofit marketing has taught me the 
             value of metrics-driven work, creative workarounds, and 
@@ -61,12 +61,12 @@ export default function Home() {
 
         {/******** SKILLS *********/}
 
-        <div className="anchor" id="languages">
+        <div className="skill-anchor" id="languages">
           <h2>Skills</h2>
           <div id="lang-specs">
             <h3 className="less-flush web-edge">Tech Stack</h3>
-            <p className="flush">Python, JavaScript, CSS, HTML, SQL, 
-              Express.js, Next.js, EJS, node.js, PostgreSQL, React, Axios, 
+            <p className="flush">JavaScript, React, CSS, HTML, Python, SQL, 
+              Express.js, Next.js, EJS, node.js, PostgreSQL, Axios, 
               Mongoose, and MongoDB</p>
         
             <h3 className="even-less-flush">Misc. Know-How</h3>
@@ -78,20 +78,20 @@ export default function Home() {
 
         {/******** PROJECTS *********/}
 
-        <div className="anchor" id="projects">
+        <div className="project-anchor" id="projects">
           <h2>Projects</h2>
           {/* WORD-CROSS'D PUZZLER */}
           <div className="project-box">
-            <h3 className="even-less-flush">
+            <h3 className="less-flush">
               <a href="https://louisajohnston.github.io/" target="_blank">
                 Word-cross’d Puzzler</a>
             </h3>
               <h4 className="italic flush">JavaScript, CSS, and HTML</h4>
               <div>
-                <div className= "details" onClick={ puzzlerClick }>
-                  { showPuzzler ? <a>Hide Details</a> : <a>Show Details</a> }
-                </div>
                 { showPuzzler ? <Puzzler /> : null }
+                <div className= "details" onClick={ puzzlerClick }>
+                  { showPuzzler ? <a>Hide Details</a> : <a>Show Project Details</a> }
+                </div>
               </div>
           </div>
           
@@ -103,10 +103,10 @@ export default function Home() {
             </h3>
               <h4 className="italic flush">EJS, Express.js, node.js, Axios, and PostgreSQL</h4>
               <div>
-                <div className= "details" onClick={ flickClick }>
-                  { showFlick ? <a>Hide Details</a> : <a>Show Details</a> }
-                </div>
                 { showFlick ? <Flick /> : null }
+                <div className= "details" onClick={ flickClick }>
+                  { showFlick ? <a>Hide Details</a> : <a>Show Project Details</a> }
+                </div>
               </div>
             </div>
           
@@ -118,10 +118,10 @@ export default function Home() {
             </h3>
             <h4 className="italic flush">React, Mongoose, MongoDB, and MERN auth</h4>
             <div>
-              <div className= "details" onClick={ pawClick }>
-                { showPaw ? <a>Hide Details</a> : <a>Show Details</a> }
-              </div>
               { showPaw ? <Pawtel /> : null }
+              <div className= "details" onClick={ pawClick }>
+                { showPaw ? <a>Hide Details</a> : <a>Show Project Details</a> }
+              </div>
             </div>
           </div>
           
@@ -133,10 +133,10 @@ export default function Home() {
             </h3>                                                                                                                                                        
             <h4 className="italic flush">Python, Pygame</h4>
             <div>
-              <div className= "details" onClick={ botClick }>
-                { showBot ? <a>Hide Details</a> : <a>Show Details</a> }
-              </div>
               { showBot ? <Bot /> : null }
+              <div className= "details" onClick={ botClick }>
+                { showBot ? <a>Hide Details</a> : <a>Show Project Details</a> }
+              </div>
             </div>
           </div>
         </div>

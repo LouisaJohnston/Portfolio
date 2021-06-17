@@ -1,3 +1,5 @@
+import PawtelCarousel from "./PawtelCarousel"
+
 export default function Pawtel() {
     return (
         <div>
@@ -8,6 +10,7 @@ export default function Pawtel() {
             </ul>
             <a href="https://github.com/LouisaJohnston/Paw-tel" target="_blank" className="repo less-flush offset block">Paw-Tel Server-Side Repo</a>
             <a href="https://github.com/LouisaJohnston/pawtel-client" target="_blank" className="repo flush offset">Paw-Tel Client-Side Repo</a>
+            <PawtelCarousel />
         </div>
     )
 }
