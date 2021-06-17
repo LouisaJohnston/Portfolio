@@ -349,7 +349,7 @@ nav a:hover {
     background-clip: content-box;
   }
   
-  .anchor {
+  .skill-anchor {
     padding-top: 80px;
     margin-top: -80px;
     -webkit-background-clip: content-box;
@@ -516,7 +516,7 @@ nav a:hover {
 
   #bot-border {
     border: 1px solid #FBCC32;
-    height: 19vh;
+    height: 20vh;
     width: 75vw;
     border-radius: 1px;
   }
