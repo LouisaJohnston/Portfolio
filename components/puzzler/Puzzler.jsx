@@ -4,7 +4,7 @@ export default function Puzzler() {
     return (
         <div>
             <ul className="less-flush">
-                <li>Designed a grid-based 5x5 puzzle to run on in-browser for 
+                <li>Designed a grid-based 5x5 puzzle to run in-browser for 
                     desktop computers</li>
                 <li>Utilized CSS and HTML properties to approximate the experience 
                     of a pen-and-paper puzzle with front-end styling considerations 
