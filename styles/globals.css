@@ -441,4 +441,42 @@ nav a:hover {
     border-radius: 3px;
   }
 }
+
+/******** Carousel Test ********/ 
+
+.carousel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-left: 25%;
+  margin-right: 25%; */
+}
+
+.image-slide {
+  margin-left: 3%!important;
+  margin-right: 6%;
+	transition: background-image .3s ease-in-out;
+  height: 200px;
+  width: 300px;
+}
+
+.slide-arrow {
+	color: #14B6D4;
+	cursor: pointer;
+	font-size: 2rem;
+	top: 50%;
+}
+
+.slide-arrow.right {
+	right: 1rem;
+}
+
+.slide-arrow.left {
+	left: 1rem;
+}
+
+
+
+
+
   
