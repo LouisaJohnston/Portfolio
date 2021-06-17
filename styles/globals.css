@@ -356,6 +356,13 @@ nav a:hover {
     background-clip: content-box;
   }
 
+  .project-anchor {
+    padding-top: 80px;
+    margin-top: -80px;
+    -webkit-background-clip: content-box;
+    background-clip: content-box;
+  }
+
   #about {
     margin-top: 1px;
   }
@@ -467,17 +474,50 @@ nav a:hover {
     margin-right: 8%;
   }
 
+  .mobile-hide {
+    display: none;
+  }
+
   .project-box {
     margin-bottom: 5%;
+    font-size: .9em;
   }
 
   .details {
+    width: 80%;
     margin-left: 3%!important;
     margin-right: 6%;
   }
 
   .bottom {
     margin-bottom: 5%;
+  }
+
+  .carousel {
+    margin-left: 7%;
+    margin-right: 7%;
+  }
+  
+  .image-slide {
+    height: 30vh;
+    width: 90vw;
+  }
+
+  #bot-play {
+    width: 100%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    position: relative;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+  }
+
+  #bot-border {
+    border: 3px solid #FBCC32;
+    height: 29vh;
+    width: 75vw;
+    border-radius: 1px;
   }
 
   #footer {
