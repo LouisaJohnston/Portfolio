@@ -500,7 +500,7 @@ nav a:hover {
   
   .image-slide {
     height: 30vh;
-    width: 90vw;
+    width: 80vw;
   }
 
   #bot-play {
@@ -515,7 +515,7 @@ nav a:hover {
 
   #bot-border {
     border: 3px solid #FBCC32;
-    height: 29vh;
+    height: 21vh;
     width: 75vw;
     border-radius: 1px;
   }
