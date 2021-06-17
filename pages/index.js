@@ -65,8 +65,8 @@ export default function Home() {
           <h2>Skills</h2>
           <div id="lang-specs">
             <h3 className="less-flush web-edge">Tech Stack</h3>
-            <p className="flush">Python, JavaScript, CSS, HTML, SQL, 
-              Express.js, Next.js, EJS, node.js, PostgreSQL, React, Axios, 
+            <p className="flush">JavaScript, React, CSS, HTML, Python, SQL, 
+              Express.js, Next.js, EJS, node.js, PostgreSQL, Axios, 
               Mongoose, and MongoDB</p>
         
             <h3 className="even-less-flush">Misc. Know-How</h3>

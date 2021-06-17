@@ -34,7 +34,7 @@ export default function PuzzlerCarousel() {
                 clickFunction={ previousSlide }
                 glyph="&#9001;"
             />
-
+        
             <ImageSlide url={ imgUrls[currentImageIndex] }/>
 
             <Arrow
