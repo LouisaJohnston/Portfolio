@@ -89,7 +89,7 @@ export default function Home() {
               <h4 className="italic flush">JavaScript, CSS, and HTML</h4>
               <div>
                 <div className= "details" onClick={ puzzlerClick }>
-                  { showPuzzler ? <a>Hide Details</a> : <a>Show Details</a> }
+                  { showPuzzler ? <a>Hide Details</a> : <a>Show Project Details</a> }
                 </div>
                 { showPuzzler ? <Puzzler /> : null }
               </div>
@@ -104,7 +104,7 @@ export default function Home() {
               <h4 className="italic flush">EJS, Express.js, node.js, Axios, and PostgreSQL</h4>
               <div>
                 <div className= "details" onClick={ flickClick }>
-                  { showFlick ? <a>Hide Details</a> : <a>Show Details</a> }
+                  { showFlick ? <a>Hide Details</a> : <a>Show Project Details</a> }
                 </div>
                 { showFlick ? <Flick /> : null }
               </div>
@@ -119,7 +119,7 @@ export default function Home() {
             <h4 className="italic flush">React, Mongoose, MongoDB, and MERN auth</h4>
             <div>
               <div className= "details" onClick={ pawClick }>
-                { showPaw ? <a>Hide Details</a> : <a>Show Details</a> }
+                { showPaw ? <a>Hide Details</a> : <a>Show Project Details</a> }
               </div>
               { showPaw ? <Pawtel /> : null }
             </div>
@@ -134,7 +134,7 @@ export default function Home() {
             <h4 className="italic flush">Python, Pygame</h4>
             <div>
               <div className= "details" onClick={ botClick }>
-                { showBot ? <a>Hide Details</a> : <a>Show Details</a> }
+                { showBot ? <a>Hide Details</a> : <a>Show Project Details</a> }
               </div>
               { showBot ? <Bot /> : null }
             </div>

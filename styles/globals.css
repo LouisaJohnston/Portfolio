@@ -22,6 +22,10 @@ a {
   display: block;
 }
 
+.inline {
+  display: inline-block;
+}
+
 .hide {
   display: none;
 }
@@ -82,11 +86,10 @@ h4, p, li {
 }
 
 .repo {
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: 26%;
   color: #669999;
-  font-weight: 700;
-  font-size: 1.05em;
+  font-weight: 900;
+  font-size: 1.2em;
 }
 
 #main a:hover {
@@ -155,6 +158,39 @@ h4, p, li {
 
 .offset {
   padding-left: 15px;
+}
+
+/******** Carousel ********/ 
+
+.carousel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 22%;
+  margin-right: 22%;
+}
+
+.image-slide {
+	transition: background-image .3s ease-in-out;
+  height: 50vh;
+  width: 85vh;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.slide-arrow {
+	color: #C66403;
+	cursor: pointer;
+	font-size: 2rem;
+	top: 50%;
+}
+
+.slide-arrow.right {
+	right: 1rem;
+}
+
+.slide-arrow.left {
+	left: 1rem;
 }
 
 /******** Nav ********/ 
@@ -440,39 +476,6 @@ nav a:hover {
     text-align: center;
     border-radius: 3px;
   }
-}
-
-/******** Carousel Test ********/ 
-
-.carousel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /* margin-left: 25%;
-  margin-right: 25%; */
-}
-
-.image-slide {
-  margin-left: 3%!important;
-  margin-right: 6%;
-	transition: background-image .3s ease-in-out;
-  height: 200px;
-  width: 300px;
-}
-
-.slide-arrow {
-	color: #14B6D4;
-	cursor: pointer;
-	font-size: 2rem;
-	top: 50%;
-}
-
-.slide-arrow.right {
-	right: 1rem;
-}
-
-.slide-arrow.left {
-	left: 1rem;
 }
 
 

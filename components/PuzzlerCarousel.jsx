@@ -32,7 +32,7 @@ export default function Puzzler() {
             <Arrow
                 direction="left"
                 clickFunction={ previousSlide }
-                glyph="&#9664;"
+                glyph="&#9001;"
             />
 
             <ImageSlide url={ imgUrls[currentImageIndex] }/>
@@ -40,7 +40,8 @@ export default function Puzzler() {
             <Arrow
                 direction="right"
                 clickFunction={ nextSlide }
-                glyph="&#9654;" />
+                glyph="&#9002;" 
+            />
         </div>
     )
 }
