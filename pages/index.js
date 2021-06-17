@@ -31,8 +31,15 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
+        <meta name="description" content="A mobile-responsive personal portfolio using Next.js, React, JavaScript, HTML and CSS." />  
+        <meta name="keywords" content="HTML, CSS, JavaScript, React, Python, Full-Stack Developer" />
+        <meta name="author" content="Louisa Johnston" />
+        <meta property="og:image" content="/Logo.png" />
+        <meta property="og:description" content="A mobile-responsive personal portfolio using Next.js, React, JavaScript, HTML and CSS." />
+        <meta property="og:url" content="https://www.louisajohnston.com/" />
+        <meta property="og:title" content="Louisa Johnston" />
         <title>Louisa Johnston</title>
-        <link rel="icon" href="/portfolio_favicon_squareheavy.png" />
+        <link rel="icon" href="/Logo.png" type="image/x-icon"/>
       </Head>
       <div id="main">
         <h1 className="hide">Louisa Johnston</h1>
