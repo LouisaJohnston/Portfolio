@@ -8,14 +8,5 @@ export default function ImageSlide({ url }) {
     }
     return (
         <div className="image-slide" style={ styles }></div>
-        // <div>
-        //     <Image 
-        //         src={ url }
-        //         alt='LJ'
-        //         width={80}
-        //         height={80}
-        //         label="Show menu"
-        //     />
-        // </div>
     )
 }
