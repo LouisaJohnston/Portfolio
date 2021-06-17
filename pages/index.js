@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react'
-import Puzzler from '../components/Puzzler.jsx'
-import Flick from '../components/Flick.jsx'
-import Pawtel from '../components/Pawtel.jsx'
-import Bot from '../components/Bot.jsx'
+import Puzzler from '../components/puzzler/Puzzler.jsx'
+import Flick from '../components/flick/Flick.jsx'
+import Pawtel from '../components/pawtel/Pawtel.jsx'
+import Bot from '../components/bot/Bot.jsx'
 
 export default function Home() {
   const [showPuzzler, setPuzzler] = useState(false);
@@ -88,10 +88,10 @@ export default function Home() {
             </h3>
               <h4 className="italic flush">JavaScript, CSS, and HTML</h4>
               <div>
+                { showPuzzler ? <Puzzler /> : null }
                 <div className= "details" onClick={ puzzlerClick }>
                   { showPuzzler ? <a>Hide Details</a> : <a>Show Project Details</a> }
                 </div>
-                { showPuzzler ? <Puzzler /> : null }
               </div>
           </div>
           
@@ -103,10 +103,10 @@ export default function Home() {
             </h3>
               <h4 className="italic flush">EJS, Express.js, node.js, Axios, and PostgreSQL</h4>
               <div>
+                { showFlick ? <Flick /> : null }
                 <div className= "details" onClick={ flickClick }>
                   { showFlick ? <a>Hide Details</a> : <a>Show Project Details</a> }
                 </div>
-                { showFlick ? <Flick /> : null }
               </div>
             </div>
           
@@ -118,10 +118,10 @@ export default function Home() {
             </h3>
             <h4 className="italic flush">React, Mongoose, MongoDB, and MERN auth</h4>
             <div>
+              { showPaw ? <Pawtel /> : null }
               <div className= "details" onClick={ pawClick }>
                 { showPaw ? <a>Hide Details</a> : <a>Show Project Details</a> }
               </div>
-              { showPaw ? <Pawtel /> : null }
             </div>
           </div>
           
@@ -133,10 +133,10 @@ export default function Home() {
             </h3>                                                                                                                                                        
             <h4 className="italic flush">Python, Pygame</h4>
             <div>
+              { showBot ? <Bot /> : null }
               <div className= "details" onClick={ botClick }>
                 { showBot ? <a>Hide Details</a> : <a>Show Project Details</a> }
               </div>
-              { showBot ? <Bot /> : null }
             </div>
           </div>
         </div>

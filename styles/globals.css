@@ -80,7 +80,7 @@ h4, p, li {
   margin-left: 25%;
   margin-right: 25%;
   color: #4D2B43;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1.05em;
   cursor: pointer;
 }
@@ -88,13 +88,17 @@ h4, p, li {
 .repo {
   margin-left: 26%;
   color: #669999;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 1.2em;
 }
-
 #main a:hover {
-  font-style: italic;
+  color: #669999;
 }
+
+.repo:hover {
+  color: #C66403!important;
+}
+
 
 #main ul {
   list-style: none;
@@ -132,7 +136,8 @@ h4, p, li {
 
 .italic {
   font-style: italic;
-  font-size: 1.1em
+  font-size: 1.2em;
+  font-weight: 400;
 }
 
 .flush {
@@ -183,6 +188,10 @@ h4, p, li {
 	cursor: pointer;
 	font-size: 2rem;
 	top: 50%;
+}
+
+.slide-arrow:hover {
+	color: #669999;
 }
 
 .slide-arrow.right {

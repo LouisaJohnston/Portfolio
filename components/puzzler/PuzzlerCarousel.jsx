@@ -1,8 +1,8 @@
-import ImageSlide from "./ImageSlide"
-import Arrow from "./Arrow"
+import ImageSlide from "../carousel/ImageSlide"
+import Arrow from "../carousel/Arrow.jsx"
 import { useState } from "react"
 
-export default function Puzzler() {
+export default function PuzzlerCarousel() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const imgUrls = [
