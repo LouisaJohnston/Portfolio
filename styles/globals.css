@@ -504,19 +504,9 @@ nav a:hover {
     border: 1px solid #FBCC32;
   }
 
-  #bot-play {
-    width: 100%;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    position: relative;
-    z-index: -1;
-    display: flex;
-    justify-content: center;
-  }
-
   #bot-border {
     border: 1px solid #FBCC32;
-    height: 20vh;
+    height: 19vh;
     width: 75vw;
     border-radius: 1px;
   }
