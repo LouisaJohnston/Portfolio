@@ -1,5 +1,5 @@
-import ImageSlide from "../Carousel/ImageSlide/ImageSlide"
-import Arrow from "../Carousel/Arrow/Arrow"
+import ImageSlide from "../Images/Carousel/ImageSlide/ImageSlide"
+import Arrow from "../Images/Carousel/Arrow/Arrow"
 import { useState } from "react"
 
 export default function FlickCarousel() {

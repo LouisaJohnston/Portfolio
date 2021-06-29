@@ -76,10 +76,22 @@ export default function Index() {
 
         <div className="project-anchor" id="projects">
           <h2>Projects</h2>
-
-            
+          {projects.map((project, i) => {
+            return (
+              <Project
+                key={i.toString()}
+                i={i}
+                name={project.name}
+                tech={project.tech}
+                details={project.details}
+                github={project.github}
+                deployed={project.deployed}
+                images={project.images}
+              />
+            );
+          })}
         </div>
       </div>
     </div>  
-  )
-}
+  );
+};

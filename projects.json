@@ -10,7 +10,11 @@
       ],
       "github": ["https://github.com/LouisaJohnston/Word-crossd_Puzzler"],
       "deployed": "https://louisajohnston.github.io/",
-      "images": []
+      "images": [       
+        "/puzzler/initial.png",
+        "/puzzler/check.png",
+        "/puzzler/instructions.png",
+        "/puzzler/winstate.png"]
     }, 
     {
       "name": "Flick Picks",
