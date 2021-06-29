@@ -1,5 +1,15 @@
-export default function Image () {
+export default function Image ({ images }) {
     return (
-        hi
+        <div id="bot-play" className="offset">
+            <div id="bot-border">
+                    <Image 
+                        src={images}
+                        alt='Gameplay'
+                        width={550}
+                        height={280}
+                        label={name}
+                    />
+            </div>
+        </div>
     )
 }

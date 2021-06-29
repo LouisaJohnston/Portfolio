@@ -1,3 +1,7 @@
+import Image from "../Images/Image.jsx"
+import Carousel from "../Images/Carousel"
+import { useState, useEffect } from "react"
+
 export default function ProjectDetails({
     i,
     name,
@@ -5,6 +9,24 @@ export default function ProjectDetails({
     github,
     images    
 }) {
+    const [imagesLength, setImagesLength] = useState(false)
+
+    useEffect(() => {
+        const getImages = () => {
+            try {
+                if (images.length <= 1) {
+                    setImagesLength(true)
+                } else {
+                    return
+                }
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        getImages()
+    }, [images])
+
+    
     return(
         <div key={i}>
             <ul className="less-flush">
@@ -14,18 +36,18 @@ export default function ProjectDetails({
                 )
             })}
             </ul>
-        <a href="https://github.com/LouisaJohnston/botNoggle" target="_blank" className="repo less-flush offset block det-link">Bot Noggle Repo</a>
-        <div id="bot-play" className="offset">
-          <div id="bot-border">
-            {/* <Image 
-              src='/bot/gameplay.png'
-              alt='Bot Noggle Gameplay'
-              width={550}
-              height={280}
-              label="Bot play"
-            /> */}
-          </div>
+            <a href={github} target="_blank" className="repo less-flush offset block det-link">{name} Repo</a>
+            {imagesLength ? (
+                <Image 
+                    name={name}
+                    images={images}
+                />
+            ) : (
+                <Carousel 
+                    name={name}    
+                    images={images}
+                />
+            )}
         </div>
-      </div>
     )
 }
