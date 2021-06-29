@@ -1,12 +1,12 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import { useState } from 'react'
-import Puzzler from '../components/puzzler/Puzzler.jsx'
-import Flick from '../components/flick/Flick.jsx'
-import Pawtel from '../components/pawtel/Pawtel.jsx'
-import Bot from '../components/bot/Bot.jsx'
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import { useState } from "react";
+import Puzzler from "../components/puzzler/Puzzler.jsx";
+import Flick from "../components/flick/Flick.jsx";
+import Pawtel from "../components/pawtel/Pawtel.jsx";
+import Bot from "../components/bot/Bot.jsx";
 
-export default function Home() {
+export default function Index() {
   const [showPuzzler, setPuzzler] = useState(false);
   const [showFlick, setFlick] = useState(false);
   const [showPaw, setPaw] = useState(false);

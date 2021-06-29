@@ -1,9 +1,9 @@
 import '../styles/globals.css'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import Navbar from '../components/Navbar/Navbar'
+import Footer from '../components/Footer/Footer'
 import { MemoryRouter } from 'react-router-dom'
 
-function MyApp({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
   return (
     <MemoryRouter>
       <Navbar />
@@ -12,5 +12,3 @@ function MyApp({ Component, pageProps }) {
     </MemoryRouter>
   ) 
 }
-
-export default MyApp

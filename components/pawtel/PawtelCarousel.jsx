@@ -1,5 +1,5 @@
-import ImageSlide from "../carousel/ImageSlide"
-import Arrow from "../carousel/Arrow.jsx"
+import ImageSlide from "../Carousel/ImageSlide/ImageSlide"
+import Arrow from "../Carousel/Arrow/Arrow.jsx"
 import { useState } from "react"
 
 export default function PawtelCarousel() {
