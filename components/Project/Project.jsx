@@ -11,9 +11,23 @@ export default function Project({
     images
  }) {
     const [showDetails, setShowDetails] = useState(false)
+    const [imagesLength, setImagesLength] = useState(false)
+
+    const getImages = () => {
+        try {
+            if (images.length < 2) {
+                setImagesLength(true)
+            } else {
+                return
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     const handleClick = () => {
         setShowDetails(!showDetails)
+        getImages()
     }
 
     return (
@@ -29,7 +43,9 @@ export default function Project({
                     name={name} 
                     details={details} 
                     github={github} 
-                    images={images}/> : null }
+                    images={images}
+                    imagesLength={imagesLength} />
+                    : null }
                 <div className= "details" onClick={ handleClick }>
                     { showDetails ? <a>Hide Details</a> : <a>Show Project Details</a> }
                 </div>

@@ -1,8 +1,6 @@
-import Image from 'next/image'
-
-export default function ImageSlide({ url }) {
+export default function ImageSlide({ image }) {
     const styles = {
-        backgroundImage: `url(${url})`,
+        backgroundImage: `url(${image})`,
         backgroundSize:'cover',
         backgroundPosition: 'center'
     }

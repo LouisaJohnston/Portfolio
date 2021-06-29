@@ -192,7 +192,6 @@ h4, p, li {
 }
 
 .image-slide {
-	transition: background-image .3s ease-in-out;
   height: 50vh;
   width: 85vh;
   padding: 2%;

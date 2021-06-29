@@ -1,30 +1,14 @@
-import Image from "../Images/Image.jsx"
-import Carousel from "../Images/Carousel"
-import { useState, useEffect } from "react"
+import SingleImage from "../Images/SingleImage/SingleImage.jsx"
+import Carousel from "../Images/Carousel/Carousel.jsx"
 
 export default function ProjectDetails({
     i,
     name,
     details,
     github,
-    images    
+    images,
+    imagesLength    
 }) {
-    const [imagesLength, setImagesLength] = useState(false)
-
-    useEffect(() => {
-        const getImages = () => {
-            try {
-                if (images.length <= 1) {
-                    setImagesLength(true)
-                } else {
-                    return
-                }
-            } catch (err) {
-                console.log(err)
-            }
-        }
-        getImages()
-    }, [images])
 
     
     return(
@@ -38,14 +22,14 @@ export default function ProjectDetails({
             </ul>
             <a href={github} target="_blank" className="repo less-flush offset block det-link">{name} Repo</a>
             {imagesLength ? (
-                <Image 
+                <SingleImage 
                     name={name}
-                    images={images}
+                    image={ images[0] }
                 />
             ) : (
                 <Carousel 
                     name={name}    
-                    images={images}
+                    images={ images }
                 />
             )}
         </div>
