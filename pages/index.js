@@ -1,32 +1,21 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { useState } from "react";
-import Puzzler from "../components/puzzler/Puzzler.jsx";
-import Flick from "../components/flick/Flick.jsx";
-import Pawtel from "../components/pawtel/Pawtel.jsx";
-import Bot from "../components/bot/Bot.jsx";
+import { useState, useEffect } from "react"
+import styles from "../styles/Index.module.css";
+import Project from "../components/project/Project.jsx";
+import projectsJSON from "../projects.json"
 
 export default function Index() {
-  const [showPuzzler, setPuzzler] = useState(false);
-  const [showFlick, setFlick] = useState(false);
-  const [showPaw, setPaw] = useState(false);
-  const [showBot, setBot] = useState(false);
+  const [projects, setProjects] = useState([]) 
 
-  const puzzlerClick = () => {
-      setPuzzler(!showPuzzler)
-  };
+  useEffect(() => {
+    try {
+      const projectData = projectsJSON.projects
+      setProjects(projectData)
+    } catch (err) {
+      console.log(err)
+    }
+  }, []);
 
-  const flickClick = () => {
-      setFlick(!showFlick)
-  };
-  
-  const pawClick = () => {
-      setPaw(!showPaw)
-  };
-
-  const botClick = () => {
-    setBot(!showBot)
-};
 
   return (
     <div className={styles.container}>
@@ -87,65 +76,8 @@ export default function Index() {
 
         <div className="project-anchor" id="projects">
           <h2>Projects</h2>
-          {/* WORD-CROSS'D PUZZLER */}
-          <div className="project-box">
-            <h3 className="less-flush">
-              <a href="https://louisajohnston.github.io/" target="_blank">
-                Word-cross’d Puzzler</a>
-            </h3>
-              <h4 className="italic flush">JavaScript, CSS, and HTML</h4>
-              <div>
-                { showPuzzler ? <Puzzler /> : null }
-                <div className= "details" onClick={ puzzlerClick }>
-                  { showPuzzler ? <a>Hide Details</a> : <a>Show Project Details</a> }
-                </div>
-              </div>
-          </div>
-          
-          {/* FLICK PICKS */}
-          <div className="project-box">
-            <h3 className="even-less-flush">
-              <a href="https://flickpicks-project2.herokuapp.com/" target="_blank">
-                Flick Picks</a>
-            </h3>
-              <h4 className="italic flush">EJS, Express.js, node.js, Axios, and PostgreSQL</h4>
-              <div>
-                { showFlick ? <Flick /> : null }
-                <div className= "details" onClick={ flickClick }>
-                  { showFlick ? <a>Hide Details</a> : <a>Show Project Details</a> }
-                </div>
-              </div>
-            </div>
-          
-          {/* PAW-TEL */}
-          <div className="project-box">
-            <h3 className="even-less-flush">
-              <a href= "https://pawtel-application.herokuapp.com/" target="_blank">
-                Paw-Tel (Group Project)</a>
-            </h3>
-            <h4 className="italic flush">React, Mongoose, MongoDB, and MERN auth</h4>
-            <div>
-              { showPaw ? <Pawtel /> : null }
-              <div className= "details" onClick={ pawClick }>
-                { showPaw ? <a>Hide Details</a> : <a>Show Project Details</a> }
-              </div>
-            </div>
-          </div>
-          
-          {/* BOT NOGGLE */}
-          <div className="project-box">
-            <h3 className="even-less-flush">
-              <a href="https://www.youtube.com/watch?v=MCWT7-8a7iE&ab_channel=LouisaJohnston" target="_blank">
-                Bot Noggle</a>
-            </h3>                                                                                                                                                        
-            <h4 className="italic flush">Python, Pygame</h4>
-            <div>
-              { showBot ? <Bot /> : null }
-              <div className= "details" onClick={ botClick }>
-                { showBot ? <a>Hide Details</a> : <a>Show Project Details</a> }
-              </div>
-            </div>
-          </div>
+
+            
         </div>
       </div>
     </div>  

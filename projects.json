@@ -1,0 +1,62 @@
+{
+  "projects" : [
+    {
+      "name": "Word-cross'd Puzzler",
+      "tech": "JavaScript, CSS, and HTML",
+      "details": [
+        "Designed a grid-based 5x5 puzzle to run in-browser for desktop computers",
+        "Utilized CSS and HTML properties to approximate the experience of a pen-and-paper puzzle with front-end styling considerations implemented through Flexbox",
+        "Developed functionality through JavaScript array manipulation to show time elapsed, toggle between vertical and horizontal input focus flow, check answers, reveal the puzzle, and restart the game through DOM event listeners"
+      ],
+      "github": ["https://github.com/LouisaJohnston/Word-crossd_Puzzler"],
+      "deployed": "https://louisajohnston.github.io/",
+      "images": []
+    }, 
+    {
+      "name": "Flick Picks",
+      "tech": "EJS, Express.js, node.js, Axios, and PostgreSQL",
+      "details": [
+        "Created a web app using node.js and Express.js with the ability for users to create an account or login with encrypted cookie storage and password hashing",
+        "Applied EJS templates and Axios to render information from a third-party film API and allow users to save movies to personal lists",
+        "Stored multiple user inputs (login information and movie comments/reviews) as database information fields through PostgreSQL with the ability for users to update them directly"
+      ],
+      "github": ["https://github.com/LouisaJohnston/Flick_Picks"],
+      "deployed": "https://flickpicks-project2.herokuapp.com/",
+      "images": [        
+        "/flick/Home.png",
+        "/flick/NewUser.png",
+        "/flick/WatchlistSearch.png",
+        "/flick/SearchResults.png",
+        "/flick/MovieDetails.png",
+        "/flick/WatchlistAfter.png",
+        "/flick/WatchlistDetails.png"
+    ]}, 
+    {
+      "name": "Paw-tel",
+      "tech": "React, Mongoose, MongoDB, and MERN auth",
+      "details": [
+        "Designed a full-stack MERN app using complex authorization routes allowing users to register as either a pet owner or a pet hotel owner",
+        "Employed React components to render information from a local API pertaining to user-specific pets or hotels, depending on the authorization route, with the ability to update and delete data fields",
+        "Saved user input through a server-side Mongoose database using MongoDB"
+      ],
+      "github": ["https://github.com/LouisaJohnston/Paw-tel", "https://github.com/LouisaJohnston/pawtel-client"],
+      "deployed": "https://pawtel-application.herokuapp.com/",
+        "images": [        
+        "/pawtel/homepage.png",
+        "/pawtel/petpage.png",
+        "/pawtel/register.png"
+    ]}, 
+    {
+      "name": "Bot Noggle",
+      "tech": "Python, Pygame",
+      "details": [
+        "Built a version of Boggle using Python and Pygame to render a 4x4 grid from a two-dimensional array of randomized letters corresponding to real Boggle dice",
+        "Allowed users to check whether a given word exists in adjacent grid tiles (up, down, diagonally, forwards, and backwards)",
+        "Inserted dictionary information into a trie data structure to check against user input and optimize the project's time complexity"
+      ],
+      "github": ["https://github.com/LouisaJohnston/botNoggle"],
+      "deployed": "https://www.youtube.com/watch?v=MCWT7-8a7iE&ab_channel=LouisaJohnston",
+      "images": ["/bot/gameplay.png"]
+    }
+  ]
+}
