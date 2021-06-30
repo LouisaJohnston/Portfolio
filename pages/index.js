@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState, useEffect } from "react"
 import styles from "../styles/Index.module.css";
+import Tech from "../components/Tech"
 import Project from "../components/Project.jsx";
 import projectsJSON from "../projects.json"
 
@@ -55,20 +56,20 @@ export default function Index() {
           </div>
         </div>
 
-        {/******** SKILLS *********/}
+        {/******** TECH *********/}
 
         <div className="skill-anchor" id="languages">
           <h2>Skills</h2>
           <div id="lang-specs">
-            <h3 className="less-flush web-edge">Tech Stack</h3>
-            <p className="flush">JavaScript, React, CSS, HTML, Python, SQL, 
-              Express.js, Next.js, EJS, node.js, PostgreSQL, Axios, 
-              Mongoose, and MongoDB</p>
-        
-            <h3 className="even-less-flush">Misc. Know-How</h3>
-            <p className="flush">Heroku, Pygame, Adobe Photoshop, Adobe InDesign, 
-              Adobe Premiere, Wordpress, Squarespace, NationBuilder, 
-              Google Analytics, Cargo.site, and Canva</p>
+            <Tech 
+              head={"Tech Stack"}
+              body={"JavaScript, React, CSS, HTML, Python, SQL, Express.js, Next.js, EJS, node.js, PostgreSQL, Axios, Mongoose, and MongoDB"}
+            />
+
+            <Tech 
+              head={"Misc. Know-How"}
+              body={"Heroku, Pygame, Adobe Photoshop, Adobe InDesign, Adobe Premiere, Wordpress, Squarespace, NationBuilder, Google Analytics, Cargo.site, and Canva"}
+            />
           </div>
         </div>
 
