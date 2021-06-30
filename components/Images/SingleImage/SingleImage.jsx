@@ -1,9 +1,11 @@
-export default function Image ({ images }) {
+import Image from "next/image"
+
+export default function SingleImage ({ name, image }) {
     return (
         <div id="bot-play" className="offset">
             <div id="bot-border">
                     <Image 
-                        src={images}
+                        src={image}
                         alt='Gameplay'
                         width={550}
                         height={280}

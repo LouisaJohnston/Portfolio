@@ -33,12 +33,13 @@ export default function Navbar() {
                             />
                         </NavHashLink>
                     </div>
+
                     <div>
                         <NavHashLink 
                             smooth to='#top'
                             activeClassName="selected"
-                            activeStyle={{ 'font-size': '1.5em' }}>
-                            <a className="desktop-nav">About Me</a>
+                            activeStyle={{ 'fontSize': '1.5em' }}>
+                            <p className="desktop-nav">About Me</p>
                         </NavHashLink>
                     </div>
 
@@ -46,8 +47,8 @@ export default function Navbar() {
                         <NavHashLink 
                             smooth to='#languages'
                             activeClassName="selected"
-                            activeStyle={{ 'font-size': '1.5em' }}>
-                            <a className="desktop-nav">Skills</a>
+                            activeStyle={{ 'fontSize': '1.5em' }}>
+                            <p className="desktop-nav">Skills</p>
                         </NavHashLink>
                     </div>
 
@@ -55,8 +56,8 @@ export default function Navbar() {
                         <NavHashLink 
                             smooth to='#projects'
                             activeClassName="selected"
-                            activeStyle={{ 'font-size': '1.5em' }}>
-                            <a className="desktop-nav">Projects</a>
+                            activeStyle={{ 'fontSize': '1.5em' }}>
+                            <p className="desktop-nav">Projects</p>
                         </NavHashLink>
                     </div>
 
@@ -66,12 +67,11 @@ export default function Navbar() {
                                 target='_blank'>GitHub</a>
                         </Link>
                     </div>
+                    <div>
                         <Link href='https://www.linkedin.com/in/louisa-johnston/'>
                             <a className="desktop-nav" 
                                 target='_blank'>LinkedIn</a>
                         </Link>
-                    <div>
-
                     </div>
                 </div>
                 
