@@ -1,5 +1,5 @@
-import Arrow from "./Arrow/Arrow.jsx";
-import ImageSlide from "./ImageSlide/ImageSlide.jsx";
+import Arrow from "./Arrow.jsx";
+import ImageSlide from "./ImageSlide.jsx";
 import { useState } from "react";
 
 export default function Carousel({ images }) {

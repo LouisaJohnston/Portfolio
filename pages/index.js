@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState, useEffect } from "react"
 import styles from "../styles/Index.module.css";
-import Project from "../components/project/Project.jsx";
+import Project from "../components/Project.jsx";
 import projectsJSON from "../projects.json"
 
 export default function Index() {
