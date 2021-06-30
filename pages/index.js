@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useState, useEffect } from "react"
-import styles from "../styles/Index.module.css";
+import styles from "../styles/index.module.css";
 import IntroParagraph from "../components/IntroParagraph";
 import Tech from "../components/Tech"
 import Project from "../components/Project.jsx";
@@ -32,9 +32,9 @@ export default function Index() {
         <title>Louisa Johnston</title>
         <link rel="icon" href="/Logo.png" type="image/x-icon"/>
       </Head>
-      
+
       <div id="main">
-        <h1 className="hide">Louisa Johnston</h1>
+        <h1 className="styles.hide">Louisa Johnston</h1>
 
         <div className="top-anchor" id="about">
             <IntroParagraph 

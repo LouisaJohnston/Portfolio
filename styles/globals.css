@@ -26,9 +26,9 @@ a {
   display: inline-block;
 }
 
-.hide {
+/* .hide {
   display: none;
-}
+} */
 /******** Body ********/ 
 #about {
   padding-top: 100px;
@@ -450,7 +450,7 @@ nav p:hover {
     margin-bottom: 1%;
   }
   
-  #main h3, h4, p, li{
+  /* #main h3, h4, p, li{
     margin-left: 7%;
     margin-right: 7%;
     font-size: 1.3em;
@@ -473,7 +473,7 @@ nav p:hover {
     margin-left: 7%;
     font-weight: 700;
     font-size: 1.15em;
-  }
+  } */
 
   #lang-specs {
     margin-left: 8%;
