@@ -28,10 +28,7 @@
       "deployed": "https://flickpicks-project2.herokuapp.com/",
       "images": [        
         "/flick/Home.png",
-        "/flick/NewUser.png",
-        "/flick/WatchlistSearch.png",
         "/flick/SearchResults.png",
-        "/flick/MovieDetails.png",
         "/flick/WatchlistAfter.png",
         "/flick/WatchlistDetails.png"
     ]}, 
