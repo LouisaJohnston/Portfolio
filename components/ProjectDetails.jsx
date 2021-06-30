@@ -7,9 +7,9 @@ export default function ProjectDetails({
     details,
     github,
     images,
-    imagesLength    
+    imagesLength,
+    gitLength    
 }) {
-
     
     return(
         <div key={i}>
@@ -20,7 +20,14 @@ export default function ProjectDetails({
                 )
             })}
             </ul>
-            <a href={github} target="_blank" className="repo less-flush offset block det-link">{name} Repo</a>
+            {gitLength ? (
+                <a href={github[0]} target="_blank" className="repo less-flush offset block det-link">{name} Repo</a>
+            ) : (
+                <div>
+                    <a href={github[0]} target="_blank" className="repo less-flush offset block det-link">{name} Server Repo</a>
+                    <a href={github[1]} target="_blank" className="repo flush offset block det-link">{name} Client Repo</a>
+                </div>
+            )}
             {imagesLength ? (
                 <SingleImage 
                     name={name}

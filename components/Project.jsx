@@ -12,6 +12,20 @@ export default function Project({
  }) {
     const [showDetails, setShowDetails] = useState(false)
     const [imagesLength, setImagesLength] = useState(false)
+    const [gitLength, setGitLength] = useState(false)
+
+    const getGit = () => {
+        try {
+            if (github.length < 2) {
+                setGitLength(true)
+            } else {
+                return
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
 
     const getImages = () => {
         try {
@@ -27,6 +41,7 @@ export default function Project({
 
     const handleClick = () => {
         setShowDetails(!showDetails)
+        getGit()
         getImages()
     }
 
@@ -44,7 +59,8 @@ export default function Project({
                     details={details} 
                     github={github} 
                     images={images}
-                    imagesLength={imagesLength} />
+                    imagesLength={imagesLength}
+                    gitLength={gitLength} />
                     : null }
                 <div className= "details" onClick={ handleClick }>
                     { showDetails ? <a>Hide Details</a> : <a>Show Project Details</a> }
