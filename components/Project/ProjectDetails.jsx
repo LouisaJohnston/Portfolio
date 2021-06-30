@@ -1,5 +1,5 @@
-import SingleImage from "../Images/SingleImage/SingleImage.jsx"
-import Carousel from "../Images/Carousel/Carousel.jsx"
+import SingleImage from "../images/singleimage/SingleImage.jsx"
+import Carousel from "../images/carousel/Carousel.jsx"
 
 export default function ProjectDetails({
     i,
