@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-import styles from "../styles/index.module.css";
+// import styles from "../styles/index.module.css";
 import IntroParagraph from "../components/IntroParagraph";
 import Tech from "../components/Tech";
 import Project from "../components/Project.jsx";
@@ -20,7 +20,7 @@ export default function Index() {
 
 
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Head>
         <meta name="description" content="A mobile-responsive personal portfolio using Next.js, React, JavaScript, HTML and CSS." />  
         <meta name="keywords" content="HTML, CSS, JavaScript, React, Python, Full-Stack Developer" />
@@ -34,7 +34,7 @@ export default function Index() {
       </Head>
 
       <div id="main">
-        <h1 className={styles.hide}>Louisa Johnston</h1>
+        <h1 style={{ display: 'none' }}>Louisa Johnston</h1>
 
         <div className="top-anchor" id="about">
             <IntroParagraph 
