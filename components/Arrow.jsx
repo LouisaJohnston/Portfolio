@@ -5,5 +5,5 @@ export default function Arrow ({ direction, clickFunction, glyph }) {
             onClick={ clickFunction }>
             { glyph }
         </div>
-    )
-}
+    );
+};

@@ -2,7 +2,7 @@ import Arrow from "./Arrow.jsx";
 import ImageSlide from "./ImageSlide.jsx";
 import { useState } from "react";
 
-export default function Carousel({ images }) {
+export default function Carousel({ images, name }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const LENGTH = images.length;
 
@@ -28,7 +28,7 @@ export default function Carousel({ images }) {
                 glyph="&#9001;"
             />
     
-            <ImageSlide image={ images[currentImageIndex] }/>
+            <ImageSlide image={ images[currentImageIndex] } name={name} />
     
             <Arrow
                 direction="right"
@@ -36,5 +36,5 @@ export default function Carousel({ images }) {
                 glyph="&#9002;" 
             />
         </div>
-    )
-}
+    );
+};

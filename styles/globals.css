@@ -18,6 +18,15 @@ a {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+.container {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .block {
   display: block;
 }
@@ -26,9 +35,9 @@ a {
   display: inline-block;
 }
 
-.hide {
+/* .hide {
   display: none;
-}
+} */
 /******** Body ********/ 
 #about {
   padding-top: 100px;
@@ -91,6 +100,7 @@ h4, p, li {
   font-weight: 700;
   font-size: 1.2em;
 }
+
 #main a:hover {
   color: #669999;
 }
@@ -192,12 +202,12 @@ h4, p, li {
 }
 
 .image-slide {
-  height: 50vh;
+  height: 40.5vh;
   width: 85vh;
-  padding: 2%;
-  border: 3px solid #FBCC32;
+  padding: 0;
   margin: 1%;
   border-radius: 1px;
+  z-index: -1;
 }
 
 .slide-arrow {
@@ -450,7 +460,7 @@ nav p:hover {
     margin-bottom: 1%;
   }
   
-  #main h3, h4, p, li{
+  /* #main h3, h4, p, li{
     margin-left: 7%;
     margin-right: 7%;
     font-size: 1.3em;
@@ -473,7 +483,7 @@ nav p:hover {
     margin-left: 7%;
     font-weight: 700;
     font-size: 1.15em;
-  }
+  } */
 
   #lang-specs {
     margin-left: 8%;
@@ -505,13 +515,14 @@ nav p:hover {
   }
   
   .image-slide {
-    height: 30vh;
-    width: 80vw;
-    border: 1px solid #FBCC32;
+    /* height: 40vh;
+    width: 75vw; */
+    /* border: 1px solid #FBCC32; */
+    padding: 0;
   }
 
   #bot-border {
-    border: 1px solid #FBCC32;
+    /* border: 1px solid #FBCC32; */
     height: 19vh;
     width: 75vw;
     border-radius: 1px;

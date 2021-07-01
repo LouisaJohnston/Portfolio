@@ -6,7 +6,7 @@
       "details": [
         "Designed a grid-based 5x5 puzzle to run in-browser for desktop computers",
         "Utilized CSS and HTML properties to approximate the experience of a pen-and-paper puzzle with front-end styling considerations implemented through Flexbox",
-        "Developed functionality through JavaScript array manipulation to show time elapsed, toggle between vertical and horizontal input focus flow, check answers, reveal the puzzle, and restart the game through DOM event listeners"
+        "Developed JavaScript functionality to show time elapsed, toggle between vertical and horizontal input focus flow, check answers, reveal the puzzle, and restart the game through DOM event listeners"
       ],
       "github": ["https://github.com/LouisaJohnston/Word-crossd_Puzzler"],
       "deployed": "https://louisajohnston.github.io/",
