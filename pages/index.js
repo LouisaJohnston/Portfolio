@@ -1,13 +1,13 @@
 import Head from "next/head";
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import styles from "../styles/index.module.css";
 import IntroParagraph from "../components/IntroParagraph";
-import Tech from "../components/Tech"
+import Tech from "../components/Tech";
 import Project from "../components/Project.jsx";
-import projectsJSON from "../projects.json"
+import projectsJSON from "../projects.json";
 
 export default function Index() {
-  const [projects, setProjects] = useState([]) 
+  const [projects, setProjects] = useState([]); 
 
   useEffect(() => {
     try {
@@ -15,7 +15,7 @@ export default function Index() {
       setProjects(projectData)
     } catch (err) {
       console.log(err)
-    }
+    };
   }, []);
 
 
@@ -34,7 +34,7 @@ export default function Index() {
       </Head>
 
       <div id="main">
-        <h1 className="styles.hide">Louisa Johnston</h1>
+        <h1 className={styles.hide}>Louisa Johnston</h1>
 
         <div className="top-anchor" id="about">
             <IntroParagraph 

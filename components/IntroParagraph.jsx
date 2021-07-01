@@ -3,5 +3,5 @@ export default function IntroParagraph({ hello, paragraph }) {
         <div>
             <p><span id="hello">{hello}</span>{paragraph}</p>
         </div>
-    )
-}
+    );
+};

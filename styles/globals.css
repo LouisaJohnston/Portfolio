@@ -91,6 +91,7 @@ h4, p, li {
   font-weight: 700;
   font-size: 1.2em;
 }
+
 #main a:hover {
   color: #669999;
 }
@@ -192,12 +193,12 @@ h4, p, li {
 }
 
 .image-slide {
-  height: 50vh;
+  height: 40.5vh;
   width: 85vh;
-  padding: 2%;
-  border: 3px solid #FBCC32;
+  padding: 0;
   margin: 1%;
   border-radius: 1px;
+  z-index: -1;
 }
 
 .slide-arrow {
@@ -505,13 +506,14 @@ nav p:hover {
   }
   
   .image-slide {
-    height: 30vh;
-    width: 80vw;
-    border: 1px solid #FBCC32;
+    /* height: 40vh;
+    width: 75vw; */
+    /* border: 1px solid #FBCC32; */
+    padding: 0;
   }
 
   #bot-border {
-    border: 1px solid #FBCC32;
+    /* border: 1px solid #FBCC32; */
     height: 19vh;
     width: 75vw;
     border-radius: 1px;

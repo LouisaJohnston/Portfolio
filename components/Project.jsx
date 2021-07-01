@@ -1,5 +1,5 @@
-import ProjectDetails from "./ProjectDetails"
-import { useState } from "react"
+import ProjectDetails from "./ProjectDetails";
+import { useState } from "react";
 
 export default function Project({ 
     i,
@@ -10,9 +10,9 @@ export default function Project({
     deployed,
     images
  }) {
-    const [showDetails, setShowDetails] = useState(false)
-    const [imagesLength, setImagesLength] = useState(false)
-    const [gitLength, setGitLength] = useState(false)
+    const [showDetails, setShowDetails] = useState(false);
+    const [imagesLength, setImagesLength] = useState(false);
+    const [gitLength, setGitLength] = useState(false);
 
     const getGit = () => {
         try {
@@ -20,11 +20,11 @@ export default function Project({
                 setGitLength(true)
             } else {
                 return
-            }
+            };
         } catch (err) {
             console.log(err)
-        }
-    }
+        };
+    };
 
 
     const getImages = () => {
@@ -33,17 +33,17 @@ export default function Project({
                 setImagesLength(true)
             } else {
                 return
-            }
+            };
         } catch (err) {
             console.log(err)
-        }
-    }
+        };
+    };
 
     const handleClick = () => {
         setShowDetails(!showDetails)
         getGit()
         getImages()
-    }
+    };
 
     return (
         <div className="project-container" key={i}>
@@ -67,5 +67,5 @@ export default function Project({
                 </div>
             </div>
         </div>
-    )
+    );
 };

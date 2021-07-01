@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { useState } from 'react'
+import Link from 'next/link';
+import Image from 'next/image';
+import { useState } from 'react';
 import { NavHashLink } from 'react-router-hash-link';
-import Hamburger from 'hamburger-react'
+import Hamburger from 'hamburger-react';
 
 export default function Navbar() {
 
@@ -124,5 +124,5 @@ export default function Navbar() {
                 </ul>
             </div>            
         </nav>
-    )
-}
+    );
+};

@@ -1,5 +1,5 @@
-import SingleImage from "./SingleImage.jsx"
-import Carousel from "./Carousel.jsx"
+import SingleImage from "./SingleImage.jsx";
+import Carousel from "./Carousel.jsx";
 
 export default function ProjectDetails({
     i,
@@ -31,14 +31,14 @@ export default function ProjectDetails({
             {imagesLength ? (
                 <SingleImage 
                     name={name}
-                    image={ images[0] }
+                    image={images[0]}
                 />
             ) : (
                 <Carousel 
                     name={name}    
-                    images={ images }
+                    images={images}
                 />
             )}
         </div>
-    )
-}
+    );
+};
