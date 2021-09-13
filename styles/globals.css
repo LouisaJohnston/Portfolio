@@ -210,12 +210,12 @@ h4, p, li {
   z-index: -1;
 }
 
-.slide-arrow {
+/* .slide-arrow {
 	color: #C66403;
 	cursor: pointer;
 	font-size: 2rem;
 	top: 50%;
-}
+} */
 
 .slide-arrow:hover {
 	color: #669999;

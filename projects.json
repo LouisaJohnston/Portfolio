@@ -1,6 +1,22 @@
 {
   "projects" : [
     {
+      "name": "Chatterbox",
+      "tech": "Socket.IO, React, React Redux, Redux Thunk, Express.js, PostgreSQL, and JavaScript",
+      "details": [
+        "Contributed to a full-stack, real-time, event-based web messenger application built with Socket.IO",
+        "Created React components to render information pertaining to authorized user conversations and managed state using React Redux and Redux Thunk to optimize performance",
+        "Improved the efficiency of retrieving PostgreSQL data by minimizing requests to the server, in addition to closing security vulnerabilities"
+      ],
+      "github": ["https://github.com/LouisaJohnston/Chatterbox"],
+      "deployed": "https://chatterbox-messenger.herokuapp.com/",
+      "images": [       
+        "/chat/login.png",
+        "/chat/fivemessages.png",
+        "/chat/allmessages.png",
+        "/chat/messageseen.png"]
+    }, 
+    {
       "name": "Word-cross'd Puzzler",
       "tech": "JavaScript, CSS, and HTML",
       "details": [
