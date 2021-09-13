@@ -13,11 +13,11 @@ export default function ProjectDetails({
 }) {
     
     return(
-        <div key={i}>
+        <div key={i.toString()}>
             <ul className="less-flush">
             {details.map((detail, i) => {
                 return (
-                    <li key={i}>{detail}</li>
+                    <li key={i.toString()}>{detail}</li>
                 )
             })}
             </ul>

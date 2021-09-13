@@ -2,7 +2,7 @@
   "projects" : [
     {
       "name": "Chatterbox",
-      "tech": "Socket.IO, React, React Redux, Redux Thunk, Express.js, PostgreSQL, and JavaScript",
+      "tech": "Socket.IO, React, React Redux, Redux Thunk, Express.js, Node.js, PostgreSQL, Axios, and JavaScript",
       "details": [
         "Contributed to a full-stack, real-time, event-based web messenger application built with Socket.IO",
         "Created React components to render information pertaining to authorized user conversations and managed state using React Redux and Redux Thunk to optimize performance",
@@ -34,9 +34,9 @@
     }, 
     {
       "name": "Flick Picks",
-      "tech": "EJS, Express.js, node.js, Axios, and PostgreSQL",
+      "tech": "EJS, Express.js, Node.js, Axios, and PostgreSQL",
       "details": [
-        "Created a web app using node.js and Express.js with the ability for users to create an account or login with encrypted cookie storage and password hashing",
+        "Created a web app using Node.js and Express.js with the ability for users to create an account or login with encrypted cookie storage and password hashing",
         "Applied EJS templates and Axios to render information from a third-party film API and allow users to save movies to personal lists",
         "Stored multiple user inputs (login information and movie comments/reviews) as database information fields through PostgreSQL with the ability for users to update them directly"
       ],
@@ -48,6 +48,18 @@
         "/flick/WatchlistAfter.png",
         "/flick/WatchlistDetails.png"
     ]}, 
+    {
+      "name": "Bot Noggle",
+      "tech": "Python, Pygame",
+      "details": [
+        "Built a version of Boggle using Python and Pygame to render a 4x4 grid from a two-dimensional array of randomized letters corresponding to real Boggle dice",
+        "Allowed users to check whether a given word exists in adjacent grid tiles (up, down, diagonally, forwards, and backwards)",
+        "Inserted dictionary information into a trie data structure to check against user input and optimize the project's time complexity"
+      ],
+      "github": ["https://github.com/LouisaJohnston/botNoggle"],
+      "deployed": "https://www.youtube.com/watch?v=MCWT7-8a7iE&ab_channel=LouisaJohnston",
+      "images": ["/bot/gameplay.png"]
+    },
     {
       "name": "Paw-tel",
       "tech": "React, Mongoose, MongoDB, and MERN auth",
@@ -62,18 +74,6 @@
         "/pawtel/homepage.png",
         "/pawtel/petpage.png",
         "/pawtel/register.png"
-    ]}, 
-    {
-      "name": "Bot Noggle",
-      "tech": "Python, Pygame",
-      "details": [
-        "Built a version of Boggle using Python and Pygame to render a 4x4 grid from a two-dimensional array of randomized letters corresponding to real Boggle dice",
-        "Allowed users to check whether a given word exists in adjacent grid tiles (up, down, diagonally, forwards, and backwards)",
-        "Inserted dictionary information into a trie data structure to check against user input and optimize the project's time complexity"
-      ],
-      "github": ["https://github.com/LouisaJohnston/botNoggle"],
-      "deployed": "https://www.youtube.com/watch?v=MCWT7-8a7iE&ab_channel=LouisaJohnston",
-      "images": ["/bot/gameplay.png"]
-    }
+    ]}
   ]
 }
