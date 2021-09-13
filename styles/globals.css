@@ -35,9 +35,6 @@ a {
   display: inline-block;
 }
 
-/* .hide {
-  display: none;
-} */
 /******** Body ********/ 
 #about {
   padding-top: 100px;
@@ -210,13 +207,6 @@ h4, p, li {
   z-index: -1;
 }
 
-/* .slide-arrow {
-	color: #C66403;
-	cursor: pointer;
-	font-size: 2rem;
-	top: 50%;
-} */
-
 .slide-arrow:hover {
 	color: #669999;
 }
@@ -254,6 +244,14 @@ nav p {
   margin-right: 0;
   margin-block-start: 0;
   margin-block-end: 0;
+}
+
+.non-hash{
+  font-size: 1.3em;
+}
+
+.non-hash:hover {
+  color: #4D2B43;
 }
 
 nav p:hover {
@@ -459,35 +457,36 @@ nav p:hover {
     margin-right: 5%;
     margin-bottom: 1%;
   }
-  
-  /* #main h3, h4, p, li{
-    margin-left: 7%;
-    margin-right: 7%;
-    font-size: 1.3em;
+
+  h3 {
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
-  #main h3 {
-    font-size: 1.4em;
-    display: inline;
-    margin-left: 2%;
-    margin-right: 4%;
+  h4 {
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
-  #main h4 {
-    font-size: 1.1em;
-    margin-left: 9%;
+  p {
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
+  li {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 
-  #main a {
-    margin-left: 7%;
-    font-weight: 700;
-    font-size: 1.15em;
-  } */
+  .det-link {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 
   #lang-specs {
     margin-left: 8%;
     margin-right: 8%;
+    padding: 0;
   }
 
   .mobile-hide {
@@ -499,10 +498,14 @@ nav p:hover {
     font-size: .9em;
   }
 
+  .carousel {
+    height: 25vh;
+  }
+
   .details {
     width: 80%;
-    margin-left: 3%!important;
-    margin-right: 6%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
   .bottom {
@@ -515,17 +518,8 @@ nav p:hover {
   }
   
   .image-slide {
-    /* height: 40vh;
-    width: 75vw; */
-    /* border: 1px solid #FBCC32; */
     padding: 0;
-  }
-
-  #bot-border {
-    /* border: 1px solid #FBCC32; */
-    height: 19vh;
-    width: 75vw;
-    border-radius: 1px;
+    width: 100vw;
   }
 
   #footer {

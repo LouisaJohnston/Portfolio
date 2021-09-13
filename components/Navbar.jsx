@@ -63,13 +63,13 @@ export default function Navbar() {
 
                     <div>
                         <Link href='https://github.com/LouisaJohnston'>
-                            <a className="desktop-nav" 
+                            <a className="desktop-nav non-hash" 
                                 target='_blank'>GitHub</a>
                         </Link>
                     </div>
                     <div>
                         <Link href='https://www.linkedin.com/in/louisa-johnston/'>
-                            <a className="desktop-nav" 
+                            <a className="desktop-nav non-hash" 
                                 target='_blank'>LinkedIn</a>
                         </Link>
                     </div>
