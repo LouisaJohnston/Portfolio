@@ -53,7 +53,7 @@ export default function Project({
             </h3>
                 <h4 className="italic flush">{tech}</h4>
             <div>
-                { showDetails ? <ProjectDetails 
+                { showDetails && <ProjectDetails 
                     i={i}
                     name={name} 
                     details={details} 
@@ -61,7 +61,7 @@ export default function Project({
                     images={images}
                     imagesLength={imagesLength}
                     gitLength={gitLength} />
-                    : null }
+                }
                 <div className= "details" onClick={ handleClick }>
                     { showDetails ? <a>Hide Details</a> : <a>Show Project Details</a> }
                 </div>
