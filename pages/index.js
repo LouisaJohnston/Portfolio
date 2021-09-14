@@ -5,6 +5,7 @@ import IntroParagraph from "../components/IntroParagraph";
 import Tech from "../components/Tech";
 import Project from "../components/Project.jsx";
 import projectsJSON from "../projects.json";
+import Graph from "../components/Graph"
 
 export default function Index() {
   const [projects, setProjects] = useState([]);
@@ -53,13 +54,17 @@ export default function Index() {
           />
           <IntroParagraph
             paragraph={
-              "In my spare time, I can be found employing the phone-a-friend approach to crossword solving, planning walks that triangulate the dog parks in my neighborhood, or saying 'Hey, they're in ___!' when I recognize an actor in what I'm watching."
+              "In my spare time, I can be found employing the phone-a-friend approach to crossword solving, planning walks that triangulate the dog parks in my neighborhood, or saying 'Hey, they're in ___!' when I recognize an actor in something I'm watching."
             }
           />
         </div>
 
         <div className="skill-anchor" id="languages">
           <h2>Skills</h2>
+          <div>
+            <h3>Most Frequently Used Project Tech</h3>
+            <Graph />
+          </div>
           <div id="lang-specs">
             <Tech
               head={"Tech Stack"}

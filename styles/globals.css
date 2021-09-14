@@ -194,6 +194,25 @@ li {
   justify-content: center;
 }
 
+/******** GRAPH ********/
+.graph-wrapper {
+  position: relative;
+  max-width: 800px;
+  height: 400px;
+  background-color: none;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #669999;
+  left: 10%;
+}
+
 /******** Carousel ********/
 
 .carousel {
