@@ -9,6 +9,7 @@ import Graph from "../components/Graph"
 
 export default function Index() {
   const [projects, setProjects] = useState([]);
+  const [mostUsed, setMostUsed] = useState({})
 
   useEffect(() => {
     try {
@@ -54,17 +55,17 @@ export default function Index() {
           />
           <IntroParagraph
             paragraph={
-              "In my spare time, I can be found employing the phone-a-friend approach to crossword solving, planning walks that triangulate the dog parks in my neighborhood, or saying 'Hey, they're in ___!' when I recognize an actor in something I'm watching."
+              "In my spare time, I can be found employing the phone-a-friend approach to crossword solving, planning walks that triangulate the dog parks in my neighborhood, or saying 'Hey, they're in ___!' every time I recognize an actor in something I'm watching."
             }
           />
         </div>
 
         <div className="skill-anchor" id="languages">
           <h2>Skills</h2>
-          {/* <div>
+          <div>
             <h3>Most Frequently Used Project Tech</h3>
             <Graph />
-          </div> */}
+          </div>
           <div id="lang-specs">
             <Tech
               head={"Tech Stack"}
