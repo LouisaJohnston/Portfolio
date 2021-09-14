@@ -10,6 +10,8 @@ import Graph from "../components/Graph"
 export default function Index() {
   const [projects, setProjects] = useState([]);
   const [mostUsed, setMostUsed] = useState({})
+  let techCount = {}
+  console.log(techCount)
 
   useEffect(() => {
     try {
@@ -82,10 +84,26 @@ export default function Index() {
             />
           </div>
         </div>
-
         <div className="project-anchor" id="projects">
           <h2>Projects</h2>
           {projects.map((project, i) => {
+            const techArray = project.tech.split(", ");
+            techArray.forEach((tech, i) => {
+              if (tech.includes("and ")) {
+                console.log("and!")
+                const newTech = tech.replace("and ", "")
+                return techArray[i] = newTech
+              } else {
+                return techArray[i] = tech
+              }
+            }, techArray)
+            techArray.forEach((tech) => {
+              if (!techCount.hasOwnProperty(tech)) {
+                techCount[tech] = 1
+              } else {
+                techCount[tech]++ 
+              }
+            }) 
             return (
               <Project
                 key={i.toString()}

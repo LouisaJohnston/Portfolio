@@ -3,7 +3,7 @@
     {
       "name": "Chatterbox",
       "group": true,
-      "tech": "Axios, Express.js, Node.js, PostgreSQL, React, Redux, Redux Thunk, Socket.IO, and JavaScript",
+      "tech": "Express.js, Node.js, PostgreSQL, React, Redux, Redux Thunk, Socket.IO, and JavaScript",
       "details": [
         "Contributed to a full-stack, real-time, event-based web messenger application built with Socket.IO",
         "Created React components to render information pertaining to authorized user conversations and managed state using React Redux and Redux Thunk to optimize performance",
@@ -20,7 +20,7 @@
     {
       "name": "Flick Picks",
       "group": false,
-      "tech": "Axios, CSS3, EJS, Express.js, HTML5, Node.js, PostgreSQL, and JavaScript",
+      "tech": "CSS3, EJS, Express.js, Node.js, PostgreSQL, and JavaScript",
       "details": [
         "Created a web app using node.js and Express.js that allowed users to create an account or login with encrypted cookie storage and password hashing",
         "Applied EJS templates and Axios to render information from a third-party film API and allow users to save movies to user-specific lists",
