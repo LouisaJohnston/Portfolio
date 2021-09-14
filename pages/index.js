@@ -9,9 +9,18 @@ import Graph from "../components/Graph";
 
 export default function Index() {
   const [projects, setProjects] = useState([]);
-  const [mostUsed, setMostUsed] = useState({});
+  const [graphArr, setGraphArr] = useState([]);
   let techCount = {};
   console.log(techCount);
+
+  const getGraphArr = (techCount) => {
+    let newObj = techCount
+    return Object.values(newObj).sort((a, b) => b - a)
+  };
+
+  useEffect(() => {
+    console.log(getGraphArr(techCount));
+  }, [techCount]);
 
   useEffect(() => {
     try {
@@ -102,23 +111,24 @@ export default function Index() {
                 techCount[tech]++;
               }
             });
-              return (
-                <div key={i.toString()}>
-                  {project.display && (
-                    <Project
-                      key={i.toString()}
-                      i={i}
-                      name={project.name}
-                      group={project.group}
-                      tech={project.tech}
-                      details={project.details}
-                      github={project.github}
-                      deployed={project.deployed}
-                      images={project.images}
-                    />
-                  )}
-                </div>
-              );
+
+            return (
+              <div key={i.toString()}>
+                {project.display && (
+                  <Project
+                    key={i.toString()}
+                    i={i}
+                    name={project.name}
+                    group={project.group}
+                    tech={project.tech}
+                    details={project.details}
+                    github={project.github}
+                    deployed={project.deployed}
+                    images={project.images}
+                  />
+                )}
+              </div>
+            );
           })}
         </div>
       </div>
