@@ -48,17 +48,12 @@ export default function Index() {
           <IntroParagraph
             hello={"Hello! "}
             paragraph={
-              "I am a full-stack developer with particular interest in ventures oriented towards social impact and the arts."
+              "I'm an Oakland-based full-stack developer with particular interest in social impact and the arts."
             }
           />
           <IntroParagraph
             paragraph={
-              "I love breaking problems down into their smallest parts in order to build successful interventions. My background in nonprofit marketing has taught me the value of metrics-driven work, creative workarounds, and constructing projects from the user’s perspective."
-            }
-          />
-          <IntroParagraph
-            paragraph={
-              "In my spare time, I enjoy caring for my brood of houseplants, employing the phone-a-friend approach to crossword solving, and Vincent Price movies."
+              "In my spare time, I can be found employing the phone-a-friend approach to crossword solving, planning walks that triangulate the dog parks in my neighborhood, or saying 'Hey, they're in ___!' when I recognize an actor in what I'm watching."
             }
           />
         </div>
@@ -69,14 +64,14 @@ export default function Index() {
             <Tech
               head={"Tech Stack"}
               body={
-                "JavaScript, React, CSS, HTML, Python, SQL, Express.js, Next.js, EJS, Node.js, PostgreSQL, Axios, Mongoose, and MongoDB"
+                "Axios, C#, CSS3, EJS, Express.js, JavaScript, MongoDB, Mongoose, MySQL, Next.js, Node.js, PostgreSQL, Python, Public APIs, React, Redux, Redux Thunk, Sequelize, SQL, Socket.IO, TypeScript, and HTML5"
               }
             />
 
             <Tech
               head={"Misc. Know-How"}
               body={
-                "Heroku, Pygame, Adobe Photoshop, Adobe InDesign, Adobe Premiere, Wordpress, Squarespace, NationBuilder, Google Analytics, Cargo.site, and Canva"
+                "Adobe Creative Suite, Canva, Cargo, Figma, GitHub, Google Analytics, Heroku, NationBuilder, Netlify, Next.js, Postman, Pygame, Squarespace, Vercel, WordPress"
               }
             />
           </div>
@@ -90,6 +85,7 @@ export default function Index() {
                 key={i.toString()}
                 i={i}
                 name={project.name}
+                group={project.group}
                 tech={project.tech}
                 details={project.details}
                 github={project.github}

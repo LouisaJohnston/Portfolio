@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;900&display=swap");
 
-/******** Global ********/ 
+/******** Global ********/
 html,
 body {
   padding: 0;
@@ -15,7 +15,7 @@ a {
 
 * {
   box-sizing: border-box;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .container {
@@ -35,7 +35,7 @@ a {
   display: inline-block;
 }
 
-/******** Body ********/ 
+/******** Body ********/
 #about {
   padding-top: 100px;
 }
@@ -54,12 +54,16 @@ a {
   display: inline;
   font-size: 1.3em;
   font-weight: 900;
-  color: #C66403;
+  color: #c66403;
 }
 
+.group {
+  font-size: 0.7em;
+  font-weight: 400;
+}
 
 h2 {
-  color: #C66403;
+  color: #c66403;
   font-size: 2em;
   font-weight: 900;
   padding-top: 5%;
@@ -70,13 +74,16 @@ h2 {
 }
 
 h3 {
-  color: #4D2B43;
+  color: #4d2b43;
   margin-left: 25%;
   margin-right: 25%;
   font-size: 1.7em;
+  display: relative;
 }
 
-h4, p, li {
+h4,
+p,
+li {
   margin-left: 25%;
   margin-right: 25%;
   font-size: 1.3em;
@@ -85,7 +92,7 @@ h4, p, li {
 .details {
   margin-left: 25%;
   margin-right: 25%;
-  color: #4D2B43;
+  color: #4d2b43;
   font-weight: 400;
   font-size: 1.05em;
   cursor: pointer;
@@ -103,40 +110,39 @@ h4, p, li {
 }
 
 .repo:hover {
-  color: #C66403!important;
+  color: #c66403 !important;
 }
-
 
 #main ul {
   list-style: none;
 }
 
 #main ul li::before {
-  content: "\2022";  
-  font-weight: bold; 
-  display: inline-block; 
-  width: 1em; 
-  margin-left: -1em; 
+  content: "\2022";
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
   color: #669999;
 }
 
 .top-anchor {
-  padding-top: 10px;
-  margin-top: -10px;
+  padding-top: 60px;
+  margin-top: -60px;
   -webkit-background-clip: content-box;
   background-clip: content-box;
 }
 
 .skill-anchor {
-  padding-top: 50px;
-  margin-top: -50px;
+  padding-top: 20px;
+  margin-top: -100px;
   -webkit-background-clip: content-box;
   background-clip: content-box;
 }
 
 .project-anchor {
-  padding-top: 1px;
-  margin-top: -1px;
+  padding-top: 20px;
+  margin-top: -100px;
   -webkit-background-clip: content-box;
   background-clip: content-box;
 }
@@ -173,7 +179,7 @@ h4, p, li {
 }
 
 #bot-border {
-  border: 3px solid #FBCC32;
+  border: 3px solid #fbcc32;
   height: 286px;
   border-radius: 1px;
 }
@@ -188,7 +194,7 @@ h4, p, li {
   justify-content: center;
 }
 
-/******** Carousel ********/ 
+/******** Carousel ********/
 
 .carousel {
   display: flex;
@@ -208,22 +214,22 @@ h4, p, li {
 }
 
 .slide-arrow:hover {
-	color: #669999;
+  color: #669999;
 }
 
 .slide-arrow.right {
-	right: 1rem;
+  right: 1rem;
 }
 
 .slide-arrow.left {
-	left: 1rem;
+  left: 1rem;
 }
 
-/******** Nav ********/ 
+/******** Nav ********/
 nav {
   background: #669999;
   margin: 0;
-  position: fixed; 
+  position: fixed;
   width: 100vw;
 }
 
@@ -233,8 +239,8 @@ nav {
   align-items: center;
   margin-left: 2%;
   margin-right: 6%;
-  padding: .2%;
-  color: #FBCC32;
+  padding: 0.2%;
+  color: #fbcc32;
   font-weight: 700;
   font-size: 1.4em;
 }
@@ -246,64 +252,69 @@ nav p {
   margin-block-end: 0;
 }
 
-.non-hash{
+.non-hash {
   font-size: 1.3em;
 }
 
 .non-hash:hover {
-  color: #4D2B43;
+  color: #4d2b43;
 }
 
 nav p:hover {
-  color: #4D2B43;
+  color: #4d2b43;
 }
 
 #logo:hover {
-  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
 }
 
 @keyframes shake {
-  10%, 90% {
+  10%,
+  90% {
     transform: translate3d(-1px, 0, 0);
   }
-  
-  20%, 80% {
+
+  20%,
+  80% {
     transform: translate3d(2px, 0, 0);
   }
 
-  30%, 50%, 70% {
+  30%,
+  50%,
+  70% {
     transform: translate3d(-4px, 0, 0);
   }
 
-  40%, 60% {
+  40%,
+  60% {
     transform: translate3d(4px, 0, 0);
   }
 }
 
-/******** Footer ********/ 
+/******** Footer ********/
 #footer {
-  background: #4D2B43;
-  color: #C66403;
+  background: #4d2b43;
+  color: #c66403;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: .9em;
+  font-size: 0.9em;
 }
 
 #footer h2 {
-  color: #C66403;
+  color: #c66403;
 }
 
 #footer p {
-  color: #C66403;
+  color: #c66403;
   font-weight: 700;
 }
 
 #footer a {
-  color: #C66403;
+  color: #c66403;
   font-weight: 700;
 }
 
@@ -325,20 +336,20 @@ nav p:hover {
   margin: 0;
 }
 
-/******** Scroll Bar ********/ 
+/******** Scroll Bar ********/
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FBCC32;
+  background: #fbcc32;
   border-radius: 8px;
 }
 
-/******** Mobile ********/ 
+/******** Mobile ********/
 @media screen and (min-width: 768px) {
   .mobile-nav {
-    display: none!important;
+    display: none !important;
     width: 0;
   }
 
@@ -362,7 +373,7 @@ nav p:hover {
     -webkit-background-clip: content-box;
     background-clip: content-box;
   }
-  
+
   .skill-anchor {
     padding-top: 80px;
     margin-top: -80px;
@@ -381,12 +392,12 @@ nav p:hover {
     margin-top: 1px;
   }
 
- #future-flex {
+  #future-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 5px 5px 2px 10px;
-    padding: .2%;
+    padding: 0.2%;
   }
 
   #nav-links {
@@ -404,7 +415,7 @@ nav p:hover {
   }
 
   .desktop-nav {
-    display: none!important;
+    display: none !important;
   }
 
   #mobile-links > ul {
@@ -419,13 +430,13 @@ nav p:hover {
     width: 0;
     max-width: 100vw;
   }
-  
+
   .menuNav.showMenu {
     display: block;
     width: 100vw;
     height: 30vh;
     background: #669999;
-    color: #FBCC32;
+    color: #fbcc32;
     margin-top: 0px;
     margin-bottom: 0px;
     box-shadow: 0px 1px 20px 0px rgba(102, 153, 153);
@@ -495,7 +506,7 @@ nav p:hover {
 
   .project-container {
     margin-bottom: 5%;
-    font-size: .9em;
+    font-size: 0.9em;
   }
 
   .carousel {
@@ -516,7 +527,7 @@ nav p:hover {
     margin-left: 1%;
     margin-right: 1%;
   }
-  
+
   .image-slide {
     padding: 0;
   }
@@ -545,9 +556,3 @@ nav p:hover {
     border-radius: 3px;
   }
 }
-
-
-
-
-
-  
