@@ -3,7 +3,8 @@
     {
       "name": "Chatterbox",
       "group": true,
-      "tech": "Express.js, Node.js, PostgreSQL, React, Redux, Redux Thunk, Socket.IO, and JavaScript",
+      "display": true,
+      "tech": "Express.js, Node.js, JavaScript, PostgreSQL, React, Redux, Redux Thunk, Socket.IO, and Sequelize",
       "details": [
         "Contributed to a full-stack, real-time, event-based web messenger application built with Socket.IO",
         "Created React components to render information pertaining to authorized user conversations and managed state using React Redux and Redux Thunk to optimize performance",
@@ -19,8 +20,9 @@
     }, 
     {
       "name": "Flick Picks",
+      "display": true,
       "group": false,
-      "tech": "CSS3, EJS, Express.js, Node.js, PostgreSQL, and JavaScript",
+      "tech": "CSS3, EJS, Express.js, Node.js, PostgreSQL, JavaScript, and Sequelize",
       "details": [
         "Created a web app using node.js and Express.js that allowed users to create an account or login with encrypted cookie storage and password hashing",
         "Applied EJS templates and Axios to render information from a third-party film API and allow users to save movies to user-specific lists",
@@ -36,8 +38,9 @@
     ]}, 
     {
       "name": "Bot Noggle",
-      "tech": "Pygame, Python",
+      "display": true,
       "group": false,
+      "tech": "Pygame, Python",
       "details": [
         "Built a version of Boggle using Python and Pygame to render a 4x4 grid out of a two-dimensional array of randomized letters corresponding to the real Boggle dice",
         "Allowed users to check whether a given word exists in adjacent grid tiles (up, down, diagonally, forwards, and backwards)",
@@ -49,6 +52,7 @@
     },
     {
       "name": "Word-cross'd Puzzler",
+      "display": true,
       "group": false,
       "tech": "CSS3, HTML5, and JavaScript",
       "details": [
@@ -66,6 +70,7 @@
     },
     {
       "name": "Paw-tel",
+      "display": true,
       "group": true,
       "tech": "CSS3, HTML5, JavaScript, MERN auth, MongoDB, Mongoose, and React",
       "details": [
@@ -79,6 +84,26 @@
         "/pawtel/homepage.png",
         "/pawtel/petpage.png",
         "/pawtel/register.png"
-    ]}
+    ]},
+    {
+      "name": "Generate Good",
+      "display": false,
+      "group": false,
+      "tech": "C#, JavaScript, Next.js, MySQL, React, Sequelize, and TypeScript",
+      "details": [],
+      "github": [],
+      "deployed": "",
+      "images": []
+    },
+    {
+      "name": "Portfolio",
+      "display": false,
+      "group": false,
+      "tech": "Next.js, React, JavaScript, HTML5 and CSS3",
+      "details": [],
+      "github": [],
+      "deployed": "",
+      "images": []
+    }
   ]
 }

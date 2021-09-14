@@ -5,13 +5,13 @@ import IntroParagraph from "../components/IntroParagraph";
 import Tech from "../components/Tech";
 import Project from "../components/Project.jsx";
 import projectsJSON from "../projects.json";
-import Graph from "../components/Graph"
+import Graph from "../components/Graph";
 
 export default function Index() {
   const [projects, setProjects] = useState([]);
-  const [mostUsed, setMostUsed] = useState({})
-  let techCount = {}
-  console.log(techCount)
+  const [mostUsed, setMostUsed] = useState({});
+  let techCount = {};
+  console.log(techCount);
 
   useEffect(() => {
     try {
@@ -75,7 +75,6 @@ export default function Index() {
                 "Axios, C#, CSS3, EJS, Express.js, JavaScript, MongoDB, Mongoose, MySQL, Next.js, Node.js, PostgreSQL, Python, Public APIs, React, Redux, Redux Thunk, Sequelize, SQL, Socket.IO, TypeScript, and HTML5"
               }
             />
-
             <Tech
               head={"Misc. Know-How"}
               body={
@@ -90,33 +89,36 @@ export default function Index() {
             const techArray = project.tech.split(", ");
             techArray.forEach((tech, i) => {
               if (tech.includes("and ")) {
-                console.log("and!")
-                const newTech = tech.replace("and ", "")
-                return techArray[i] = newTech
+                const newTech = tech.replace("and ", "");
+                return (techArray[i] = newTech);
               } else {
-                return techArray[i] = tech
+                return (techArray[i] = tech);
               }
-            }, techArray)
+            }, techArray);
             techArray.forEach((tech) => {
               if (!techCount.hasOwnProperty(tech)) {
-                techCount[tech] = 1
+                techCount[tech] = 1;
               } else {
-                techCount[tech]++ 
+                techCount[tech]++;
               }
-            }) 
-            return (
-              <Project
-                key={i.toString()}
-                i={i}
-                name={project.name}
-                group={project.group}
-                tech={project.tech}
-                details={project.details}
-                github={project.github}
-                deployed={project.deployed}
-                images={project.images}
-              />
-            );
+            });
+              return (
+                <div key={i.toString()}>
+                  {project.display && (
+                    <Project
+                      key={i.toString()}
+                      i={i}
+                      name={project.name}
+                      group={project.group}
+                      tech={project.tech}
+                      details={project.details}
+                      github={project.github}
+                      deployed={project.deployed}
+                      images={project.images}
+                    />
+                  )}
+                </div>
+              );
           })}
         </div>
       </div>
