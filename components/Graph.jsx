@@ -2,8 +2,8 @@ import Line from "./Line"
 import BarTextContent from "./BarTextContent"
 import Bar from "./Bar"
 
-export default function Graph({}) {
-
+export default function Graph({mostUsed}) {
+    console.log(mostUsed)
     const renderLines = () => {
         return Array(10).fill(null).map((tech, i) => (
             <Line 
@@ -12,6 +12,11 @@ export default function Graph({}) {
             />
         ))
     }
+
+    const renderBars = () => {
+        let techSum = 
+    }
+
     return (
         <div className="graph-wrapper">
             <div className="graph">

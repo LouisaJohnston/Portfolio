@@ -9,46 +9,55 @@ import Graph from "../components/Graph";
 
 export default function Index() {
   const [projects, setProjects] = useState([]);
-  let techCount = {};
-  let graphArr = [];
-  let mostUsed = [];
+  const [mostUsed, setMostUsed] = useState([]);
 
   useEffect(() => {
     try {
       const projectData = projectsJSON.projects;
       setProjects(projectData);
+
+      // Define object to hold tech data for state
+      let techCount = {};
+
+      projectData.forEach((project) => {
+        const techArray = project.tech.split(", ");
+        techArray.forEach((tech, i) => {
+          if (tech.includes("and ")) {
+            const newTech = tech.replace("and ", "");
+            return (techArray[i] = newTech);
+          } else {
+            return (techArray[i] = tech);
+          }
+        }, techArray);
+
+        techArray.forEach((tech) => {
+          if (!techCount.hasOwnProperty(tech)) {
+            techCount[tech] = 1;
+          } else {
+            techCount[tech]++;
+          }
+        });
+      });
+
+      // define array to hold tech data for graph
+      let newArr = [];
+
+      if (Object.keys(techCount).length !== 0) {
+        Object.entries(techCount).forEach(([key, value]) =>
+          newArr.push({ tech: `${key}`, count: value })
+        );
+      }
+
+      const descArr = newArr.sort((a, b) => {
+        return b.count - a.count;
+      });
+
+      setMostUsed(descArr.slice(0, 10));
     } catch (err) {
       console.log(err);
     }
   }, []);
 
-  useEffect(() => {
-    try {
-      if (Object.keys(techCount).length !== 0) {
-        Object.entries(techCount).forEach(([key, value]) =>
-          graphArr.push({ tech: `${key}`, count: value })
-        );
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }, [techCount]);
-
-  useEffect(() => {
-    try {
-      const newGraph = graphArr.sort((a, b) => {
-        return b.count - a.count;
-      });
-      mostUsed = newGraph.slice(0, 10);
-    } catch (err) {
-      console.log(err);
-    }
-  }, [graphArr]);
-
-  // useEffect(() => {
-  //   console.log(graphArr);
-  //   console.log(mostUsed)
-  // })
   return (
     <div className="container">
       <Head>
@@ -84,7 +93,7 @@ export default function Index() {
           />
           <IntroParagraph
             paragraph={
-              "In my spare time, I can be found employing the phone-a-friend approach to crossword solving, planning walks that triangulate the dog parks in my neighborhood, or saying 'Hey, they're in ___!' every time I recognize an actor in something I'm watching."
+              "In my spare time, I can be found employing the phone-a-friend approach to crossword solving, planning walks that triangulate the dog parks in my neighborhood, or saying 'Hey, they're in ___!' whenever I recognize an actor in something I'm watching."
             }
           />
         </div>
@@ -93,7 +102,7 @@ export default function Index() {
           <h2>Skills</h2>
           <div>
             <h3>Most Frequently Used Project Tech</h3>
-            <Graph />
+            <Graph mostUsed={mostUsed} />
           </div>
           <div id="lang-specs">
             <Tech
@@ -113,24 +122,6 @@ export default function Index() {
         <div className="project-anchor" id="projects">
           <h2>Projects</h2>
           {projects.map((project, i) => {
-            const techArray = project.tech.split(", ");
-            techArray.forEach((tech, i) => {
-              if (tech.includes("and ")) {
-                const newTech = tech.replace("and ", "");
-                return (techArray[i] = newTech);
-              } else {
-                return (techArray[i] = tech);
-              }
-            }, techArray);
-
-            techArray.forEach((tech) => {
-              if (!techCount.hasOwnProperty(tech)) {
-                techCount[tech] = 1;
-              } else {
-                techCount[tech]++;
-              }
-            });
-
             return (
               <div key={i.toString()}>
                 {project.display && (
