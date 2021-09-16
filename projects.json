@@ -72,7 +72,7 @@
       "name": "Paw-tel",
       "display": true,
       "group": true,
-      "tech": "CSS3, HTML5, JavaScript, MERN Auth, MongoDB, Mongoose, and React",
+      "tech": "CSS3, HTML5, JavaScript, Express.js, MERN Auth, MongoDB, Mongoose, and React",
       "details": [
         "Collaborated on a full-stack MERN app using complex authorization routes allowing users to register as either a pet owner or a pet hotel owner",
         "Employed React components to render information from a local API pertaining to user-specific pets or hotels, depending on the authorization route, with the ability to update and delete data fields",

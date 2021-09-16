@@ -52,7 +52,7 @@ export default function Index() {
         return b.count - a.count;
       });
 
-      setMostUsed(descArr.slice(0, 10));
+      setMostUsed(descArr.slice(0, 5));
     } catch (err) {
       console.log(err);
     }
@@ -101,7 +101,7 @@ export default function Index() {
         <div className="skill-anchor" id="languages">
           <h2>Skills</h2>
           <div>
-            <h3>Most Frequently Used Project Tech</h3>
+            <h3>Most Used Tech</h3>
             <Graph mostUsed={mostUsed} />
           </div>
           <div id="lang-specs">
