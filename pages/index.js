@@ -101,7 +101,7 @@ export default function Index() {
         <div className="skill-anchor" id="languages">
           <h2>Skills</h2>
           <div className="mobile-hide">
-            <h3 className="less-flush web-edge">Most Used Tech</h3>
+            <h3 className="less-flush web-edge">Most Used Languages & Frameworks</h3>
             <Graph mostUsed={mostUsed} />
           </div>
           <div id="lang-specs">
