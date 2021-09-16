@@ -93,7 +93,7 @@ export default function Index() {
           />
           <IntroParagraph
             paragraph={
-              "In my spare time, I can be found employing the phone-a-friend approach to crossword solving, planning walks that triangulate the dog parks in my neighborhood, or saying 'Hey, they're in ___!' whenever I recognize an actor in something I'm watching."
+              "In my spare time, I can be found using the phone-a-friend approach to crossword puzzles."
             }
           />
         </div>
