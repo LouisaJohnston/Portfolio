@@ -100,21 +100,21 @@ export default function Index() {
 
         <div className="skill-anchor" id="languages">
           <h2>Skills</h2>
-          <div>
-            <h3>Most Used Tech</h3>
+          <div className="mobile-hide">
+            <h3 className="less-flush web-edge">Most Used Tech</h3>
             <Graph mostUsed={mostUsed} />
           </div>
           <div id="lang-specs">
             <Tech
               head={"Tech Stack"}
               body={
-                "Axios, C#, CSS3, EJS, Express.js, JavaScript, MongoDB, Mongoose, MySQL, Next.js, Node.js, PostgreSQL, Python, Public APIs, React, Redux, Redux Thunk, Sequelize, SQL, Socket.IO, TypeScript, and HTML5"
+                "Axios, C#, CSS3, EJS, Express.js, JavaScript, MongoDB, Mongoose, MySQL, Next.js, Node.js, PostgreSQL, Python, Public APIs, React.js, Redux, Redux Thunk, Sequelize, SQL, Socket.IO, TypeScript, and HTML5"
               }
             />
             <Tech
               head={"Misc. Know-How"}
               body={
-                "Adobe Creative Suite, Canva, Cargo, Figma, GitHub, Google Analytics, Heroku, NationBuilder, Netlify, Next.js, Postman, Pygame, Squarespace, Vercel, WordPress"
+                "Adobe Creative Suite, Canva, Cargo, Figma, GitHub, Google Analytics, Heroku, NationBuilder, Netlify, Next.js, Postman, Pygame, Squarespace, Vercel, and WordPress"
               }
             />
           </div>

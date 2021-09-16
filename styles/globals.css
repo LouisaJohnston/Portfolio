@@ -205,6 +205,8 @@ li {
   z-index: -1;
 }
 
+
+
 .graph {
   display: flex;
 }
@@ -221,6 +223,8 @@ li {
 .graphLabel {
   height: 100%;
   width: 12%;
+  font-weight: 700;
+  font-size: 1.3em;
 }
 
 .bar-lines-container {
@@ -238,8 +242,18 @@ li {
   border-bottom: 1px solid #fbcc32;
   border-right: 1px solid #fbcc32;
   margin-top: 5px;
-  padding: 14px;
+  padding: 10px;
+  color: #fbcc32;
 }
+
+ /* @keyframes reduceTime {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+} */
 /******** Carousel ********/
 
 .carousel {
