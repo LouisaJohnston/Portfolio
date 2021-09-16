@@ -9,18 +9,9 @@ import Graph from "../components/Graph";
 
 export default function Index() {
   const [projects, setProjects] = useState([]);
-  const [graphArr, setGraphArr] = useState([]);
   let techCount = {};
-  console.log(techCount);
-
-  const getGraphArr = (techCount) => {
-    let newObj = techCount
-    return Object.values(newObj).sort((a, b) => b - a)
-  };
-
-  useEffect(() => {
-    console.log(getGraphArr(techCount));
-  }, [techCount]);
+  let graphArr = [];
+  let mostUsed = [];
 
   useEffect(() => {
     try {
@@ -31,6 +22,33 @@ export default function Index() {
     }
   }, []);
 
+  useEffect(() => {
+    try {
+      if (Object.keys(techCount).length !== 0) {
+        Object.entries(techCount).forEach(([key, value]) =>
+          graphArr.push({ tech: `${key}`, count: value })
+        );
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }, [techCount]);
+
+  useEffect(() => {
+    try {
+      const newGraph = graphArr.sort((a, b) => {
+        return b.count - a.count;
+      });
+      mostUsed = newGraph.slice(0, 10);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [graphArr]);
+
+  // useEffect(() => {
+  //   console.log(graphArr);
+  //   console.log(mostUsed)
+  // })
   return (
     <div className="container">
       <Head>
@@ -104,6 +122,7 @@ export default function Index() {
                 return (techArray[i] = tech);
               }
             }, techArray);
+
             techArray.forEach((tech) => {
               if (!techCount.hasOwnProperty(tech)) {
                 techCount[tech] = 1;
