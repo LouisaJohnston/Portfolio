@@ -13,6 +13,48 @@ View the live site here: https://www.louisajohnston.com/
 
 ## Code Snippets
 
+Dynamically render graph:
+
+```
+ // Define object to hold tech data for state
+      let techCount = {};
+
+      projectData.forEach((project) => {
+        const techArray = project.tech.split(", ");
+        techArray.forEach((tech, i) => {
+          if (tech.includes("and ")) {
+            const newTech = tech.replace("and ", "");
+            return (techArray[i] = newTech);
+          } else {
+            return (techArray[i] = tech);
+          }
+        }, techArray);
+
+        techArray.forEach((tech) => {
+          if (!techCount.hasOwnProperty(tech)) {
+            techCount[tech] = 1;
+          } else {
+            techCount[tech]++;
+          }
+        });
+      });
+
+      // define array to hold tech data for graph
+      let newArr = [];
+
+      if (Object.keys(techCount).length !== 0) {
+        Object.entries(techCount).forEach(([key, value]) =>
+          newArr.push({ tech: `${key}`, count: value })
+        );
+      }
+
+      const descArr = newArr.sort((a, b) => {
+        return b.count - a.count;
+      });
+
+      setMostUsed(descArr.slice(0, 5));
+```
+
 Render projects from projects.json:
 
 ```
@@ -55,13 +97,13 @@ Conditionally render project details:
         </div>
     )}
     {imagesLength ? (
-        <SingleImage 
+        <SingleImage
             name={name}
             image={images[0]}
         />
     ) : (
-        <Carousel 
-            name={name}    
+        <Carousel
+            name={name}
             images={images}
         />
     )}
@@ -69,6 +111,7 @@ Conditionally render project details:
 ```
 
 Image carousel:
+
 ```
 export default function Carousel({ images, name }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -95,13 +138,13 @@ export default function Carousel({ images, name }) {
                 clickFunction={ previousSlide }
                 glyph="&#9001;"
             />
-    
+
             <ImageSlide image={ images[currentImageIndex] } name={name} />
-    
+
             <Arrow
                 direction="right"
                 clickFunction={ nextSlide }
-                glyph="&#9002;" 
+                glyph="&#9002;"
             />
         </div>
     );
