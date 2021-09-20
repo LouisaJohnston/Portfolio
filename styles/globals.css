@@ -203,6 +203,7 @@ li {
   position: relative;
   max-width: 800px;
   height: 300px;
+  margin-top: 10px;
   margin-left: 25%;
   margin-right: 25%;
   z-index: 1;
@@ -243,6 +244,7 @@ li {
   border-bottom: 1px solid #fbcc32;
   border-right: 1px solid #fbcc32;
   margin-top: 5px;
+  margin-left: 60px;
   padding: 10px;
   color: #fbcc32;
   z-index: 2;
@@ -251,25 +253,46 @@ li {
 
 .tech-projects {
   display: none;
-  width: 300px!important;
+  width: 450px;
   position: absolute;
-  margin-left: -250px;
+  margin-left: -400px;
   text-align: end;
 }
 
 .tech-projects ul {
   list-style: none;
+  margin: 22px 0 0 0;
+  width: 500px!important;
 }
 
-.bar:hover {
-  background-color: crimson!important;
+.tech-projects li {
+  margin-top: 2px;
+  font-size: 1em;
+  color: #4d2b43;
+  padding: 0;
+  margin: 2px 30px 0 0;
+  font-weight: 700;
 }
 
-.bar:hover + .tech-projects {
-  display: block!important;
+.project-glyph {
+  color: #c66403;
+  margin: 15px 0 0 320px;
+  font-size: 1.5rem;
+  width: 20px!important;
+  position: absolute;
+  padding: none;
+}
+
+.bar-holder:hover {
+  cursor: pointer;
+}
+
+.bar-holder:hover > .tech-projects {
+  display: flex!important;
+  flex-direction: row;
+  justify-content: flex-end;
   z-index: 2!important;
 }
-
 
 /******** Carousel ********/
 
