@@ -102,13 +102,13 @@ export default function Index() {
           <h2>Skills</h2>
           <div className="mobile-hide">
             <h3 className="less-flush web-edge">Most Used Languages & Frameworks</h3>
-            <Graph mostUsed={mostUsed} />
+            <Graph projects={projects} mostUsed={mostUsed} />
           </div>
           <div id="lang-specs">
             <Tech
               head={"Tech Stack"}
               body={
-                "Axios, C#, CSS3, EJS, Express.js, JavaScript, MongoDB, Mongoose, MySQL, Next.js, Node.js, PostgreSQL, Python, Public APIs, React.js, Redux, Redux Thunk, Sequelize, SQL, Socket.IO, TypeScript, and HTML5"
+                "C#, CSS3, EJS, Express.js, JavaScript, MongoDB, Mongoose, MySQL, Next.js, Node.js, PostgreSQL, Python, Public APIs, React.js, Redux, Redux Thunk, Sequelize, SQL, Socket.IO, TypeScript, and HTML5"
               }
             />
             <Tech

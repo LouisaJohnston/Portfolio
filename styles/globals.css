@@ -113,11 +113,11 @@ li {
   color: #c66403 !important;
 }
 
-#main ul {
+#projects ul {
   list-style: none;
 }
 
-#main ul li::before {
+#projects ul li::before {
   content: "\2022";
   font-weight: bold;
   display: inline-block;
@@ -195,29 +195,22 @@ li {
 }
 
 /******** GRAPH ********/
+.mobile-hide {
+  z-index: 1;
+}
+
 .graph-wrapper {
   position: relative;
   max-width: 800px;
   height: 300px;
-  background-color: none;
   margin-left: 25%;
   margin-right: 25%;
-  z-index: -1;
+  z-index: 1;
 }
-
-
 
 .graph {
   display: flex;
-}
-
-.line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: #fbcc32;
-  left: 10%;
+  z-index: 1;
 }
 
 .graphLabel {
@@ -233,10 +226,18 @@ li {
   height: 100%;
   display: flex;
   flex-direction: column;
+  z-index: 1
+}
+
+.bar-holder {
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+
 }
 
 .bar {
-  height: 16.66666666667%;
+  height: 50px;
   background: #669999;
   border-radius: 5px 25px 25px 5px;
   border-bottom: 1px solid #fbcc32;
@@ -244,7 +245,32 @@ li {
   margin-top: 5px;
   padding: 10px;
   color: #fbcc32;
+  z-index: 2;
+  position: relative;
 }
+
+.tech-projects {
+  display: none;
+  width: 300px!important;
+  position: absolute;
+  margin-left: -250px;
+  text-align: end;
+}
+
+.tech-projects ul {
+  list-style: none;
+}
+
+.bar:hover {
+  background-color: crimson!important;
+}
+
+.bar:hover + .tech-projects {
+  display: block!important;
+  z-index: 2!important;
+}
+
+
 /******** Carousel ********/
 
 .carousel {
@@ -265,7 +291,7 @@ li {
 }
 
 .slide-arrow:hover {
-  color: #669999;
+  color: #669999 !important;
 }
 
 .slide-arrow.right {
@@ -282,6 +308,8 @@ nav {
   margin: 0;
   position: fixed;
   width: 100vw;
+  z-index: 3;
+
 }
 
 #nav-links {
@@ -400,7 +428,7 @@ nav p:hover {
 /******** Mobile ********/
 @media screen and (min-width: 768px) {
   .mobile-nav {
-    display: none !important;
+    display: none!important;
     width: 0;
   }
 
@@ -430,6 +458,7 @@ nav p:hover {
     margin-top: -80px;
     -webkit-background-clip: content-box;
     background-clip: content-box;
+    z-index: -1;
   }
 
   .project-anchor {
