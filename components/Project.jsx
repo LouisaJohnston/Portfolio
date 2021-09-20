@@ -53,6 +53,7 @@ export default function Project({
         </a>
         {group && <span className="group"> (Group Project)</span>}
       </h3>
+      {name === "Chatterbox" && <p className="repo-login flush">See repo for login information</p>}
       <h4 className="italic flush">{tech}</h4>
       <div>
         {showDetails && (
