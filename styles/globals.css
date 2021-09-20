@@ -89,6 +89,12 @@ li {
   font-size: 1.3em;
 }
 
+.repo-login {
+  font-size: .9em;
+  font-weight: 700;
+  color: #4d2b43;
+}
+
 .details {
   margin-left: 25%;
   margin-right: 25%;
