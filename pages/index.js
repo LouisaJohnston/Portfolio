@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
-// import styles from "../styles/index.module.css";
 import IntroParagraph from "../components/IntroParagraph";
 import Tech from "../components/Tech";
 import Project from "../components/Project.jsx";
@@ -49,7 +48,7 @@ export default function Index() {
           totalArr.push(key);
         });
       }
-      setTechProps(totalArr)
+      setTechProps(totalArr);
       const descArr = objArr.sort((a, b) => {
         return b.count - a.count;
       });
@@ -109,13 +108,7 @@ export default function Index() {
             <Graph projects={projects} mostUsed={mostUsed} />
           </div>
           <div id="lang-specs">
-            <Tech
-              head={"Tech Stack"}
-              // body={
-              //   "C#, CSS3, EJS, Express.js, HTML5, JavaScript, MongoDB, Mongoose, MySQL, Next.js, Node.js, PostgreSQL, Python, Public APIs, React.js, Redux, Redux Thunk, Sequelize, SQL, Socket.IO, and TypeScript"
-              // }
-              techProps={techProps}
-            />
+            <Tech head={"Tech Stack"} techProps={techProps} />
             <Tech
               head={"Misc. Know-How"}
               body={
