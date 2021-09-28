@@ -51,7 +51,7 @@ export default function Project({
         <a href={deployed} target="_blank">
           {name}
         </a>
-        {group && <span className="group"> (Group Project)</span>}
+        {group && <span className="group"> (Team Project)</span>}
       </h3>
       {name === "Chatterbox" && <p className="repo-login flush">See repo for login information</p>}
       <h4 className="italic flush">{tech}</h4>

@@ -20,17 +20,17 @@ export default function Index() {
       let techCount = {};
 
       projectData.forEach((project) => {
-        const techProps = project.tech.split(", ");
-        techProps.forEach((tech, i) => {
+        const techArray = project.tech.split(", ");
+        techArray.forEach((tech, i) => {
           if (tech.includes("and ")) {
             const newTech = tech.replace("and ", "");
-            return (techProps[i] = newTech);
+            return (techArray[i] = newTech);
           } else {
-            return (techProps[i] = tech);
+            return (techArray[i] = tech);
           }
-        }, techProps);
+        }, techArray);
 
-        techProps.forEach((tech) => {
+        techArray.forEach((tech) => {
           if (!techCount.hasOwnProperty(tech)) {
             techCount[tech] = 1;
           } else {
@@ -89,7 +89,7 @@ export default function Index() {
           <IntroParagraph
             hello={"Hello! "}
             paragraph={
-              "I'm an Oakland-based full-stack developer with particular interest in social impact projects and the arts."
+              "I'm an Oakland-based full-stack developer with particular interest in mission-driven projects and the arts."
             }
           />
           <IntroParagraph
