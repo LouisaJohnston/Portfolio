@@ -4,7 +4,7 @@
       "name": "Chatterbox",
       "group": true,
       "display": true,
-      "tech": "Express.js, Node.js, JavaScript, PostgreSQL, React.js, Redux, Redux Thunk, Socket.IO, and Sequelize",
+      "tech": "Express.js, Heroku, Node.js, JavaScript, Node.js, PostgreSQL, React.js, Redux, Redux Thunk, Socket.IO, Sequelize, and SQL",
       "details": [
         "Contributed to a full-stack, real-time, event-based web messenger application built with Socket.IO",
         "Created React.js components to render information pertaining to authorized user conversations and managed state using React.js Redux and Redux Thunk to optimize performance",
@@ -22,7 +22,7 @@
       "name": "Flick Picks",
       "display": true,
       "group": false,
-      "tech": "CSS3, EJS Templates, Express.js, Node.js, PostgreSQL, JavaScript, and Sequelize",
+      "tech": "CSS3, EJS Templates, Express.js, Heroku, JavaScript, Node.js, PostgreSQL, Sequelize, and SQL",
       "details": [
         "Created a web app using node.js and Express.js that allowed users to create an account or login with encrypted cookie storage and password hashing",
         "Applied EJS templates and Axios to render information from a third-party film API and allow users to save movies to user-specific lists",
@@ -40,9 +40,9 @@
       "name": "Bot Noggle",
       "display": true,
       "group": false,
-      "tech": "Pygame, Python",
+      "tech": "Python",
       "details": [
-        "Built a version of Boggle using Python and Pygame to render a 4x4 grid out of a two-dimensional array of randomized letters corresponding to the real Boggle dice",
+        "Built a desktop app version of Boggle using Python and Pygame to render a 4x4 grid out of a two-dimensional array of randomized letters corresponding to the real Boggle dice",
         "Allowed users to check whether a given word exists in adjacent grid tiles (up, down, diagonally, forwards, and backwards)",
         "Inserted dictionary information into a trie data structure to check against user input while optimizing the project’s time complexity"
       ],
@@ -72,7 +72,7 @@
       "name": "Paw-tel",
       "display": true,
       "group": true,
-      "tech": "JavaScript, Node.js, Express.js, MERN Auth, MongoDB, Mongoose, and React.js",
+      "tech": "JavaScript, Node.js, Express.js, MERN Auth, MongoDB, Mongoose, Netlify, and React.js",
       "details": [
         "Collaborated on a full-stack MERN app using complex authorization routes allowing users to register as either a pet owner or a pet hotel owner",
         "Employed React.js components to render information from a local API pertaining to user-specific pets or hotels, depending on the authorization route, with the ability to update and delete data fields",
@@ -89,7 +89,7 @@
       "name": "Generate Good",
       "display": false,
       "group": false,
-      "tech": "AWS, C#, JavaScript, Next.js, MySQL, React.js, Sequelize, and TypeScript",
+      "tech": "AWS, C#, JavaScript, Next.js, MySQL, React.js, SQL, and TypeScript",
       "details": [],
       "github": [],
       "deployed": "",
@@ -99,7 +99,7 @@
       "name": "Portfolio",
       "display": false,
       "group": false,
-      "tech": "CSS3, HTML5, JavaScript, Next.js, and React.js",
+      "tech": "CSS3, JavaScript, Next.js, React.js, and Vercel",
       "details": [],
       "github": [],
       "deployed": "",
