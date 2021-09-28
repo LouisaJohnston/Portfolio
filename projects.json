@@ -8,7 +8,7 @@
       "details": [
         "Contributed to a full-stack, real-time, event-based web messenger application built with Socket.IO",
         "Created React.js components to render information pertaining to authorized user conversations and managed state using React.js Redux and Redux Thunk to optimize performance",
-        "Improved the efficiency of retrieving PostgreSQL data by minimizing requests to the server, in addition to closing security vulnerabilities"
+        "Improved the efficiency of retrieving PostgreSQL data by minimizing requests to the server, in addition to closing security vulnerabilities related to user authentication and Socket.IO event emission"
       ],
       "github": ["https://github.com/LouisaJohnston/Chatterbox"],
       "deployed": "https://chatterbox-messenger.herokuapp.com/",
@@ -89,7 +89,7 @@
       "name": "Generate Good",
       "display": false,
       "group": false,
-      "tech": "C#, JavaScript, Next.js, MySQL, React.js, Sequelize, and TypeScript",
+      "tech": "AWS, C#, JavaScript, Next.js, MySQL, React.js, Sequelize, and TypeScript",
       "details": [],
       "github": [],
       "deployed": "",
