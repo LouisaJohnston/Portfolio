@@ -9,6 +9,7 @@ import Graph from "../components/Graph";
 
 export default function Index() {
   const [projects, setProjects] = useState([]);
+  const [techProps, setTechProps] = useState([]);
   const [mostUsed, setMostUsed] = useState([]);
 
   useEffect(() => {
@@ -20,17 +21,17 @@ export default function Index() {
       let techCount = {};
 
       projectData.forEach((project) => {
-        const techArray = project.tech.split(", ");
-        techArray.forEach((tech, i) => {
+        const techProps = project.tech.split(", ");
+        techProps.forEach((tech, i) => {
           if (tech.includes("and ")) {
             const newTech = tech.replace("and ", "");
-            return (techArray[i] = newTech);
+            return (techProps[i] = newTech);
           } else {
-            return (techArray[i] = tech);
+            return (techProps[i] = tech);
           }
-        }, techArray);
+        }, techProps);
 
-        techArray.forEach((tech) => {
+        techProps.forEach((tech) => {
           if (!techCount.hasOwnProperty(tech)) {
             techCount[tech] = 1;
           } else {
@@ -40,15 +41,16 @@ export default function Index() {
       });
 
       // define array to hold tech data for graph
-      let newArr = [];
-
+      let objArr = [];
+      let totalArr = [];
       if (Object.keys(techCount).length !== 0) {
-        Object.entries(techCount).forEach(([key, value]) =>
-          newArr.push({ tech: `${key}`, count: value })
-        );
+        Object.entries(techCount).forEach(([key, value]) => {
+          objArr.push({ tech: `${key}`, count: value });
+          totalArr.push(key);
+        });
       }
-
-      const descArr = newArr.sort((a, b) => {
+      setTechProps(totalArr)
+      const descArr = objArr.sort((a, b) => {
         return b.count - a.count;
       });
 
@@ -70,7 +72,7 @@ export default function Index() {
           content="HTML, CSS, JavaScript, React, Python, Full-Stack Developer"
         />
         <meta name="author" content="Louisa Johnston" />
-        <meta property="og:image" content="/Logo.png" />
+        <meta property="og:image" content="/LinkedInHead.png" />
         <meta
           property="og:description"
           content="A mobile-responsive personal portfolio using Next.js, React, JavaScript, HTML and CSS."
@@ -101,15 +103,18 @@ export default function Index() {
         <div className="skill-anchor" id="languages">
           <h2>Skills</h2>
           <div className="mobile-hide">
-            <h3 className="less-flush web-edge">Most Used Languages & Frameworks</h3>
+            <h3 className="less-flush web-edge">
+              Most Used Languages & Frameworks
+            </h3>
             <Graph projects={projects} mostUsed={mostUsed} />
           </div>
           <div id="lang-specs">
             <Tech
               head={"Tech Stack"}
-              body={
-                "C#, CSS3, EJS, Express.js, JavaScript, MongoDB, Mongoose, MySQL, Next.js, Node.js, PostgreSQL, Python, Public APIs, React.js, Redux, Redux Thunk, Sequelize, SQL, Socket.IO, TypeScript, and HTML5"
-              }
+              // body={
+              //   "C#, CSS3, EJS, Express.js, HTML5, JavaScript, MongoDB, Mongoose, MySQL, Next.js, Node.js, PostgreSQL, Python, Public APIs, React.js, Redux, Redux Thunk, Sequelize, SQL, Socket.IO, and TypeScript"
+              // }
+              techProps={techProps}
             />
             <Tech
               head={"Misc. Know-How"}
