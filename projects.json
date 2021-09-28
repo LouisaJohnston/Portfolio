@@ -4,7 +4,7 @@
       "name": "Chatterbox",
       "group": true,
       "display": true,
-      "tech": "Express.js, Heroku, Node.js, JavaScript, Node.js, PostgreSQL, React.js, Redux, Redux Thunk, Socket.IO, Sequelize, and SQL",
+      "tech": "Express.js, Heroku, Node.js, JavaScript, Node.js, PostgreSQL, React.js, React Redux, Redux Thunk, Socket.IO, Sequelize, and SQL",
       "details": [
         "Contributed to a full-stack, real-time, event-based web messenger application built with Socket.IO",
         "Created React.js components to render information pertaining to authorized user conversations and managed state using React.js Redux and Redux Thunk to optimize performance",
