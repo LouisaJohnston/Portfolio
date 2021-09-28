@@ -22,7 +22,7 @@
       "name": "Flick Picks",
       "display": true,
       "group": false,
-      "tech": "CSS3, EJS, Express.js, Node.js, PostgreSQL, JavaScript, and Sequelize",
+      "tech": "CSS3, EJS Templates, Express.js, Node.js, PostgreSQL, JavaScript, and Sequelize",
       "details": [
         "Created a web app using node.js and Express.js that allowed users to create an account or login with encrypted cookie storage and password hashing",
         "Applied EJS templates and Axios to render information from a third-party film API and allow users to save movies to user-specific lists",
@@ -72,7 +72,7 @@
       "name": "Paw-tel",
       "display": true,
       "group": true,
-      "tech": "CSS3, HTML5, JavaScript, Express.js, MERN Auth, MongoDB, Mongoose, and React.js",
+      "tech": "JavaScript, Node.js, Express.js, MERN Auth, MongoDB, Mongoose, and React.js",
       "details": [
         "Collaborated on a full-stack MERN app using complex authorization routes allowing users to register as either a pet owner or a pet hotel owner",
         "Employed React.js components to render information from a local API pertaining to user-specific pets or hotels, depending on the authorization route, with the ability to update and delete data fields",
@@ -99,7 +99,7 @@
       "name": "Portfolio",
       "display": false,
       "group": false,
-      "tech": "Next.js, React.js, JavaScript, HTML5, and CSS3",
+      "tech": "CSS3, HTML5, JavaScript, Next.js, and React.js",
       "details": [],
       "github": [],
       "deployed": "",
