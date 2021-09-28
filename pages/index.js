@@ -112,7 +112,7 @@ export default function Index() {
             <Tech
               head={"Misc. Know-How"}
               body={
-                "Adobe Creative Suite, Canva, Cargo, Figma, GitHub, Google Analytics, Heroku, NationBuilder, Netlify, Next.js, Postman, Pygame, Squarespace, Trello, Vercel, and WordPress"
+                "Adobe Creative Suite, Canva, Cargo, Figma, Google Analytics, NationBuilder, Postman, Squarespace, Trello, and WordPress"
               }
             />
           </div>
