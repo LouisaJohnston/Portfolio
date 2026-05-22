@@ -9,7 +9,6 @@ export default function SingleImage ({ name, image }) {
                     layout="fill"
                     objectFit="contain"
                     label={name}
-                    placeholder="blur"
                 />
         </div>
     );

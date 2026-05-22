@@ -68,7 +68,7 @@ export default function Index() {
         />
         <meta
           name="keywords"
-          content="HTML, CSS, JavaScript, React, Python, Full-Stack Developer"
+          content="Python, JavaScript, Django, SQL, GraphQL"
         />
         <meta name="author" content="Louisa Johnston" />
         <meta property="og:image" content="/LinkedInHead.png" />
@@ -99,43 +99,19 @@ export default function Index() {
           />
         </div>
 
-        <div className="skill-anchor" id="languages">
-          <h2>Skills</h2>
+        <div className="skill-anchor" id="tech">
+          <h2>Tech</h2>
           <div className="mobile-hide">
-            <h3 className="less-flush web-edge">
-              Most Used Languages & Frameworks
-            </h3>
+            <h3 className="less-flush web-edge">Most Used</h3>
             <Graph projects={projects} mostUsed={mostUsed} />
           </div>
           <div id="lang-specs">
-            <Tech head={"Tech Stack"} techProps={techProps} />
+            <Tech head={"Languages & Frameworks"} techProps={techProps} />
             <Tech
               head={"Misc. Know-How"}
-              body={"Datadog, Sentry, Adobe Creative Suite"}
+              body={"Datadog, Sentry, and Adobe Creative Suite"}
             />
           </div>
-        </div>
-        <div className="project-anchor" id="projects">
-          <h2>Projects</h2>
-          {projects.map((project, i) => {
-            return (
-              <div key={i.toString()}>
-                {project.display && (
-                  <Project
-                    key={i.toString()}
-                    i={i}
-                    name={project.name}
-                    group={project.group}
-                    tech={project.tech}
-                    details={project.details}
-                    github={project.github}
-                    deployed={project.deployed}
-                    images={project.images}
-                  />
-                )}
-              </div>
-            );
-          })}
         </div>
       </div>
     </div>

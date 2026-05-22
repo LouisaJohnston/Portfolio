@@ -366,6 +366,12 @@ nav p {
   display: block;
 }
 
+#social-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
 .non-hash {
   font-size: 1.3em;
 }

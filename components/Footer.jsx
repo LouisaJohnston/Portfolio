@@ -14,14 +14,6 @@ export default function Footer() {
         </a>
 
         <a
-          href="/LouisaJohnston_Resume.pdf"
-          download
-          className="block"
-        >
-          Download Resume
-        </a>
-
-        <a
           href="https://github.com/LouisaJohnston/Portfolio"
           target="_blank"
           rel="noopener noreferrer"

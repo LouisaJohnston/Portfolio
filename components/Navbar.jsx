@@ -30,32 +30,7 @@ export default function Navbar() {
               />
             </a>
           </div>
-
-          <div>
-            <a href="#top" style={activeHash === "#top" ? activeStyle : {}}>
-              <p className="desktop-nav">About Me</p>
-            </a>
-          </div>
-
-          <div>
-            <a
-              href="#languages"
-              style={activeHash === "#languages" ? activeStyle : {}}
-            >
-              <p className="desktop-nav">Skills</p>
-            </a>
-          </div>
-
-          <div>
-            <a
-              href="#projects"
-              style={activeHash === "#projects" ? activeStyle : {}}
-            >
-              <p className="desktop-nav">Projects</p>
-            </a>
-          </div>
-
-          <div>
+          <div id="social-links">
             <a
               href="https://github.com/LouisaJohnston"
               className="desktop-nav non-hash"
@@ -64,8 +39,6 @@ export default function Navbar() {
             >
               GitHub
             </a>
-          </div>
-          <div>
             <a
               href="https://www.linkedin.com/in/louisa-j/"
               className="desktop-nav non-hash"
@@ -94,11 +67,6 @@ export default function Navbar() {
           <li>
             <a href="#languages" onClick={closeMenu}>
               Skills
-            </a>
-          </li>
-          <li>
-            <a href="#projects" onClick={closeMenu}>
-              Projects
             </a>
           </li>
           <li>
