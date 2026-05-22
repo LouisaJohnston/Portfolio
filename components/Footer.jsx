@@ -15,7 +15,6 @@ export default function Footer() {
 
         <a
           href="/LouisaJohnston_Resume.pdf"
-          target="_blank"
           download
           className="block"
         >
