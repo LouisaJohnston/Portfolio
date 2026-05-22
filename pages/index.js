@@ -2,7 +2,6 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import IntroParagraph from "../components/IntroParagraph";
 import Tech from "../components/Tech";
-import Project from "../components/Project.jsx";
 import projectsJSON from "../projects.json";
 import Graph from "../components/Graph";
 
@@ -68,7 +67,7 @@ export default function Index() {
         />
         <meta
           name="keywords"
-          content="HTML, CSS, JavaScript, React, Python, Full-Stack Developer"
+          content="Python, JavaScript, Django, SQL, GraphQL"
         />
         <meta name="author" content="Louisa Johnston" />
         <meta property="og:image" content="/LinkedInHead.png" />
@@ -89,55 +88,29 @@ export default function Index() {
           <IntroParagraph
             hello={"Hello! "}
             paragraph={
-              "I'm an Oakland-based full-stack developer with particular interest in mission-driven projects and the arts."
+              "I'm a San Francisco-based software engineer with a focus on backend development and five years experience working on enterprise software. I have particular interest in mission-driven projects and the arts."
             }
           />
           <IntroParagraph
             paragraph={
-              "In my spare time, I can be found using the phone-a-friend approach to crossword puzzles."
+              "In my spare time, I can be found using the phone-a-friend approach to crossword puzzles or looking for birds."
             }
           />
         </div>
 
-        <div className="skill-anchor" id="languages">
-          <h2>Skills</h2>
+        <div className="skill-anchor" id="tech">
+          <h2>Tech</h2>
           <div className="mobile-hide">
-            <h3 className="less-flush web-edge">
-              Most Used Languages & Frameworks
-            </h3>
+            <h3 className="less-flush web-edge">Most Used</h3>
             <Graph projects={projects} mostUsed={mostUsed} />
           </div>
           <div id="lang-specs">
-            <Tech head={"Tech Stack"} techProps={techProps} />
+            <Tech head={"Languages & Frameworks"} techProps={techProps} />
             <Tech
               head={"Misc. Know-How"}
-              body={
-                "Adobe Creative Suite, Canva, Cargo, Figma, Google Analytics, NationBuilder, Postman, Squarespace, Trello, and WordPress"
-              }
+              body={"Datadog, Sentry, and Adobe Creative Suite"}
             />
           </div>
-        </div>
-        <div className="project-anchor" id="projects">
-          <h2>Projects</h2>
-          {projects.map((project, i) => {
-            return (
-              <div key={i.toString()}>
-                {project.display && (
-                  <Project
-                    key={i.toString()}
-                    i={i}
-                    name={project.name}
-                    group={project.group}
-                    tech={project.tech}
-                    details={project.details}
-                    github={project.github}
-                    deployed={project.deployed}
-                    images={project.images}
-                  />
-                )}
-              </div>
-            );
-          })}
         </div>
       </div>
     </div>

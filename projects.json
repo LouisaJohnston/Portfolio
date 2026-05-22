@@ -1,105 +1,18 @@
 {
-  "projects" : [
+  "projects": [
     {
-      "name": "Chatterbox",
-      "group": true,
+      "name": "Grove Collaborative",
       "display": true,
-      "tech": "Express.js, Heroku, Node.js, JavaScript, Node.js, PostgreSQL, React.js, React Redux, Redux Thunk, Socket.IO, Sequelize, and SQL",
-      "details": [
-        "Contributed to a full-stack, real-time, event-based web messenger application built with Socket.IO",
-        "Created React.js components to render information pertaining to authorized user conversations and managed state using React.js Redux and Redux Thunk to optimize performance",
-        "Improved the efficiency of retrieving PostgreSQL data by minimizing requests to the server, in addition to closing security vulnerabilities related to user authentication and Socket.IO event emission"
-      ],
-      "github": ["https://github.com/LouisaJohnston/Chatterbox"],
-      "deployed": "https://chatterbox-messenger.herokuapp.com/",
-      "images": [       
-        "/chat/login.png",
-        "/chat/fivemessages.png",
-        "/chat/allmessages.png",
-        "/chat/messageseen.png"]
-    }, 
-    {
-      "name": "Flick Picks",
-      "display": true,
-      "group": false,
-      "tech": "CSS3, EJS Templates, Express.js, Heroku, JavaScript, Node.js, PostgreSQL, Sequelize, and SQL",
-      "details": [
-        "Created a web app using node.js and Express.js that allowed users to create an account or login with encrypted cookie storage and password hashing",
-        "Applied EJS templates and Axios to render information from a third-party film API and allow users to save movies to user-specific lists",
-        "Saved user inputs (login information and movie comments/reviews) as database information fields through PostgreSQL, with full CRUD functionality"
-      ],
-      "github": ["https://github.com/LouisaJohnston/Flick_Picks"],
-      "deployed": "https://flickpicks-project2.herokuapp.com/",
-      "images": [        
-        "/flick/Home.png",
-        "/flick/SearchResults.png",
-        "/flick/WatchlistAfter.png",
-        "/flick/WatchlistDetails.png"
-    ]}, 
-    {
-      "name": "Bot Noggle",
-      "display": true,
-      "group": false,
-      "tech": "Python",
-      "details": [
-        "Built a desktop app version of Boggle using Python and Pygame to render a 4x4 grid out of a two-dimensional array of randomized letters corresponding to the real Boggle dice",
-        "Allowed users to check whether a given word exists in adjacent grid tiles (up, down, diagonally, forwards, and backwards)",
-        "Inserted dictionary information into a trie data structure to check against user input while optimizing the project’s time complexity"
-      ],
-      "github": ["https://github.com/LouisaJohnston/botNoggle"],
-      "deployed": "https://www.youtube.com/watch?v=MCWT7-8a7iE&ab_channel=LouisaJohnston",
-      "images": ["/bot/gameplay.png"]
-    },
-    {
-      "name": "Word-cross'd Puzzler",
-      "display": true,
-      "group": false,
-      "tech": "CSS3, HTML5, and JavaScript",
-      "details": [
-        "Designed a grid-based 5x5 puzzle to run in-browser for desktop computers",
-        "Utilized CSS3 and HTML5 properties to approximate the experience of a pen-and-paper puzzle with front-end styling considerations implemented through Flexbox",
-        "Developed functionality to show time elapsed, toggle between vertical and horizontal input focus flow, check answers, puzzle reveal, and game restart through DOM event listeners"
-      ],
-      "github": ["https://github.com/LouisaJohnston/Word-crossd_Puzzler"],
-      "deployed": "https://louisajohnston.github.io/",
-      "images": [       
-        "/puzzler/initial.png",
-        "/puzzler/check.png",
-        "/puzzler/instructions.png",
-        "/puzzler/winstate.png"]
-    },
-    {
-      "name": "Paw-tel",
-      "display": true,
-      "group": true,
-      "tech": "JavaScript, Node.js, Express.js, MERN Auth, MongoDB, Mongoose, Netlify, and React.js",
-      "details": [
-        "Collaborated on a full-stack MERN app using complex authorization routes allowing users to register as either a pet owner or a pet hotel owner",
-        "Employed React.js components to render information from a local API pertaining to user-specific pets or hotels, depending on the authorization route, with the ability to update and delete data fields",
-        "Stored user input through a server-side Mongoose database using MongoDB"
-      ],
-      "github": ["https://github.com/LouisaJohnston/Paw-tel", "https://github.com/LouisaJohnston/pawtel-client"],
-      "deployed": "https://pawtel-application.herokuapp.com/",
-        "images": [        
-        "/pawtel/homepage.png",
-        "/pawtel/petpage.png",
-        "/pawtel/register.png"
-    ]},
-    {
-      "name": "Generate Good",
-      "display": false,
-      "group": false,
-      "tech": "AWS, C#, JavaScript, Next.js, MySQL, React.js, SQL, and TypeScript",
+      "tech": "Python, Django, JavaScript, TypeScript, AWS, SQL, GraphQL, Shopify, Docker",
       "details": [],
       "github": [],
-      "deployed": "",
+      "deployed": "https://www.grove.co",
       "images": []
     },
     {
       "name": "Portfolio",
-      "display": false,
-      "group": false,
-      "tech": "CSS3, JavaScript, Next.js, React.js, and Vercel",
+      "display": true,
+      "tech": "CSS, JavaScript, Next.js, React.js, and Vercel",
       "details": [],
       "github": [],
       "deployed": "",
