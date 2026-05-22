@@ -1,18 +1,35 @@
 export default function Footer() {
-    return (
-        <div id='footer'>
-            <div id='personal'>
-                <h2 className ="flush-foot">Louisa Johnston</h2>
-                <p className ="flush-foot">Oakland, CA</p>
-                <p className ="flush-foot">She/Her/Hers</p>
-            </div>
-            <div id='contact'>
-                <a href='mailto:louisa.latham.johnston@gmail.com?subject=Hello!' className="block">Send an Email</a>
+  return (
+    <div id="footer">
+      <div id="personal">
+        <h2 className="flush-foot">Louisa Johnston</h2>
+        <p className="flush-foot">San Francisco, CA</p>
+      </div>
+      <div id="contact">
+        <a
+          href="mailto:louisa.latham.johnston@gmail.com?subject=Hello!"
+          className="block"
+        >
+          Send an Email
+        </a>
 
-                <a href='/LouisaJohnston_Resume.pdf' target='_blank' download className="block">Download Resume</a>
+        <a
+          href="/LouisaJohnston_Resume.pdf"
+          target="_blank"
+          download
+          className="block"
+        >
+          Download Resume
+        </a>
 
-                <a href='https://github.com/LouisaJohnston/Portfolio' target='_blank' rel="noopener noreferrer">Portfolio Repo</a>
-            </div>
-        </div>
-    );
-};
+        <a
+          href="https://github.com/LouisaJohnston/Portfolio"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Portfolio Repo
+        </a>
+      </div>
+    </div>
+  );
+}
