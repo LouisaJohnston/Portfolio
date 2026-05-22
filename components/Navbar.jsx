@@ -60,16 +60,6 @@ export default function Navbar() {
       <div id="mobile-links">
         <ul className={`mobile-nav menuNav ${isOpen ? "showMenu" : ""}`}>
           <li>
-            <a href="#about" onClick={closeMenu}>
-              About Me
-            </a>
-          </li>
-          <li>
-            <a href="#languages" onClick={closeMenu}>
-              Skills
-            </a>
-          </li>
-          <li>
             <a
               href="https://github.com/LouisaJohnston"
               onClick={closeMenu}
