@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 export default function Footer() {
     return (
         <div id='footer'>
@@ -9,17 +7,11 @@ export default function Footer() {
                 <p className ="flush-foot">She/Her/Hers</p>
             </div>
             <div id='contact'>
-                <Link href='mailto:louisa.latham.johnston@gmail.com?subject=Hello!'>
-                    <a className="block">Send an Email</a>
-                </Link>
+                <a href='mailto:louisa.latham.johnston@gmail.com?subject=Hello!' className="block">Send an Email</a>
 
-                <Link href='/LouisaJohnston_Resume.pdf'>
-                    <a target='_blank' download className="block">Download Resume</a>
-                </Link>
+                <a href='/LouisaJohnston_Resume.pdf' target='_blank' download className="block">Download Resume</a>
 
-                <Link href='https://github.com/LouisaJohnston/Portfolio'>
-                    <a target='_blank' download>Portfolio Repo</a>
-                </Link>
+                <a href='https://github.com/LouisaJohnston/Portfolio' target='_blank' rel="noopener noreferrer">Portfolio Repo</a>
             </div>
         </div>
     );
