@@ -1,86 +1,72 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
-import { NavHashLink } from 'react-router-hash-link';
+import { useState, useEffect } from 'react';
 import Hamburger from 'hamburger-react';
 
 export default function Navbar() {
 
     const [isOpen, setOpen] = useState(false)
+    const [activeHash, setActiveHash] = useState(null)
 
-    const handleOpen = () => {
-        setOpen(!isOpen);
-    }
+    useEffect(() => {
+        const onHashChange = () => setActiveHash(window.location.hash || null)
+        onHashChange()
+        window.addEventListener('hashchange', onHashChange)
+        return () => window.removeEventListener('hashchange', onHashChange)
+    }, [])
 
-    const closeMenu = () => {
-        setOpen(false)
-    }
+    const closeMenu = () => setOpen(false)
+    const activeStyle = { fontSize: '1.5em' }
 
     return (
         <nav className="navBar">
             <div id="future-flex">
                 <div id='nav-links'>
                     <div id="logo">
-                        <NavHashLink
-                            smooth to='#top'
-                            >
-                            <Image 
+                        <a href='#top'>
+                            <Image
                                 src='/portfolio_logotransparent.png'
                                 alt='LJ'
                                 width={80}
                                 height={80}
-                                label="Show menu"
                             />
-                        </NavHashLink>
+                        </a>
                     </div>
 
                     <div>
-                        <NavHashLink 
-                            smooth to='#top'
-                            activeClassName="selected"
-                            activeStyle={{ 'fontSize': '1.5em' }}>
+                        <a href='#top' style={activeHash === '#top' ? activeStyle : {}}>
                             <p className="desktop-nav">About Me</p>
-                        </NavHashLink>
+                        </a>
                     </div>
 
                     <div>
-                        <NavHashLink 
-                            smooth to='#languages'
-                            activeClassName="selected"
-                            activeStyle={{ 'fontSize': '1.5em' }}>
+                        <a href='#languages' style={activeHash === '#languages' ? activeStyle : {}}>
                             <p className="desktop-nav">Skills</p>
-                        </NavHashLink>
+                        </a>
                     </div>
 
                     <div>
-                        <NavHashLink 
-                            smooth to='#projects'
-                            activeClassName="selected"
-                            activeStyle={{ 'fontSize': '1.5em' }}>
+                        <a href='#projects' style={activeHash === '#projects' ? activeStyle : {}}>
                             <p className="desktop-nav">Projects</p>
-                        </NavHashLink>
+                        </a>
                     </div>
 
                     <div>
-                        <Link href='https://github.com/LouisaJohnston'>
-                            <a className="desktop-nav non-hash" 
-                                target='_blank'>GitHub</a>
-                        </Link>
+                        <a href='https://github.com/LouisaJohnston' className="desktop-nav non-hash" target='_blank' rel="noopener noreferrer">
+                            GitHub
+                        </a>
                     </div>
                     <div>
-                        <Link href='https://www.linkedin.com/in/louisa-johnston/'>
-                            <a className="desktop-nav non-hash" 
-                                target='_blank'>LinkedIn</a>
-                        </Link>
+                        <a href='https://www.linkedin.com/in/louisa-johnston/' className="desktop-nav non-hash" target='_blank' rel="noopener noreferrer">
+                            LinkedIn
+                        </a>
                     </div>
                 </div>
-                
+
                 <div>
                     <div className="mobile-nav hamburger">
-                        <Hamburger 
-                            toggled={isOpen} 
+                        <Hamburger
+                            toggled={isOpen}
                             toggle={setOpen}
-                            onClick={handleOpen}
                             color="#FBCC32"
                         />
                     </div>
@@ -91,38 +77,22 @@ export default function Navbar() {
             <div id="mobile-links">
                 <ul className={`mobile-nav menuNav ${isOpen ? "showMenu" : ""}`}>
                     <li>
-                        <Link href='#about'>
-                            <a onClick={() => closeMenu()}>About Me</a>
-                        </Link>
+                        <a href='#about' onClick={closeMenu}>About Me</a>
                     </li>
-
                     <li>
-                        <Link href='#languages'>
-                            <a onClick={() => closeMenu()}>Skills</a>
-                        </Link>
+                        <a href='#languages' onClick={closeMenu}>Skills</a>
                     </li>
-
                     <li>
-                        <Link href='#projects'>
-                            <a onClick={() => closeMenu()}>Projects</a>
-                        </Link>         
-                    </li>   
-
-                    <li>
-                        <Link href='https://github.com/LouisaJohnston'
-                            onClick={() => closeMenu()}>
-                            <a target='_blank'>GitHub</a>
-                        </Link>
+                        <a href='#projects' onClick={closeMenu}>Projects</a>
                     </li>
-
                     <li>
-                        <Link href='https://www.linkedin.com/in/louisa-johnston/'
-                            onClick={() => closeMenu()}>
-                            <a target='_blank'>LinkedIn</a>
-                        </Link>
+                        <a href='https://github.com/LouisaJohnston' onClick={closeMenu} target='_blank' rel="noopener noreferrer">GitHub</a>
+                    </li>
+                    <li>
+                        <a href='https://www.linkedin.com/in/louisa-johnston/' onClick={closeMenu} target='_blank' rel="noopener noreferrer">LinkedIn</a>
                     </li>
                 </ul>
-            </div>            
+            </div>
         </nav>
     );
-};
+}
