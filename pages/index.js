@@ -2,7 +2,6 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import IntroParagraph from "../components/IntroParagraph";
 import Tech from "../components/Tech";
-import Project from "../components/Project.jsx";
 import projectsJSON from "../projects.json";
 import Graph from "../components/Graph";
 
