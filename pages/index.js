@@ -89,7 +89,7 @@ export default function Index() {
           <IntroParagraph
             hello={"Hello! "}
             paragraph={
-              "I'm an Oakland-based full-stack developer with particular interest in mission-driven projects and the arts."
+              "I'm a San Francisco-based software engineer with a focus on backend development and five years experience working on enterprise software. I have particular interest in mission-driven projects and the arts."
             }
           />
           <IntroParagraph
@@ -111,9 +111,7 @@ export default function Index() {
             <Tech head={"Tech Stack"} techProps={techProps} />
             <Tech
               head={"Misc. Know-How"}
-              body={
-                "Adobe Creative Suite, Canva, Cargo, Figma, Google Analytics, NationBuilder, Postman, Squarespace, Trello, and WordPress"
-              }
+              body={"Datadog, Sentry, Adobe Creative Suite"}
             />
           </div>
         </div>
