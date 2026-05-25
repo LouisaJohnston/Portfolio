@@ -1,7 +1,8 @@
-// Token must belong to the queried user — required for private repo and contribution data.
+// GITHUB_TOKEN must belong to GITHUB_USER for private contribution + repo data.
+// GITHUB_USER_2 is optional — uses the same token to fetch public contributions only.
 const GH_GRAPHQL = 'https://api.github.com/graphql';
 
-const QUERY = `
+const FULL_QUERY = `
   query($username: String!) {
     user(login: $username) {
       contributionsCollection {
@@ -32,6 +33,60 @@ const QUERY = `
   }
 `;
 
+const CALENDAR_QUERY = `
+  query($username: String!) {
+    user(login: $username) {
+      contributionsCollection {
+        contributionCalendar {
+          totalContributions
+          weeks {
+            contributionDays {
+              contributionCount
+              date
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+async function ghFetch(query, variables, token) {
+  const res = await fetch(GH_GRAPHQL, {
+    method: 'POST',
+    headers: {
+      Authorization: `bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ query, variables }),
+  });
+  if (!res.ok) throw new Error(`GitHub API error ${res.status}`);
+  const json = await res.json();
+  if (json.errors) throw new Error(json.errors[0].message);
+  return json.data.user;
+}
+
+function mergeCalendars(cal1, cal2) {
+  const dayMap = {};
+  [cal1, cal2].forEach((cal) => {
+    cal.weeks.forEach((week) => {
+      week.contributionDays.forEach((day) => {
+        dayMap[day.date] = (dayMap[day.date] || 0) + day.contributionCount;
+      });
+    });
+  });
+
+  return {
+    total: Object.values(dayMap).reduce((s, c) => s + c, 0),
+    weeks: cal1.weeks.map((week) => ({
+      days: week.contributionDays.map((day) => ({
+        date: day.date,
+        count: dayMap[day.date] || 0,
+      })),
+    })),
+  };
+}
+
 function aggregateLanguages(repos) {
   const langMap = {};
   repos.forEach((repo) => {
@@ -42,46 +97,40 @@ function aggregateLanguages(repos) {
       langMap[node.name].size += size;
     });
   });
-  return Object.values(langMap).sort((a, b) => b.size - a.size).slice(0, 7);
+  return Object.values(langMap).sort((a, b) => b.size - a.size).slice(0, 3);
 }
 
 export default async function handler(req, res) {
   const token = process.env.GITHUB_TOKEN;
   const username = process.env.GITHUB_USER;
+  const username2 = process.env.GITHUB_USER_2;
 
   if (!token || !username) {
     return res.status(500).json({ error: 'GitHub env vars not configured' });
   }
 
   try {
-    const response = await fetch(GH_GRAPHQL, {
-      method: 'POST',
-      headers: {
-        Authorization: `bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query: QUERY, variables: { username } }),
-    });
+    const requests = [ghFetch(FULL_QUERY, { username }, token)];
+    if (username2) requests.push(ghFetch(CALENDAR_QUERY, { username: username2 }, token));
 
-    if (!response.ok) throw new Error(`GitHub API error ${response.status}`);
-    const json = await response.json();
-    if (json.errors) throw new Error(json.errors[0].message);
-    if (!json.data.user) throw new Error(`GitHub user "${username}" not found`);
+    const [u1, u2] = await Promise.all(requests);
 
-    const { contributionsCollection, repositories } = json.data.user;
-    const cal = contributionsCollection.contributionCalendar;
+    if (!u1) throw new Error(`GitHub user "${username}" not found`);
 
-    const contributions = {
-      total: cal.totalContributions,
-      weeks: cal.weeks.map((week) => ({
-        days: week.contributionDays.map((day) => ({
-          date: day.date,
-          count: day.contributionCount,
-        })),
-      })),
-    };
+    const cal1 = u1.contributionsCollection.contributionCalendar;
+    const contributions = u2
+      ? mergeCalendars(cal1, u2.contributionsCollection.contributionCalendar)
+      : {
+          total: cal1.totalContributions,
+          weeks: cal1.weeks.map((week) => ({
+            days: week.contributionDays.map((day) => ({
+              date: day.date,
+              count: day.contributionCount,
+            })),
+          })),
+        };
 
-    const languages = aggregateLanguages(repositories.nodes);
+    const languages = aggregateLanguages(u1.repositories.nodes);
 
     res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400');
     return res.status(200).json({ contributions, languages });
