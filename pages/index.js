@@ -3,60 +3,41 @@ import { useState, useEffect } from "react";
 import IntroParagraph from "../components/IntroParagraph";
 import Tech from "../components/Tech";
 import projectsJSON from "../projects.json";
-import Graph from "../components/Graph";
+import GitHubContributions from "../components/GitHubContributions";
 
 export default function Index() {
-  const [projects, setProjects] = useState([]);
   const [techProps, setTechProps] = useState([]);
-  const [mostUsed, setMostUsed] = useState([]);
+  const [githubData, setGithubData] = useState(null);
 
   useEffect(() => {
     try {
       const projectData = projectsJSON.projects;
-      setProjects(projectData);
-
-      // Define object to hold tech data for state
-      let techCount = {};
-
+      const techCount = {};
       projectData.forEach((project) => {
         const techArray = project.tech.split(", ");
         techArray.forEach((tech, i) => {
-          if (tech.includes("and ")) {
-            const newTech = tech.replace("and ", "");
-            return (techArray[i] = newTech);
-          } else {
-            return (techArray[i] = tech);
-          }
-        }, techArray);
-
+          if (tech.includes("and ")) techArray[i] = tech.replace("and ", "");
+        });
         techArray.forEach((tech) => {
-          if (!techCount.hasOwnProperty(tech)) {
-            techCount[tech] = 1;
-          } else {
-            techCount[tech]++;
-          }
+          techCount[tech] = (techCount[tech] || 0) + 1;
         });
       });
-
-      // define array to hold tech data for graph
-      let objArr = [];
-      let totalArr = [];
-      if (Object.keys(techCount).length !== 0) {
-        Object.entries(techCount).forEach(([key, value]) => {
-          objArr.push({ tech: `${key}`, count: value });
-          totalArr.push(key);
-        });
-      }
-      setTechProps(totalArr);
-      const descArr = objArr.sort((a, b) => {
-        return b.count - a.count;
-      });
-
-      setMostUsed(descArr.slice(0, 5));
+      setTechProps(Object.keys(techCount));
     } catch (err) {
       console.log(err);
     }
+
+    fetch("/api/github-contributions")
+      .then((r) => r.json())
+      .then((d) => {
+        if (!d.error) setGithubData(d);
+      })
+      .catch(() => {});
   }, []);
+
+  const languages = githubData?.languages ?? [];
+  const maxBytes = languages[0]?.size || 1;
+  const totalBytes = languages.reduce((s, l) => s + l.size, 0);
 
   return (
     <div className="container">
@@ -100,17 +81,40 @@ export default function Index() {
 
         <div className="skill-anchor" id="tech">
           <h2>Tech</h2>
-          <div className="mobile-hide">
-            <h3 className="less-flush web-edge">Most Used</h3>
-            <Graph projects={projects} mostUsed={mostUsed} />
-          </div>
           <div id="lang-specs">
             <Tech head={"Languages & Frameworks"} techProps={techProps} />
             <Tech
-              head={"Misc. Know-How"}
+              head={"Tools"}
               body={"Datadog, Sentry, and Adobe Creative Suite"}
             />
           </div>
+          {languages.length > 0 && (
+            <>
+              <h3 style={{ paddingTop: "36px" }}>Most Used Languages</h3>
+              <div className="graph-wrapper">
+                <div className="graph">
+                  <div className="bar-lines-container">
+                    {languages.map((lang, i) => (
+                      <div key={i} className="bar-holder lang-bar-holder">
+                        <div
+                          style={{ width: `${(lang.size / maxBytes) * 100}%` }}
+                          className="bar"
+                        >
+                          <span className="graphLabel">{lang.name} | </span>
+                          {((lang.size / totalBytes) * 100).toFixed(1)}%
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+
+        <div className="skill-anchor" id="github">
+          <h2>GitHub Activity Across All Profiles</h2>
+          <GitHubContributions contributions={githubData?.contributions} />
         </div>
       </div>
     </div>

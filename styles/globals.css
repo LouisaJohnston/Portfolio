@@ -208,9 +208,7 @@ li {
 }
 
 .graph-wrapper {
-  position: relative;
   max-width: 800px;
-  height: 300px;
   margin-top: 10px;
   margin-left: 25%;
   margin-right: 25%;
@@ -230,9 +228,7 @@ li {
 }
 
 .bar-lines-container {
-  position: absolute;
   width: 88%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   z-index: 1;
@@ -246,6 +242,8 @@ li {
 
 .bar {
   height: 50px;
+  min-width: 160px;
+  white-space: nowrap;
   background: #669999;
   border-radius: 5px 25px 25px 5px;
   border-bottom: 1px solid #fbcc32;
@@ -299,6 +297,57 @@ li {
   flex-direction: row;
   justify-content: flex-end;
   z-index: 2 !important;
+}
+
+/******** GitHub Contributions ********/
+.contrib-meta {
+  margin-left: 60px;
+  margin-right: 0;
+  font-size: 1em;
+  color: #4d2b43;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.contrib-count {
+  color: #c66403;
+  font-weight: 900;
+  font-size: 1.3em;
+}
+
+.contrib-grid {
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 3px;
+  height: 104px;
+  margin-left: 60px;
+  overflow-x: auto;
+}
+
+.contrib-week {
+  display: contents;
+}
+
+.contrib-day {
+  border-radius: 2px;
+  transition: opacity 0.15s;
+}
+
+.contrib-day:hover {
+  opacity: 0.7;
+}
+
+.lang-bar-holder {
+  cursor: default;
+}
+
+.contrib-status {
+  margin-left: 25%;
+  color: #669999;
+  font-style: italic;
+  font-size: 1em;
 }
 
 /******** Carousel ********/
@@ -674,5 +723,19 @@ nav a:hover {
     display: block;
     text-align: center;
     border-radius: 3px;
+  }
+
+  .graph-wrapper {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .contrib-meta,
+  .contrib-grid {
+    margin-left: 0;
+  }
+
+  .contrib-status {
+    margin-left: 5%;
   }
 }
