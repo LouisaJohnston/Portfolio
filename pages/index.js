@@ -8,6 +8,7 @@ import GitHubContributions from "../components/GitHubContributions";
 export default function Index() {
   const [techProps, setTechProps] = useState([]);
   const [githubData, setGithubData] = useState(null);
+  const [githubLoading, setGithubLoading] = useState(true);
 
   useEffect(() => {
     try {
@@ -29,10 +30,9 @@ export default function Index() {
 
     fetch("/api/github-contributions")
       .then((r) => r.json())
-      .then((d) => {
-        if (!d.error) setGithubData(d);
-      })
-      .catch(() => {});
+      .then((d) => { if (!d.error) setGithubData(d); })
+      .catch(() => {})
+      .finally(() => setGithubLoading(false));
   }, []);
 
   const languages = githubData?.languages ?? [];
@@ -88,33 +88,37 @@ export default function Index() {
               body={"Datadog, Sentry, and Adobe Creative Suite"}
             />
           </div>
-          {languages.length > 0 && (
+          {(githubLoading || languages.length > 0) && (
             <>
-              <h3 style={{ paddingTop: "36px" }}>Most Used Languages</h3>
-              <div className="graph-wrapper">
-                <div className="graph">
-                  <div className="bar-lines-container">
-                    {languages.map((lang, i) => (
-                      <div key={i} className="bar-holder lang-bar-holder">
-                        <div
-                          style={{ width: `${(lang.size / maxBytes) * 100}%` }}
-                          className="bar"
-                        >
-                          <span className="graphLabel">{lang.name} | </span>
-                          {((lang.size / totalBytes) * 100).toFixed(1)}%
+              <h3 style={{ paddingTop: "36px" }}>Top Three Languages</h3>
+              {githubLoading ? (
+                <p className="loading-state">Loading…</p>
+              ) : (
+                <div className="graph-wrapper">
+                  <div className="graph">
+                    <div className="bar-lines-container">
+                      {languages.map((lang, i) => (
+                        <div key={i} className="bar-holder lang-bar-holder">
+                          <div
+                            style={{ width: `${(lang.size / maxBytes) * 100}%` }}
+                            className="bar"
+                          >
+                            <span className="graphLabel">{lang.name} | </span>
+                            {((lang.size / totalBytes) * 100).toFixed(1)}%
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </>
           )}
         </div>
 
         <div className="skill-anchor" id="github">
           <h2>GitHub Activity Across All Profiles</h2>
-          <GitHubContributions contributions={githubData?.contributions} />
+          <GitHubContributions contributions={githubData?.contributions} loading={githubLoading} />
         </div>
       </div>
     </div>
