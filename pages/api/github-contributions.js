@@ -1,39 +1,8 @@
-// GITHUB_TOKEN must belong to GITHUB_USER for private contribution + repo data.
+// GITHUB_TOKEN must belong to GITHUB_USER for private contribution data.
 // GITHUB_USER_2 is optional — uses the same token to fetch public contributions only.
 const GH_GRAPHQL = 'https://api.github.com/graphql';
 
 const FULL_QUERY = `
-  query($username: String!) {
-    user(login: $username) {
-      contributionsCollection {
-        contributionCalendar {
-          totalContributions
-          weeks {
-            contributionDays {
-              contributionCount
-              date
-            }
-          }
-        }
-      }
-      repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
-        nodes {
-          languages(first: 10, orderBy: { field: SIZE, direction: DESC }) {
-            edges {
-              size
-              node {
-                name
-                color
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
-const CALENDAR_QUERY = `
   query($username: String!) {
     user(login: $username) {
       contributionsCollection {
@@ -87,19 +56,6 @@ function mergeCalendars(cal1, cal2) {
   };
 }
 
-function aggregateLanguages(repos) {
-  const langMap = {};
-  repos.forEach((repo) => {
-    repo.languages.edges.forEach(({ size, node }) => {
-      if (!langMap[node.name]) {
-        langMap[node.name] = { name: node.name, color: node.color, size: 0 };
-      }
-      langMap[node.name].size += size;
-    });
-  });
-  return Object.values(langMap).sort((a, b) => b.size - a.size).slice(0, 3);
-}
-
 export default async function handler(req, res) {
   const token = process.env.GITHUB_TOKEN;
   const username = process.env.GITHUB_USER;
@@ -111,7 +67,7 @@ export default async function handler(req, res) {
 
   try {
     const requests = [ghFetch(FULL_QUERY, { username }, token)];
-    if (username2) requests.push(ghFetch(CALENDAR_QUERY, { username: username2 }, token));
+    if (username2) requests.push(ghFetch(FULL_QUERY, { username: username2 }, token));
 
     const [u1, u2] = await Promise.all(requests);
 
@@ -130,10 +86,8 @@ export default async function handler(req, res) {
           })),
         };
 
-    const languages = aggregateLanguages(u1.repositories.nodes);
-
     res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400');
-    return res.status(200).json({ contributions, languages });
+    return res.status(200).json({ contributions });
   } catch (err) {
     console.error('GitHub contributions error:', err);
     return res.status(500).json({ error: err.message });

@@ -1,43 +1,19 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import IntroParagraph from "../components/IntroParagraph";
-import Tech from "../components/Tech";
-import projectsJSON from "../projects.json";
 import GitHubContributions from "../components/GitHubContributions";
 
 export default function Index() {
-  const [techProps, setTechProps] = useState([]);
   const [githubData, setGithubData] = useState(null);
   const [githubLoading, setGithubLoading] = useState(true);
 
   useEffect(() => {
-    try {
-      const projectData = projectsJSON.projects;
-      const techCount = {};
-      projectData.forEach((project) => {
-        const techArray = project.tech.split(", ");
-        techArray.forEach((tech, i) => {
-          if (tech.includes("and ")) techArray[i] = tech.replace("and ", "");
-        });
-        techArray.forEach((tech) => {
-          techCount[tech] = (techCount[tech] || 0) + 1;
-        });
-      });
-      setTechProps(Object.keys(techCount));
-    } catch (err) {
-      console.log(err);
-    }
-
     fetch("/api/github-contributions")
       .then((r) => r.json())
       .then((d) => { if (!d.error) setGithubData(d); })
       .catch(() => {})
       .finally(() => setGithubLoading(false));
   }, []);
-
-  const languages = githubData?.languages ?? [];
-  const maxBytes = languages[0]?.size || 1;
-  const totalBytes = languages.reduce((s, l) => s + l.size, 0);
 
   return (
     <div className="container">
@@ -77,43 +53,6 @@ export default function Index() {
               "In my spare time, I can be found using the phone-a-friend approach to crossword puzzles or looking for birds."
             }
           />
-        </div>
-
-        <div className="skill-anchor" id="tech">
-          <h2>Tech</h2>
-          <div id="lang-specs">
-            <Tech head={"Languages & Frameworks"} techProps={techProps} />
-            <Tech
-              head={"Tools"}
-              body={"Datadog, Sentry, and Adobe Creative Suite"}
-            />
-          </div>
-          {(githubLoading || languages.length > 0) && (
-            <>
-              <h3 style={{ paddingTop: "36px" }}>Top Three Languages</h3>
-              {githubLoading ? (
-                <p className="loading-state">Loading…</p>
-              ) : (
-                <div className="graph-wrapper">
-                  <div className="graph">
-                    <div className="bar-lines-container">
-                      {languages.map((lang, i) => (
-                        <div key={i} className="bar-holder lang-bar-holder">
-                          <div
-                            style={{ width: `${(lang.size / maxBytes) * 100}%` }}
-                            className="bar"
-                          >
-                            <span className="graphLabel">{lang.name} | </span>
-                            {((lang.size / totalBytes) * 100).toFixed(1)}%
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </>
-          )}
         </div>
 
         <div className="skill-anchor" id="github">
