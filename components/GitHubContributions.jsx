@@ -6,7 +6,12 @@ function levelColor(count) {
   return '#4d2b43';
 }
 
-export default function GitHubContributions({ contributions }) {
+export default function GitHubContributions({ contributions, loading }) {
+  if (loading) return (
+    <div className="graph-wrapper" style={{ marginLeft: "20%", marginRight: "20%", maxWidth: "none" }}>
+      <p className="loading-state">Loading…</p>
+    </div>
+  );
   if (!contributions) return null;
 
   return (
