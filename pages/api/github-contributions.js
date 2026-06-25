@@ -1,5 +1,7 @@
 // GITHUB_TOKEN must belong to GITHUB_USER for private contribution data.
 // GITHUB_USER_2 is optional — uses the same token to fetch public contributions only.
+import { shapeCalendar, mergeCalendars } from '../../lib/contributions';
+
 const GH_GRAPHQL = 'https://api.github.com/graphql';
 
 const FULL_QUERY = `
@@ -35,27 +37,6 @@ async function ghFetch(query, variables, token) {
   return json.data.user;
 }
 
-function mergeCalendars(cal1, cal2) {
-  const dayMap = {};
-  [cal1, cal2].forEach((cal) => {
-    cal.weeks.forEach((week) => {
-      week.contributionDays.forEach((day) => {
-        dayMap[day.date] = (dayMap[day.date] || 0) + day.contributionCount;
-      });
-    });
-  });
-
-  return {
-    total: Object.values(dayMap).reduce((s, c) => s + c, 0),
-    weeks: cal1.weeks.map((week) => ({
-      days: week.contributionDays.map((day) => ({
-        date: day.date,
-        count: dayMap[day.date] || 0,
-      })),
-    })),
-  };
-}
-
 export default async function handler(req, res) {
   const token = process.env.GITHUB_TOKEN;
   const username = process.env.GITHUB_USER;
@@ -76,15 +57,7 @@ export default async function handler(req, res) {
     const cal1 = u1.contributionsCollection.contributionCalendar;
     const contributions = u2
       ? mergeCalendars(cal1, u2.contributionsCollection.contributionCalendar)
-      : {
-          total: cal1.totalContributions,
-          weeks: cal1.weeks.map((week) => ({
-            days: week.contributionDays.map((day) => ({
-              date: day.date,
-              count: day.contributionCount,
-            })),
-          })),
-        };
+      : shapeCalendar(cal1);
 
     res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400');
     return res.status(200).json({ contributions });
