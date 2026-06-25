@@ -1,10 +1,4 @@
-function levelColor(count) {
-  if (count === 0) return '#ede9ed';
-  if (count <= 3) return '#b3d1d1';
-  if (count <= 7) return '#669999';
-  if (count <= 14) return '#4a7a7a';
-  return '#4d2b43';
-}
+import { levelColor } from '../lib/levelColor';
 
 export default function GitHubContributions({ contributions, loading }) {
   if (loading) return (
