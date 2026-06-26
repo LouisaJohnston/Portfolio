@@ -11,7 +11,7 @@ export default function GitHubContributions({ contributions, loading }) {
   const [active, setActive] = useState(null);
 
   if (loading) return (
-    <div className="graph-wrapper" style={{ marginLeft: "20%", marginRight: "20%", maxWidth: "none" }}>
+    <div className="graph-wrapper contrib-wrapper">
       <p className="loading-state">Loading…</p>
     </div>
   );
@@ -21,7 +21,7 @@ export default function GitHubContributions({ contributions, loading }) {
   const hide = () => setActive(null);
 
   return (
-    <div className="graph-wrapper" style={{ marginLeft: "20%", marginRight: "20%", maxWidth: "none" }}>
+    <div className="graph-wrapper contrib-wrapper">
       <p className="contrib-meta">
         <span className="contrib-count">{contributions.total.toLocaleString()}</span>
         {' '}contributions in the last year
