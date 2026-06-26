@@ -16,9 +16,9 @@ const singleDay = {
 };
 
 describe("GitHubContributions", () => {
-  it("shows a loading message while loading", () => {
+  it("shows a loading spinner while loading", () => {
     render(<GitHubContributions loading={true} contributions={null} />);
-    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveAccessibleName(/loading/i);
   });
 
   it("renders nothing when not loading and no data is available", () => {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { levelColor } from '../lib/levelColor';
 import { formatDate } from '../lib/formatDate';
+import ContribSpinner from './ContribSpinner';
 
 function formatCount(count) {
   return `${count} contribution${count !== 1 ? 's' : ''}`;
@@ -12,7 +13,7 @@ export default function GitHubContributions({ contributions, loading }) {
 
   if (loading) return (
     <div className="graph-wrapper contrib-wrapper">
-      <p className="loading-state">Loading…</p>
+      <ContribSpinner />
     </div>
   );
   if (!contributions) return null;
