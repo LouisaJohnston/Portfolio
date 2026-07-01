@@ -52,6 +52,33 @@ describe("GitHubContributions", () => {
     expect(container.querySelectorAll(".contrib-day")).toHaveLength(3);
   });
 
+  it("fills the rest of the in-progress month with empty squares that stay out of the tab order", () => {
+    // singleDay only has 2026-01-01; the remaining days of January render as
+    // upcoming squares that aren't focusable or exposed to assistive tech.
+    const { container } = render(
+      <GitHubContributions loading={false} contributions={singleDay} />
+    );
+    const upcoming = container.querySelectorAll(".contrib-upcoming");
+    expect(upcoming.length).toBeGreaterThan(0);
+    expect(upcoming[0]).toHaveAttribute("aria-hidden", "true");
+    expect(upcoming[0]).not.toHaveAttribute("tabindex");
+    // They are not counted among the interactive day cells.
+    expect(container.querySelectorAll(".contrib-day")).toHaveLength(1);
+  });
+
+  it("shows only the date (no contribution count) when hovering a future day", () => {
+    // The first upcoming square in singleDay is 2026-01-02, a Friday.
+    const { container } = render(
+      <GitHubContributions loading={false} contributions={singleDay} />
+    );
+    fireEvent.pointerEnter(container.querySelector(".contrib-upcoming"), {
+      pointerType: "mouse",
+    });
+    const tooltip = screen.getByRole("tooltip");
+    expect(tooltip).toHaveTextContent("Friday, January 2, 2026");
+    expect(tooltip).not.toHaveTextContent(/contribution/);
+  });
+
   it("renders a single-letter header for each weekday column", () => {
     const { container } = render(
       <GitHubContributions loading={false} contributions={sampleContributions} />

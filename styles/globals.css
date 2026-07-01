@@ -389,7 +389,8 @@ li {
 }
 
 .contrib-day,
-.contrib-empty {
+.contrib-empty,
+.contrib-upcoming {
   aspect-ratio: 1;
   border-radius: 2px;
 }

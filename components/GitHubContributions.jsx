@@ -96,7 +96,7 @@ export default function GitHubContributions({ contributions, loading }) {
             ))}
             {month.weeks.map((week, wi) =>
               week.map((day, di) =>
-                day ? (
+                day && !day.upcoming ? (
                   <div
                     key={`${wi}-${di}`}
                     className="contrib-day"
@@ -109,6 +109,19 @@ export default function GitHubContributions({ contributions, loading }) {
                     onBlur={hide}
                     onClick={(e) => toggle(day, e.currentTarget)}
                   />
+                ) : day ? (
+                  // Upcoming days of the in-progress month: empty squares that
+                  // complete the month. Kept out of the tab order, but a hover
+                  // or tap reveals a date-only tooltip (no contribution count).
+                  <div
+                    key={`${wi}-${di}`}
+                    className="contrib-upcoming"
+                    aria-hidden="true"
+                    style={{ backgroundColor: levelColor(0) }}
+                    onPointerEnter={(e) => e.pointerType !== 'touch' && show(day, e.currentTarget)}
+                    onPointerLeave={(e) => e.pointerType !== 'touch' && hide()}
+                    onClick={(e) => toggle(day, e.currentTarget)}
+                  />
                 ) : (
                   <div key={`${wi}-${di}`} className="contrib-empty" aria-hidden="true" />
                 )
@@ -117,8 +130,14 @@ export default function GitHubContributions({ contributions, loading }) {
           </div>
           {active && (
             <div ref={tipRef} className="contrib-tooltip" role="tooltip" style={{ left: active.x, top: active.y }}>
-              <strong>{formatCount(active.count)}</strong>
-              <span className="contrib-tooltip-date">{formatDate(active.date)}</span>
+              {active.upcoming ? (
+                formatDate(active.date)
+              ) : (
+                <>
+                  <strong>{formatCount(active.count)}</strong>
+                  <span className="contrib-tooltip-date">{formatDate(active.date)}</span>
+                </>
+              )}
             </div>
           )}
         </div>
