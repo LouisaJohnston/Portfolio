@@ -29,7 +29,7 @@ export default function GitHubContributions({ contributions, loading }) {
   }, [active]);
 
   if (loading) return (
-    <div className="graph-wrapper contrib-wrapper">
+    <div className="graph-wrapper contrib-wrapper contrib-loading">
       <ContribSpinner />
     </div>
   );

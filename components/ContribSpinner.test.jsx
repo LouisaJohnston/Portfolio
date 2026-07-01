@@ -9,8 +9,10 @@ describe("ContribSpinner", () => {
     expect(status).toHaveAccessibleName(/loading/i);
   });
 
-  it("renders a 2x2 square of grid-style tiles", () => {
+  it("renders a 3x3 block of grid-style tiles with an empty center", () => {
     const { container } = render(<ContribSpinner />);
-    expect(container.querySelectorAll(".contrib-loader span")).toHaveLength(4);
+    // 9 cells total: the 8-cell ring plus the empty center placeholder.
+    expect(container.querySelectorAll(".contrib-loader span")).toHaveLength(9);
+    expect(container.querySelectorAll(".contrib-loader-gap")).toHaveLength(1);
   });
 });
