@@ -1,13 +1,23 @@
 // GITHUB_TOKEN must belong to GITHUB_USER for private contribution data.
 // GITHUB_USER_2 is optional — uses the same token to fetch public contributions only.
-import { shapeCalendar, mergeCalendars } from '../../lib/contributions';
+import { combineCalendars, yearWindows } from '../../lib/contributions';
 
 const GH_GRAPHQL = 'https://api.github.com/graphql';
 
-const FULL_QUERY = `
+// createdAt tells us how far back to page; contributionsCollection is capped at
+// one year per query, so full history needs one windowed query per year.
+const META_QUERY = `
   query($username: String!) {
     user(login: $username) {
-      contributionsCollection {
+      createdAt
+    }
+  }
+`;
+
+const CALENDAR_QUERY = `
+  query($username: String!, $from: DateTime!, $to: DateTime!) {
+    user(login: $username) {
+      contributionsCollection(from: $from, to: $to) {
         contributionCalendar {
           totalContributions
           weeks {
@@ -37,6 +47,21 @@ async function ghFetch(query, variables, token) {
   return json.data.user;
 }
 
+// Fetch a user's entire contribution history as an array of per-year calendars,
+// or null if the user doesn't exist.
+async function fetchUserHistory(username, token) {
+  const meta = await ghFetch(META_QUERY, { username }, token);
+  if (!meta) return null;
+  const windows = yearWindows(meta.createdAt);
+  return Promise.all(
+    windows.map((w) =>
+      ghFetch(CALENDAR_QUERY, { username, from: w.from, to: w.to }, token).then(
+        (u) => u.contributionsCollection.contributionCalendar
+      )
+    )
+  );
+}
+
 export default async function handler(req, res) {
   const token = process.env.GITHUB_TOKEN;
   const username = process.env.GITHUB_USER;
@@ -47,17 +72,14 @@ export default async function handler(req, res) {
   }
 
   try {
-    const requests = [ghFetch(FULL_QUERY, { username }, token)];
-    if (username2) requests.push(ghFetch(FULL_QUERY, { username: username2 }, token));
+    const requests = [fetchUserHistory(username, token)];
+    if (username2) requests.push(fetchUserHistory(username2, token));
 
-    const [u1, u2] = await Promise.all(requests);
+    const [h1, h2] = await Promise.all(requests);
 
-    if (!u1) throw new Error(`GitHub user "${username}" not found`);
+    if (!h1) throw new Error(`GitHub user "${username}" not found`);
 
-    const cal1 = u1.contributionsCollection.contributionCalendar;
-    const contributions = u2
-      ? mergeCalendars(cal1, u2.contributionsCollection.contributionCalendar)
-      : shapeCalendar(cal1);
+    const contributions = combineCalendars(h2 ? [h1, h2] : [h1]);
 
     res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400');
     return res.status(200).json({ contributions });
