@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { levelColor } from '../lib/levelColor';
 import { formatDate } from '../lib/formatDate';
-import { recentGrid, WEEKDAY_LABELS } from '../lib/contributions';
+import { monthlyGrids, WEEKDAY_LABELS } from '../lib/contributions';
 import ContribSpinner from './ContribSpinner';
 
 function formatCount(count) {
@@ -11,6 +11,9 @@ function formatCount(count) {
 export default function GitHubContributions({ contributions, loading }) {
   // The day the pointer/focus is currently on, plus where to anchor the tooltip.
   const [active, setActive] = useState(null);
+  // Months back from the most recent (0 = current month). Kept as an offset so
+  // it survives the data loading in without needing to know the month count.
+  const [monthsBack, setMonthsBack] = useState(0);
   const tipRef = useRef(null);
 
   // Keep the tooltip inside the grid area horizontally. Without this an edge
@@ -32,7 +35,16 @@ export default function GitHubContributions({ contributions, loading }) {
   );
   if (!contributions) return null;
 
-  const grid = recentGrid(contributions);
+  const months = monthlyGrids(contributions);
+  if (months.length === 0) return null;
+
+  // Clamp so an offset from a wider dataset can't fall off a narrower one.
+  const maxBack = months.length - 1;
+  const offset = Math.min(monthsBack, maxBack);
+  const month = months[maxBack - offset];
+
+  const goOlder = () => { setMonthsBack(Math.min(offset + 1, maxBack)); setActive(null); };
+  const goNewer = () => { setMonthsBack(Math.max(offset - 1, 0)); setActive(null); };
 
   const anchor = (day, el) => ({
     ...day,
@@ -48,44 +60,67 @@ export default function GitHubContributions({ contributions, loading }) {
   return (
     <div className="graph-wrapper contrib-wrapper">
       <div className="contrib-block">
-        <p className="contrib-meta">
-          <span className="contrib-count">{grid.total.toLocaleString()}</span>
-          {' '}contributions in the last month
-        </p>
-        <div className="contrib-grid-area">
-        <div className="contrib-grid">
-          {WEEKDAY_LABELS.map((label, i) => (
-            <div key={`head-${i}`} className="contrib-head" aria-hidden="true">
-              {label}
-            </div>
-          ))}
-          {grid.weeks.map((week, wi) =>
-            week.map((day, di) =>
-              day ? (
-                <div
-                  key={`${wi}-${di}`}
-                  className="contrib-day"
-                  tabIndex={0}
-                  aria-label={`${day.date}: ${formatCount(day.count)}`}
-                  style={{ backgroundColor: levelColor(day.count) }}
-                  onPointerEnter={(e) => e.pointerType !== 'touch' && show(day, e.currentTarget)}
-                  onPointerLeave={(e) => e.pointerType !== 'touch' && hide()}
-                  onFocus={(e) => show(day, e.currentTarget)}
-                  onBlur={hide}
-                  onClick={(e) => toggle(day, e.currentTarget)}
-                />
-              ) : (
-                <div key={`${wi}-${di}`} className="contrib-empty" aria-hidden="true" />
-              )
-            )
-          )}
-        </div>
-        {active && (
-          <div ref={tipRef} className="contrib-tooltip" role="tooltip" style={{ left: active.x, top: active.y }}>
-            <strong>{formatCount(active.count)}</strong>
-            <span className="contrib-tooltip-date">{formatDate(active.date)}</span>
+        <div className="contrib-nav">
+          <p className="contrib-meta">
+            <span className="contrib-count">{month.total.toLocaleString()}</span>
+            {' '}contributions in{' '}
+            <span className="contrib-month">{month.label}</span>
+          </p>
+          <div className="contrib-arrows">
+            <button
+              type="button"
+              className="contrib-arrow"
+              onClick={goOlder}
+              disabled={offset >= maxBack}
+              aria-label="Previous month"
+            >
+              &lsaquo;
+            </button>
+            <button
+              type="button"
+              className="contrib-arrow"
+              onClick={goNewer}
+              disabled={offset <= 0}
+              aria-label="Next month"
+            >
+              &rsaquo;
+            </button>
           </div>
-        )}
+        </div>
+        <div className="contrib-grid-area">
+          <div className="contrib-grid">
+            {WEEKDAY_LABELS.map((label, i) => (
+              <div key={`head-${i}`} className="contrib-head" aria-hidden="true">
+                {label}
+              </div>
+            ))}
+            {month.weeks.map((week, wi) =>
+              week.map((day, di) =>
+                day ? (
+                  <div
+                    key={`${wi}-${di}`}
+                    className="contrib-day"
+                    tabIndex={0}
+                    aria-label={`${day.date}: ${formatCount(day.count)}`}
+                    style={{ backgroundColor: levelColor(day.count) }}
+                    onPointerEnter={(e) => e.pointerType !== 'touch' && show(day, e.currentTarget)}
+                    onPointerLeave={(e) => e.pointerType !== 'touch' && hide()}
+                    onFocus={(e) => show(day, e.currentTarget)}
+                    onBlur={hide}
+                    onClick={(e) => toggle(day, e.currentTarget)}
+                  />
+                ) : (
+                  <div key={`${wi}-${di}`} className="contrib-empty" aria-hidden="true" />
+                )
+              )
+            )}
+          </div>
+          {active && (
+            <div ref={tipRef} className="contrib-tooltip" role="tooltip" style={{ left: active.x, top: active.y }}>
+              <strong>{formatCount(active.count)}</strong>
+              <span className="contrib-tooltip-date">{formatDate(active.date)}</span>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -16,6 +16,15 @@ const singleDay = {
   weeks: [{ days: [{ date: "2026-01-01", count: 1 }] }],
 };
 
+// Spans two calendar months so the navigation arrows have somewhere to go.
+const twoMonths = {
+  total: 0,
+  weeks: [
+    { days: [{ date: "2026-05-15", count: 3 }] },
+    { days: [{ date: "2026-06-10", count: 7 }] },
+  ],
+};
+
 describe("GitHubContributions", () => {
   it("shows a loading spinner while loading", () => {
     render(<GitHubContributions loading={true} contributions={null} />);
@@ -29,11 +38,11 @@ describe("GitHubContributions", () => {
     expect(container).toBeEmptyDOMElement();
   });
 
-  it("renders the last-month contribution total, not the full-year figure", () => {
+  it("renders the selected month's total and a 'Month, Year' label", () => {
     render(<GitHubContributions loading={false} contributions={sampleContributions} />);
     expect(screen.getByText("25")).toBeInTheDocument(); // 0 + 5 + 20
     expect(screen.queryByText("1,234")).not.toBeInTheDocument();
-    expect(screen.getByText(/contributions in the last month/i)).toBeInTheDocument();
+    expect(screen.getByText("January, 2026")).toBeInTheDocument();
   });
 
   it("renders one interactive cell per day across all weeks", () => {
@@ -133,6 +142,51 @@ describe("GitHubContributions", () => {
       expect(screen.getByRole("tooltip")).toHaveTextContent("5 contributions");
 
       fireEvent.click(cell);
+      expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
+    });
+  });
+
+  describe("month navigation", () => {
+    const prevButton = () => screen.getByRole("button", { name: /previous month/i });
+    const nextButton = () => screen.getByRole("button", { name: /next month/i });
+
+    it("starts on the most recent month", () => {
+      render(<GitHubContributions loading={false} contributions={twoMonths} />);
+      expect(screen.getByText("June, 2026")).toBeInTheDocument();
+      expect(screen.getByText("7")).toBeInTheDocument();
+    });
+
+    it("steps back to the previous month with the previous arrow", () => {
+      render(<GitHubContributions loading={false} contributions={twoMonths} />);
+      fireEvent.click(prevButton());
+      expect(screen.getByText("May, 2026")).toBeInTheDocument();
+      expect(screen.getByText("3")).toBeInTheDocument();
+    });
+
+    it("returns to the newer month with the next arrow", () => {
+      render(<GitHubContributions loading={false} contributions={twoMonths} />);
+      fireEvent.click(prevButton());
+      fireEvent.click(nextButton());
+      expect(screen.getByText("June, 2026")).toBeInTheDocument();
+    });
+
+    it("disables the next arrow on the most recent month", () => {
+      render(<GitHubContributions loading={false} contributions={twoMonths} />);
+      expect(nextButton()).toBeDisabled();
+      expect(prevButton()).not.toBeDisabled();
+    });
+
+    it("disables the previous arrow once on the oldest month", () => {
+      render(<GitHubContributions loading={false} contributions={twoMonths} />);
+      fireEvent.click(prevButton());
+      expect(prevButton()).toBeDisabled();
+    });
+
+    it("dismisses an open tooltip when the month changes", () => {
+      render(<GitHubContributions loading={false} contributions={twoMonths} />);
+      fireEvent.click(screen.getByLabelText("2026-06-10: 7 contributions"));
+      expect(screen.getByRole("tooltip")).toBeInTheDocument();
+      fireEvent.click(prevButton());
       expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
     });
   });
