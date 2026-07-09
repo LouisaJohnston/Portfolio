@@ -2,6 +2,11 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Hamburger from "hamburger-react";
 
+const SOCIAL_LINKS = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/louisa-j/" },
+  { label: "Personal GitHub", href: "https://github.com/LouisaJohnston" },
+];
+
 export default function Navbar() {
   const [isOpen, setOpen] = useState(false);
   const [activeHash, setActiveHash] = useState(null);
@@ -31,22 +36,17 @@ export default function Navbar() {
             </a>
           </div>
           <div id="social-links">
-            <a
-              href="https://github.com/LouisaJohnston"
-              className="desktop-nav non-hash"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/louisa-j/"
-              className="desktop-nav non-hash"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
+            {SOCIAL_LINKS.map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                className="desktop-nav non-hash"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {label}
+              </a>
+            ))}
           </div>
         </div>
 
@@ -59,26 +59,18 @@ export default function Navbar() {
 
       <div id="mobile-links">
         <ul className={`mobile-nav menuNav ${isOpen ? "showMenu" : ""}`}>
-          <li>
-            <a
-              href="https://github.com/LouisaJohnston"
-              onClick={closeMenu}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/louisa-johnston/"
-              onClick={closeMenu}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-          </li>
+          {SOCIAL_LINKS.map(({ label, href }) => (
+            <li key={label}>
+              <a
+                href={href}
+                onClick={closeMenu}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </nav>
