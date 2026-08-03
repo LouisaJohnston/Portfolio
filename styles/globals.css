@@ -367,53 +367,110 @@ li {
   font-size: 1.5rem;
 }
 
-/* One column per weekday (Sun..Sat), one row per week of the last month, with
-   a single-letter header row on top. Centered as a block that stays narrower
-   than the surrounding body text. */
-.contrib-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 80px);
-  column-gap: 20px;
-  row-gap: 10px;
-  width: max-content;
+/* The sky the flock flies in: a fixed-height stage that birds are positioned
+   within by percentage, so the V scales with the month. Also the positioning
+   context for the tooltip. */
+.contrib-sky {
+  position: relative;
+  width: 680px;
+  max-width: 100%;
+  height: 280px;
   margin: 0;
 }
 
-.contrib-head {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1;
-  text-align: center;
-  color: #4d2b43;
-  margin-bottom: 4px;
+/* The whole flock drifts gently in a slow loop; the sky as a whole holds still.
+   Paused on hover so a bird stays put under its tooltip. */
+.flock {
+  position: absolute;
+  inset: 0;
+  animation: flock-drift 9s ease-in-out infinite;
 }
 
-.contrib-day,
-.contrib-empty,
-.contrib-upcoming {
-  aspect-ratio: 1;
-  border-radius: 2px;
+.contrib-sky:hover .flock {
+  animation-play-state: paused;
 }
 
-.contrib-empty {
-  background: transparent;
+/* Each bird sits at a percentage point in the sky, centered on that point. */
+.bird-slot {
+  position: absolute;
+  width: 46px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 
-.contrib-day {
-  transition: opacity 0.15s;
+.bird-slot:focus {
+  outline: none;
 }
 
-.contrib-day:hover {
-  opacity: 0.7;
-}
-
-.contrib-day:focus-visible {
+.bird-slot:focus-visible .bird {
   outline: 2px solid #c66403;
-  outline-offset: 1px;
+  outline-offset: 3px;
+  border-radius: 3px;
 }
 
-.contrib-grid-area {
-  position: relative;
+/* The bird sprite bobs on its own rhythm; hover pauses the bob too. */
+.bird {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  animation: bird-bob 2.4s ease-in-out infinite;
+  transition: transform 0.15s;
+}
+
+.bird-slot:hover .bird {
+  transform: scale(1.25);
+}
+
+.contrib-sky:hover .bird {
+  animation-play-state: paused;
+}
+
+/* The five wing frames cycle high -> flat -> low and back for a smooth flap.
+   Each frame is shown for its slice of the cycle (only one visible at a time);
+   the inline animation-delay per bird staggers the flock out of lockstep. */
+.bird-frame {
+  animation-duration: 0.9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.bird-frame-0 { animation-name: bird-flap-0; }
+.bird-frame-1 { animation-name: bird-flap-1; }
+.bird-frame-2 { animation-name: bird-flap-2; }
+.bird-frame-3 { animation-name: bird-flap-3; }
+.bird-frame-4 { animation-name: bird-flap-4; }
+
+/* Cycle order: 0 (high) -> 1 -> 2 (flat) -> 3 -> 4 (low) -> 3 -> 2 -> 1, so the
+   wings sweep down and back up smoothly over eight equal slices. */
+@keyframes bird-flap-0 { 0%, 12.49% { opacity: 1; } 12.5%, 100% { opacity: 0; } }
+@keyframes bird-flap-1 { 0%, 12.49% { opacity: 0; } 12.5%, 24.99% { opacity: 1; } 25%, 87.49% { opacity: 0; } 87.5%, 100% { opacity: 1; } }
+@keyframes bird-flap-2 { 0%, 24.99% { opacity: 0; } 25%, 37.49% { opacity: 1; } 37.5%, 74.99% { opacity: 0; } 75%, 87.49% { opacity: 1; } 87.5%, 100% { opacity: 0; } }
+@keyframes bird-flap-3 { 0%, 37.49% { opacity: 0; } 37.5%, 49.99% { opacity: 1; } 50%, 62.49% { opacity: 0; } 62.5%, 74.99% { opacity: 1; } 75%, 100% { opacity: 0; } }
+@keyframes bird-flap-4 { 0%, 49.99% { opacity: 0; } 50%, 62.49% { opacity: 1; } 62.5%, 100% { opacity: 0; } }
+
+@keyframes bird-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes flock-drift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(10px, -6px); }
+  50% { transform: translate(0, -12px); }
+  75% { transform: translate(-10px, -6px); }
+}
+
+/* Empty months: no birds, just a quiet note centered in the sky. */
+.contrib-empty-msg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  color: #669999;
+  font-style: italic;
+  font-size: 1.1rem;
 }
 
 .contrib-tooltip {
@@ -503,6 +560,18 @@ li {
 @media (prefers-reduced-motion: reduce) {
   .contrib-loader span {
     animation-duration: 3s;
+  }
+
+  /* Ground the flock — no sweeping drift across the sky, no bob — but keep the
+     wings flapping (a little slower) so the birds still read as flying rather
+     than frozen mid-air. */
+  .flock,
+  .bird {
+    animation: none;
+  }
+
+  .bird-frame {
+    animation-duration: 1.6s;
   }
 }
 
@@ -900,19 +969,21 @@ nav a:hover {
     max-width: 92vw;
   }
 
-  /* The last-month grid is only seven columns wide, so let the cells grow to
-     fill the wrapper for large, easy tap targets. */
   .contrib-block {
     width: 100%;
   }
 
-  .contrib-grid {
-    grid-template-columns: repeat(7, 1fr);
-    column-gap: 8px;
+  /* Shorter sky and smaller birds so the flock fits a phone screen. */
+  .contrib-sky {
     width: 100%;
+    height: 220px;
   }
 
-  /* Cells (and so the grid) are shorter on mobile, so reserve less height. */
+  .bird-slot {
+    width: 34px;
+  }
+
+  /* The sky is shorter on mobile, so reserve less height while loading. */
   .contrib-loading {
     min-height: 300px;
   }
