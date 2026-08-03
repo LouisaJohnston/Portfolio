@@ -76,6 +76,14 @@ h2 {
   margin-top: 8%;
 }
 
+/* Subtitle under a section heading; aligns to the h2's left edge. */
+.github-caption {
+  margin: 0 20% 2rem;
+  color: #669999;
+  font-style: italic;
+  font-size: 1.2em;
+}
+
 h3 {
   color: #4d2b43;
   margin-left: 25%;
@@ -862,6 +870,11 @@ nav a:hover {
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 1%;
+  }
+
+  .github-caption {
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
   h3 {
