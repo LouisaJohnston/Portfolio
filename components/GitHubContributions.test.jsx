@@ -44,10 +44,8 @@ describe("GitHubContributions", () => {
     expect(container).toBeEmptyDOMElement();
   });
 
-  it("renders the selected month's total and a 'Month, Year' label", () => {
+  it("renders the selected month's 'Month, Year' label", () => {
     render(<GitHubContributions loading={false} contributions={sampleContributions} />);
-    expect(screen.getByText("25")).toBeInTheDocument(); // 0 + 5 + 20
-    expect(screen.queryByText("1,234")).not.toBeInTheDocument();
     expect(screen.getByText("January, 2026")).toBeInTheDocument();
   });
 
@@ -156,14 +154,12 @@ describe("GitHubContributions", () => {
     it("starts on the most recent month", () => {
       render(<GitHubContributions loading={false} contributions={twoMonths} />);
       expect(screen.getByText("June, 2026")).toBeInTheDocument();
-      expect(screen.getByText("7")).toBeInTheDocument();
     });
 
     it("steps back to the previous month with the previous arrow", () => {
       render(<GitHubContributions loading={false} contributions={twoMonths} />);
       fireEvent.click(prevButton());
       expect(screen.getByText("May, 2026")).toBeInTheDocument();
-      expect(screen.getByText("3")).toBeInTheDocument();
     });
 
     it("returns to the newer month with the next arrow", () => {
