@@ -10,7 +10,9 @@ export default function Index() {
   useEffect(() => {
     fetch("/api/github-contributions")
       .then((r) => r.json())
-      .then((d) => { if (!d.error) setGithubData(d); })
+      .then((d) => {
+        if (!d.error) setGithubData(d);
+      })
       .catch(() => {})
       .finally(() => setGithubLoading(false));
   }, []);
@@ -50,14 +52,18 @@ export default function Index() {
           />
           <IntroParagraph
             paragraph={
-              "In my spare time, I can be found using the phone-a-friend approach to crossword puzzles or looking for birds."
+              "In my spare time, I can be found using the phone-a-friend approach to crossword puzzles."
             }
           />
         </div>
 
         <div className="skill-anchor" id="github">
-          <h2>GitHub Activity Across All Profiles</h2>
-          <GitHubContributions contributions={githubData?.contributions} loading={githubLoading} />
+          <h2>GitHub Activity</h2>
+          <p className="github-caption">as migratory birds</p>
+          <GitHubContributions
+            contributions={githubData?.contributions}
+            loading={githubLoading}
+          />
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import GitHubContributions from "./GitHubContributions";
 
-// 2026-01-01 is a Thursday, so these three days land in weekday columns 4/5/6.
+// 2026-01-01 has no contributions, so it produces no bird; 01-02 and 01-03 do.
 const sampleContributions = {
   total: 1234, // full-year total; the component shows the last-month total instead
   weeks: [
@@ -14,6 +14,12 @@ const sampleContributions = {
 const singleDay = {
   total: 1,
   weeks: [{ days: [{ date: "2026-01-01", count: 1 }] }],
+};
+
+// A month whose only day has no contributions: no birds, empty sky.
+const emptyMonth = {
+  total: 0,
+  weeks: [{ days: [{ date: "2026-03-15", count: 0 }] }],
 };
 
 // Spans two calendar months so the navigation arrows have somewhere to go.
@@ -45,51 +51,27 @@ describe("GitHubContributions", () => {
     expect(screen.getByText("January, 2026")).toBeInTheDocument();
   });
 
-  it("renders one interactive cell per day across all weeks", () => {
+  it("renders one bird per day that has contributions (zero-count days get none)", () => {
     const { container } = render(
       <GitHubContributions loading={false} contributions={sampleContributions} />
     );
-    expect(container.querySelectorAll(".contrib-day")).toHaveLength(3);
+    // Only 01-02 and 01-03 have contributions; 01-01 (count 0) has no bird.
+    expect(container.querySelectorAll(".bird-slot")).toHaveLength(2);
   });
 
-  it("fills the rest of the in-progress month with empty squares that stay out of the tab order", () => {
-    // singleDay only has 2026-01-01; the remaining days of January render as
-    // upcoming squares that aren't focusable or exposed to assistive tech.
+  it("shows an empty-sky message for a month with no contributions", () => {
     const { container } = render(
-      <GitHubContributions loading={false} contributions={singleDay} />
+      <GitHubContributions loading={false} contributions={emptyMonth} />
     );
-    const upcoming = container.querySelectorAll(".contrib-upcoming");
-    expect(upcoming.length).toBeGreaterThan(0);
-    expect(upcoming[0]).toHaveAttribute("aria-hidden", "true");
-    expect(upcoming[0]).not.toHaveAttribute("tabindex");
-    // They are not counted among the interactive day cells.
-    expect(container.querySelectorAll(".contrib-day")).toHaveLength(1);
+    expect(container.querySelectorAll(".bird-slot")).toHaveLength(0);
+    expect(screen.getByText(/no contributions this month/i)).toBeInTheDocument();
+    expect(screen.getByText("March, 2026")).toBeInTheDocument();
   });
 
-  it("shows only the date (no contribution count) when hovering a future day", () => {
-    // The first upcoming square in singleDay is 2026-01-02, a Friday.
-    const { container } = render(
-      <GitHubContributions loading={false} contributions={singleDay} />
-    );
-    fireEvent.pointerEnter(container.querySelector(".contrib-upcoming"), {
-      pointerType: "mouse",
-    });
-    const tooltip = screen.getByRole("tooltip");
-    expect(tooltip).toHaveTextContent("Friday, January 2, 2026");
-    expect(tooltip).not.toHaveTextContent(/contribution/);
-  });
-
-  it("renders a single-letter header for each weekday column", () => {
-    const { container } = render(
-      <GitHubContributions loading={false} contributions={sampleContributions} />
-    );
-    const heads = [...container.querySelectorAll(".contrib-head")].map((h) => h.textContent);
-    expect(heads).toEqual(["S", "M", "T", "W", "T", "F", "S"]);
-  });
-
-  it("gives each cell an accessible label with its date and pluralized count", () => {
+  it("gives each bird an accessible label with its date and pluralized count", () => {
     render(<GitHubContributions loading={false} contributions={sampleContributions} />);
     expect(screen.getByLabelText("2026-01-02: 5 contributions")).toBeInTheDocument();
+    expect(screen.getByLabelText("2026-01-03: 20 contributions")).toBeInTheDocument();
     render(<GitHubContributions loading={false} contributions={singleDay} />);
     expect(screen.getByLabelText("2026-01-01: 1 contribution")).toBeInTheDocument();
   });
@@ -100,12 +82,12 @@ describe("GitHubContributions", () => {
     const hover = (el) => fireEvent.pointerEnter(el, { pointerType: "mouse" });
     const unhover = (el) => fireEvent.pointerLeave(el, { pointerType: "mouse" });
 
-    it("shows no tooltip until a cell is hovered", () => {
+    it("shows no tooltip until a bird is hovered", () => {
       render(<GitHubContributions loading={false} contributions={sampleContributions} />);
       expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
     });
 
-    it("shows the date and count for the hovered cell", () => {
+    it("shows the date and count for the hovered bird", () => {
       render(<GitHubContributions loading={false} contributions={sampleContributions} />);
       hover(screen.getByLabelText("2026-01-02: 5 contributions"));
 
@@ -129,18 +111,12 @@ describe("GitHubContributions", () => {
       expect(screen.getByRole("tooltip")).not.toHaveTextContent("1 contributions");
     });
 
-    it("reports zero contributions for an empty day", () => {
+    it("hides the tooltip when the pointer leaves the bird", () => {
       render(<GitHubContributions loading={false} contributions={sampleContributions} />);
-      hover(screen.getByLabelText("2026-01-01: 0 contributions"));
-      expect(screen.getByRole("tooltip")).toHaveTextContent("0 contributions");
-    });
-
-    it("hides the tooltip when the pointer leaves the cell", () => {
-      render(<GitHubContributions loading={false} contributions={sampleContributions} />);
-      const cell = screen.getByLabelText("2026-01-02: 5 contributions");
-      hover(cell);
+      const bird = screen.getByLabelText("2026-01-02: 5 contributions");
+      hover(bird);
       expect(screen.getByRole("tooltip")).toBeInTheDocument();
-      unhover(cell);
+      unhover(bird);
       expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
     });
 
@@ -150,7 +126,7 @@ describe("GitHubContributions", () => {
       expect(screen.getByRole("tooltip")).toHaveTextContent("20 contributions");
     });
 
-    it("switches the tooltip content when moving to another cell", () => {
+    it("switches the tooltip content when moving to another bird", () => {
       render(<GitHubContributions loading={false} contributions={sampleContributions} />);
       hover(screen.getByLabelText("2026-01-02: 5 contributions"));
       hover(screen.getByLabelText("2026-01-03: 20 contributions"));
@@ -160,15 +136,15 @@ describe("GitHubContributions", () => {
     });
 
     // On touch devices there is no hover, so a tap must toggle the tooltip
-    // and tapping the same cell again must dismiss it.
+    // and tapping the same bird again must dismiss it.
     it("toggles the tooltip on tap (click)", () => {
       render(<GitHubContributions loading={false} contributions={sampleContributions} />);
-      const cell = screen.getByLabelText("2026-01-02: 5 contributions");
+      const bird = screen.getByLabelText("2026-01-02: 5 contributions");
 
-      fireEvent.click(cell);
+      fireEvent.click(bird);
       expect(screen.getByRole("tooltip")).toHaveTextContent("5 contributions");
 
-      fireEvent.click(cell);
+      fireEvent.click(bird);
       expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
     });
   });
