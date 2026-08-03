@@ -4,7 +4,7 @@ import Hamburger from "hamburger-react";
 
 const SOCIAL_LINKS = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/louisa-j/" },
-  { label: "Personal GitHub", href: "https://github.com/LouisaJohnston" },
+  { label: "GitHub", href: "https://github.com/LouisaJohnston" },
 ];
 
 export default function Navbar() {

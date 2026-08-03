@@ -5,15 +5,6 @@ export default function Footer() {
         <h2 className="flush-foot">Louisa Johnston</h2>
         <p className="flush-foot">San Francisco, CA</p>
       </div>
-      <div id="contact">
-        <a
-          href="https://github.com/LouisaJohnston/Portfolio"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Portfolio Repo
-        </a>
-      </div>
     </div>
   );
 }

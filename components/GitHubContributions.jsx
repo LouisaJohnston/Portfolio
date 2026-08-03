@@ -85,8 +85,6 @@ export default function GitHubContributions({ contributions, loading }) {
       <div className="contrib-block">
         <div className="contrib-nav">
           <p className="contrib-meta">
-            <span className="contrib-count">{month.total.toLocaleString()}</span>
-            {' '}contributions in{' '}
             <span className="contrib-month">{month.label}</span>
           </p>
           <div className="contrib-arrows">

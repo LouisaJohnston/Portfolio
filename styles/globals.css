@@ -369,12 +369,6 @@ li {
   cursor: default;
 }
 
-.contrib-count {
-  color: #c66403;
-  font-weight: 900;
-  font-size: 1.5rem;
-}
-
 /* The sky the flock flies in: a fixed-height stage that birds are positioned
    within by percentage, so the V scales with the month. Also the positioning
    context for the tooltip. */

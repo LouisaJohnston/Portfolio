@@ -8,12 +8,4 @@ describe("Footer", () => {
     expect(screen.getByText("Louisa Johnston")).toBeInTheDocument();
     expect(screen.getByText("San Francisco, CA")).toBeInTheDocument();
   });
-
-  it("links to the portfolio repo and opens it safely in a new tab", () => {
-    render(<Footer />);
-    const link = screen.getByRole("link", { name: /portfolio repo/i });
-    expect(link).toHaveAttribute("href", "https://github.com/LouisaJohnston/Portfolio");
-    expect(link).toHaveAttribute("target", "_blank");
-    expect(link).toHaveAttribute("rel", expect.stringContaining("noopener"));
-  });
 });
