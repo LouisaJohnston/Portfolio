@@ -76,7 +76,12 @@ h2 {
   margin-top: 8%;
 }
 
-/* Subtitle under a section heading; aligns to the h2's left edge. */
+/* Subtitle under a section heading; aligns to the h2's left edge and sits snug
+   beneath it, so the heading drops its own bottom margin when captioned. */
+#github h2 {
+  margin-bottom: 0;
+}
+
 .github-caption {
   margin: 0 20% 2rem;
   color: #669999;
