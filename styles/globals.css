@@ -517,59 +517,21 @@ li {
   cursor: default;
 }
 
-/* Loading indicator: a 2x2 square of tiles sized and spaced like the grid's
-   own cells, pulsing clockwise through the heatmap palette. Centered where the
-   grid will appear. */
-/* Reserve roughly the grid's height while loading and center the tiles in it. */
+/* Loading indicator: a single bird flapping in place where the flock will
+   appear. Reserve roughly the flock's height so the layout doesn't jump. */
 .contrib-loading {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 460px;
+  min-height: 280px;
 }
 
 .contrib-loader {
-  display: grid;
-  grid-template-columns: repeat(3, 80px);
-  grid-template-rows: repeat(3, 80px);
-  column-gap: 20px;
-  row-gap: 10px;
-  width: max-content;
+  width: 110px;
   margin: 0;
 }
 
-.contrib-loader span {
-  border-radius: 2px;
-  animation: contrib-pulse 1.2s ease-in-out infinite;
-}
-
-/* The empty center of the 3x3 — no fill, no pulse. */
-.contrib-loader-gap {
-  background: none;
-  animation: none;
-}
-
-/* Children fill the 3x3 row by row (child 5 is the empty center). Delays run
-   clockwise around the ring starting from the top-left cell. */
-.contrib-loader span:nth-child(1) { background: #b3d1d1; animation-delay: 0s; }
-.contrib-loader span:nth-child(2) { background: #669999; animation-delay: -1.05s; }
-.contrib-loader span:nth-child(3) { background: #4a7a7a; animation-delay: -0.9s; }
-.contrib-loader span:nth-child(4) { background: #4d2b43; animation-delay: -0.15s; }
-.contrib-loader span:nth-child(6) { background: #4d2b43; animation-delay: -0.75s; }
-.contrib-loader span:nth-child(7) { background: #4a7a7a; animation-delay: -0.3s; }
-.contrib-loader span:nth-child(8) { background: #669999; animation-delay: -0.45s; }
-.contrib-loader span:nth-child(9) { background: #b3d1d1; animation-delay: -0.6s; }
-
-@keyframes contrib-pulse {
-  0%, 100% { opacity: 0.25; }
-  25%      { opacity: 1; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .contrib-loader span {
-    animation-duration: 3s;
-  }
-
   /* Ground the flock — no sweeping drift across the sky, no bob — but keep the
      wings flapping (a little slower) so the birds still read as flying rather
      than frozen mid-air. */
@@ -998,7 +960,7 @@ nav a:hover {
 
   /* The sky is shorter on mobile, so reserve less height while loading. */
   .contrib-loading {
-    min-height: 300px;
+    min-height: 220px;
   }
 
   .contrib-status {
