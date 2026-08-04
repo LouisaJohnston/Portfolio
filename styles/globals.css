@@ -348,6 +348,7 @@ li {
   grid-template-columns: 1fr auto;
   align-items: baseline;
   column-gap: 1rem;
+  row-gap: 0;
   margin-left: 20%;
   margin-right: 20%;
   /* The heading's leading space belongs to the grid now. A percentage here
@@ -377,21 +378,30 @@ li {
 }
 
 /* The heading and caption carry their own side margins and leading space for
-   the rest of the page; inside the grid those would double up. */
+   the rest of the page; inside the grid those would double up. Their line boxes
+   hug the text too, so the two lines of the head sit close together rather than
+   being held apart by leading meant for running body copy. */
 .contrib-head h2 {
   margin: 0;
   padding-top: 0;
+  line-height: 1.1;
 }
 
 .contrib-head .github-caption {
   margin-left: 0;
   margin-right: 0;
+  line-height: 1.1;
+}
+
+.contrib-head .contrib-meta,
+.contrib-head .contrib-arrow {
+  line-height: 1.1;
 }
 
 .contrib-meta {
   margin: 0;
   text-align: right;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #4d2b43;
   font-weight: 700;
   white-space: nowrap;
@@ -403,11 +413,14 @@ li {
   flex-shrink: 0;
 }
 
+/* Kept close to the caption's own size: the arrows share its line, and being
+   the tallest thing there they set that line's baseline — an outsized glyph
+   pushes the caption down the page and opens a gap under the heading. */
 .contrib-arrow {
   border: none;
   background: transparent;
   color: #4d2b43;
-  font-size: 2.4rem;
+  font-size: 1.6rem;
   line-height: 1;
   padding: 0 0.4rem;
   cursor: pointer;
@@ -428,10 +441,11 @@ li {
    within, measured out from its centre. Also the positioning context for the
    tooltip.
 
-   The sky hangs two birds past the body copy on each side (the month label and
-   arrows above it stay at body width), giving flocks room to spill well beyond
-   the text. Two birds is as far as it can go and still fit the page at the
-   narrowest desktop width, where the body is only 60% of it.
+   The sky hangs three birds past the body copy on each side (the month label
+   and arrows above it stay at body width), giving flocks room to spill well
+   beyond the text. Three is about the limit: the body takes 60% of the page, so
+   there are only 20% of it — some 150px at the narrowest desktop width — spare
+   on each side to hang them in.
 
    The step variables set the gap between neighbouring birds. They're fixed
    rather than scaled to the bird count, so a quiet month makes a short V and a
@@ -443,7 +457,7 @@ li {
   height: 280px;
   margin: 0;
   --bird-size: 46px;
-  --sky-overhang: calc(2 * var(--bird-size));
+  --sky-overhang: calc(3 * var(--bird-size));
   width: calc(100% + (2 * var(--sky-overhang)));
   margin-left: calc(-1 * var(--sky-overhang));
   --flock-step-x: calc((100% - var(--bird-size)) / 15);
@@ -931,7 +945,7 @@ nav a:hover {
   }
 
   .contrib-head .contrib-meta {
-    font-size: 1.15rem;
+    font-size: 1rem;
   }
 
   h3 {
