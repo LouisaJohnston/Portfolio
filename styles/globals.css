@@ -462,6 +462,9 @@ li {
   margin-left: calc(-1 * var(--sky-overhang));
   --flock-step-x: calc((100% - var(--bird-size)) / 15);
   --flock-step-y: 8px;
+  /* A shade more than the height above, so a mote is clear of the bottom
+     before its fall restarts (see .season-mote). */
+  --sky-fall: 310px;
 }
 
 /* The whole flock drifts gently in a slow loop; the sky as a whole holds still.
@@ -471,6 +474,108 @@ li {
    feature, and hiding it left the flock frozen for anyone with that setting on.
    It stays small and slow — a few pixels over several seconds, no scrolling or
    parallax — rather than being switched off. */
+/******** Seasonal weather ********/
+
+/* The month's weather fills the sky behind the flock. Clipped to the sky so a
+   mote that sways wide can't wander onto the page, and untouchable so it never
+   steals a tap meant for a bird. */
+.season {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Summer: a sun up in the top-left corner, well clear of the leader out on the
+   right. Sized against the birds so it reads as part of the same pixel world. */
+.season-sun {
+  position: absolute;
+  top: 6%;
+  left: 3%;
+  width: calc(2.6 * var(--bird-size));
+  height: auto;
+  overflow: visible;
+}
+
+.season-sun-body {
+  fill: #f0b429;
+}
+
+/* The rays flicker in two alternating sets — the four sides, then the four
+   corners — so the sun glints rather than throbbing as a single lump. */
+.season-sun-ray {
+  fill: #fbcc32;
+  animation: sun-ray 2.2s ease-in-out infinite;
+}
+
+.season-sun-ray-b {
+  animation-delay: -1.1s;
+}
+
+@keyframes sun-ray {
+  0%, 100% { opacity: 0.25; transform: scale(0.92); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+/* Spring, autumn and winter all drift something down the sky; only the shape
+   and colour differ. Each mote carries its own column, pace and sway. */
+.season-mote {
+  position: absolute;
+  top: -8%;
+  width: 15px;
+  height: 15px;
+  animation: mote-fall var(--mote-duration, 10s) linear infinite;
+  animation-delay: var(--mote-delay, 0s);
+}
+
+.season-mote svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Falls past the bottom of the sky while swaying across it, so the path is a
+   drift rather than a drop. --sky-fall is a little more than the sky's own
+   height, set with it on .contrib-sky. Fades at either end so nothing pops. */
+@keyframes mote-fall {
+  0% {
+    transform: translate(0, 0) scale(var(--mote-scale, 1));
+    opacity: 0;
+  }
+  8%, 88% { opacity: 1; }
+  50% {
+    transform:
+      translate(var(--mote-sway, 15px), calc(0.5 * var(--sky-fall, 300px)))
+      scale(var(--mote-scale, 1));
+  }
+  100% {
+    transform: translate(0, var(--sky-fall, 300px)) scale(var(--mote-scale, 1));
+    opacity: 0;
+  }
+}
+
+/* Spring: pink blossom. */
+.season-spring .season-mote svg {
+  fill: #e9799f;
+}
+
+/* Autumn: the orange the site already uses for its headings. */
+.season-fall .season-mote svg {
+  fill: #c66403;
+}
+
+/* Winter: snow reads as pale blue rather than white, which would all but
+   vanish against the page's near-white background. Smaller, as flakes are. */
+.season-winter .season-mote {
+  width: 12px;
+  height: 12px;
+}
+
+.season-winter .season-mote svg {
+  fill: #9fc4c4;
+}
+
 .flock {
   position: absolute;
   inset: 0;
@@ -1074,6 +1179,7 @@ nav a:hover {
     --bird-size: 28px;
     --sky-overhang: 5%;
     --flock-step-y: 6px;
+    --sky-fall: 250px;
     --flock-step-x: calc(
       (100% - var(--bird-size)) / max(10, var(--flock-depth, 0))
     );

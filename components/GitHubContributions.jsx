@@ -2,7 +2,9 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { formatDate } from '../lib/formatDate';
 import { monthlyGrids } from '../lib/contributions';
 import { flockFromMonth, flockDepth, birdOffset, birdDrift } from '../lib/flock';
+import { seasonFor } from '../lib/seasons';
 import Bird from './Bird';
+import SeasonScenery from './SeasonScenery';
 import ContribSpinner from './ContribSpinner';
 
 function formatCount(count) {
@@ -147,6 +149,8 @@ export default function GitHubContributions({ contributions, loading, heading, c
             it belongs on the sky, where --flock-step-x is declared and so where
             it gets resolved — on the inner .flock it would be ignored. */}
         <div className="contrib-sky" style={{ '--flock-depth': maxDepth }}>
+          {/* The month's weather, drawn first so it sits behind the flock. */}
+          <SeasonScenery season={seasonFor(month.key)} />
           {birds.length === 0 ? (
             <p className="contrib-empty-msg">No contributions this month</p>
           ) : (
