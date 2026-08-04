@@ -525,14 +525,15 @@ li {
 
 /* Spring, autumn and winter all drift something down the sky; only the shape
    and colour differ. Each mote carries its own column, pace and sway. */
-/* Five cells square, at the same --pixel as everything else in the sky. They're
-   all one size on purpose: scaling them for a sense of depth would have meant
-   pixels of different sizes drifting past each other. */
+/* Three cells square, at the same --pixel as everything else in the sky — five
+   pixels of flower, flake or leaf inside it. They're all one size on purpose:
+   scaling them for a sense of depth would have meant pixels of different sizes
+   drifting past each other. Keep the 3 in step with MOTE_GRID. */
 .season-mote {
   position: absolute;
   top: -8%;
-  width: calc(5 * var(--pixel));
-  height: calc(5 * var(--pixel));
+  width: calc(3 * var(--pixel));
+  height: calc(3 * var(--pixel));
   animation: mote-fall var(--mote-duration, 10s) linear infinite;
   animation-delay: var(--mote-delay, 0s);
 }

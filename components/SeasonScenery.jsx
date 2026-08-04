@@ -30,38 +30,24 @@ function Sun() {
   );
 }
 
-// What drifts, drawn on a 5x5 grid so it reads as pixel art beside the birds.
-// A bloom for spring, a slanted blade for autumn, and a flake for winter.
-// `core` is the handful of pixels at the middle that take their own colour —
-// a flower's centre against its petals. Colours live in the season's CSS.
+// What drifts, five pixels apiece on a 3x3 grid — small things seen at a
+// distance, against birds that are far bigger. A bloom for spring, a flake for
+// winter, and a blade lying on the diagonal for autumn. `core` is the pixel at
+// the middle that takes its own colour: a flower's centre against its petals.
+// Colours live in the season's CSS.
+export const MOTE_GRID = 3;
+export const MOTE_PIXELS = 5;
+
 const MOTE_SPRITES = {
   spring: {
-    body: [
-      [2, 0],
-      [1, 1], [2, 1], [3, 1],
-      [0, 2], [1, 2], [3, 2], [4, 2],
-      [1, 3], [2, 3], [3, 3],
-      [2, 4],
-    ],
-    core: [[2, 2]],
+    body: [[1, 0], [0, 1], [2, 1], [1, 2]],
+    core: [[1, 1]],
   },
   fall: {
-    body: [
-      [3, 0], [4, 0],
-      [2, 1], [3, 1], [4, 1],
-      [1, 2], [2, 2], [3, 2],
-      [0, 3], [1, 3], [2, 3],
-      [0, 4], [1, 4],
-    ],
+    body: [[2, 0], [1, 1], [2, 1], [0, 2], [1, 2]],
   },
   winter: {
-    body: [
-      [2, 0],
-      [1, 1], [2, 1], [3, 1],
-      [0, 2], [1, 2], [2, 2], [3, 2], [4, 2],
-      [1, 3], [2, 3], [3, 3],
-      [2, 4],
-    ],
+    body: [[1, 0], [0, 1], [1, 1], [2, 1], [1, 2]],
   },
 };
 
@@ -80,7 +66,11 @@ function Mote({ index, season }) {
         '--mote-sway': `${sway}px`,
       }}
     >
-      <svg viewBox="0 0 5 5" shapeRendering="crispEdges" aria-hidden="true">
+      <svg
+        viewBox={`0 0 ${MOTE_GRID} ${MOTE_GRID}`}
+        shapeRendering="crispEdges"
+        aria-hidden="true"
+      >
         <g className="season-mote-body">{pixels(body)}</g>
         {core && <g className="season-mote-core">{pixels(core)}</g>}
       </svg>

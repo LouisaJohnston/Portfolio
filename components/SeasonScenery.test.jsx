@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
-import SeasonScenery from "./SeasonScenery";
+import SeasonScenery, { MOTE_PIXELS } from "./SeasonScenery";
 import { MOTE_COUNT } from "../lib/seasons";
 
 describe("SeasonScenery", () => {
@@ -27,6 +27,21 @@ describe("SeasonScenery", () => {
       const { container } = render(<SeasonScenery season={season} />);
       expect(container.querySelector(`.season-${season}`)).toBeInTheDocument();
     }
+  });
+
+  // They're specks seen at a distance, against birds many times their size, so
+  // each is only five pixels — petals and a centre, or a flake's arms.
+  it.each(["spring", "fall", "winter"])("draws a %s mote in five pixels", (season) => {
+    const { container } = render(<SeasonScenery season={season} />);
+    const mote = container.querySelector(".season-mote");
+    expect(mote.querySelectorAll("rect")).toHaveLength(MOTE_PIXELS);
+  });
+
+  it("colours a spring flower's centre apart from its petals", () => {
+    const { container } = render(<SeasonScenery season="spring" />);
+    const mote = container.querySelector(".season-mote");
+    expect(mote.querySelectorAll(".season-mote-body rect")).toHaveLength(4); // petals
+    expect(mote.querySelectorAll(".season-mote-core rect")).toHaveLength(1); // centre
   });
 
   it("gives each mote its own column and pace", () => {
