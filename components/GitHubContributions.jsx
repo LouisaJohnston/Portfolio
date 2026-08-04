@@ -107,10 +107,10 @@ export default function GitHubContributions({ contributions, loading }) {
             </button>
           </div>
         </div>
-        {/* --flock-depth is how deep this flock reaches. It belongs on the sky,
-            where --flock-step-x is declared and so where it gets resolved: the
-            step divides by whichever is larger, this or the breakpoint's usual
-            span, so an unusually full month tightens up to stay in the sky. */}
+        {/* --flock-depth is how deep this flock reaches. Only the mobile step
+            reads it (to tighten an unusually full month so it still fits), but
+            it belongs on the sky, where --flock-step-x is declared and so where
+            it gets resolved — on the inner .flock it would be ignored. */}
         <div className="contrib-sky" style={{ '--flock-depth': maxDepth }}>
           {birds.length === 0 ? (
             <p className="contrib-empty-msg">No contributions this month</p>
