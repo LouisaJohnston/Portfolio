@@ -377,9 +377,10 @@ li {
    within, measured out from its centre. Also the positioning context for the
    tooltip.
 
-   The sky hangs one bird past the body copy on each side (the month label and
-   arrows above it stay at body width), giving the widest flocks room to spill
-   slightly beyond the text.
+   The sky hangs two birds past the body copy on each side (the month label and
+   arrows above it stay at body width), giving flocks room to spill well beyond
+   the text. Two birds is as far as it can go and still fit the page at the
+   narrowest desktop width, where the body is only 60% of it.
 
    The step variables set the gap between neighbouring birds. They're fixed
    rather than scaled to the bird count, so a quiet month makes a short V and a
@@ -391,7 +392,7 @@ li {
   height: 280px;
   margin: 0;
   --bird-size: 46px;
-  --sky-overhang: var(--bird-size);
+  --sky-overhang: calc(2 * var(--bird-size));
   width: calc(100% + (2 * var(--sky-overhang)));
   margin-left: calc(-1 * var(--sky-overhang));
   --flock-step-x: calc((100% - var(--bird-size)) / 15);
