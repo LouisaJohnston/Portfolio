@@ -457,6 +457,11 @@ li {
   height: 280px;
   margin: 0;
   --bird-size: 46px;
+  /* One pixel, shared by everything drawn in this sky. A bird's sprite is 11
+     cells wide (see Bird.jsx), so this is the size of one of its pixels — the
+     sun and the drifting motes are then built from pixels of the same size,
+     and a bigger sun means more of them rather than larger ones. */
+  --pixel: calc(var(--bird-size) / 11);
   --sky-overhang: calc(3 * var(--bird-size));
   width: calc(100% + (2 * var(--sky-overhang)));
   margin-left: calc(-1 * var(--sky-overhang));
@@ -487,12 +492,13 @@ li {
 }
 
 /* Summer: a sun up in the top-left corner, well clear of the leader out on the
-   right. Sized against the birds so it reads as part of the same pixel world. */
+   right. Its width is its grid, one --pixel per cell, so its pixels are the
+   birds' pixels. Keep the 29 in step with SUN_GRID in lib/seasons.js. */
 .season-sun {
   position: absolute;
   top: 6%;
   left: 3%;
-  width: calc(2.6 * var(--bird-size));
+  width: calc(29 * var(--pixel));
   height: auto;
   overflow: visible;
 }
@@ -519,11 +525,14 @@ li {
 
 /* Spring, autumn and winter all drift something down the sky; only the shape
    and colour differ. Each mote carries its own column, pace and sway. */
+/* Five cells square, at the same --pixel as everything else in the sky. They're
+   all one size on purpose: scaling them for a sense of depth would have meant
+   pixels of different sizes drifting past each other. */
 .season-mote {
   position: absolute;
   top: -8%;
-  width: 15px;
-  height: 15px;
+  width: calc(5 * var(--pixel));
+  height: calc(5 * var(--pixel));
   animation: mote-fall var(--mote-duration, 10s) linear infinite;
   animation-delay: var(--mote-delay, 0s);
 }
@@ -540,39 +549,37 @@ li {
    height, set with it on .contrib-sky. Fades at either end so nothing pops. */
 @keyframes mote-fall {
   0% {
-    transform: translate(0, 0) scale(var(--mote-scale, 1));
+    transform: translate(0, 0);
     opacity: 0;
   }
   8%, 88% { opacity: 1; }
   50% {
-    transform:
-      translate(var(--mote-sway, 15px), calc(0.5 * var(--sky-fall, 300px)))
-      scale(var(--mote-scale, 1));
+    transform: translate(var(--mote-sway, 15px), calc(0.5 * var(--sky-fall, 300px)));
   }
   100% {
-    transform: translate(0, var(--sky-fall, 300px)) scale(var(--mote-scale, 1));
+    transform: translate(0, var(--sky-fall, 300px));
     opacity: 0;
   }
 }
 
-/* Spring: pink blossom. */
-.season-spring .season-mote svg {
+/* Spring: pink petals around a warm middle, the way a bloom reads even at five
+   pixels across. The centre borrows the sun's yellow. */
+.season-spring .season-mote-body {
   fill: #e9799f;
 }
 
+.season-spring .season-mote-core {
+  fill: #f0b429;
+}
+
 /* Autumn: the orange the site already uses for its headings. */
-.season-fall .season-mote svg {
+.season-fall .season-mote-body {
   fill: #c66403;
 }
 
 /* Winter: snow reads as pale blue rather than white, which would all but
-   vanish against the page's near-white background. Smaller, as flakes are. */
-.season-winter .season-mote {
-  width: 12px;
-  height: 12px;
-}
-
-.season-winter .season-mote svg {
+   vanish against the page's near-white background. */
+.season-winter .season-mote-body {
   fill: #9fc4c4;
 }
 
