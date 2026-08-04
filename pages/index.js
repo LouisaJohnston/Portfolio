@@ -47,12 +47,12 @@ export default function Index() {
           <IntroParagraph
             hello={"Hello! "}
             paragraph={
-              "I'm a San Francisco-based software engineer with a focus on backend development and five years experience working on enterprise software. I have particular interest in mission-driven projects and the arts."
+              "I'm a San Francisco-based software engineer with particular interest in mission-driven projects and the arts."
             }
           />
           <IntroParagraph
             paragraph={
-              "In my spare time, I can be found using the phone-a-friend approach to crossword puzzles."
+              "In my spare time, I can be found using the phone-a-friend approach to crossword puzzles or saying “hi!” to neighboorhood dogs."
             }
           />
         </div>
