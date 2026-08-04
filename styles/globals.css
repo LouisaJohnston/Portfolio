@@ -400,7 +400,12 @@ li {
 }
 
 /* The whole flock drifts gently in a slow loop; the sky as a whole holds still.
-   Paused on hover so a bird stays put under its tooltip. */
+   Paused on hover so a bird stays put under its tooltip.
+
+   Deliberately not suppressed under prefers-reduced-motion: the drift is the
+   feature, and hiding it left the flock frozen for anyone with that setting on.
+   It stays small and slow — a few pixels over several seconds, no scrolling or
+   parallax — rather than being switched off. */
 .flock {
   position: absolute;
   inset: 0;
@@ -555,20 +560,6 @@ li {
 .contrib-loader {
   width: 110px;
   margin: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  /* Ground the flock — no sweeping drift across the sky, no individual wander —
-     but keep the wings flapping (a little slower) so the birds still read as
-     flying rather than frozen mid-air. */
-  .flock,
-  .bird-drift {
-    animation: none;
-  }
-
-  .bird-frame {
-    animation-duration: 1.6s;
-  }
 }
 
 .contrib-status {
