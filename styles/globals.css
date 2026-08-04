@@ -907,51 +907,31 @@ nav a:hover {
     margin-right: 5%;
   }
 
-  /* A phone hasn't the width to hang the controls off the copy, so the two
-     pair up differently: the copy shares the first line, the controls the
-     second, everything reading from the left.
+  /* Same pairing as a wide screen — caption under the heading, controls hanging
+     off the right:
 
-       GitHub Activity  as migratory birds
-       June, 2026       < >
+       GitHub Activity   June, 2026
+       as migratory birds       < >
 
-     Only the placement changes — the markup is the same. Columns hug their
-     content and pack to the left rather than spanning the screen, so nothing
-     is left stranded against the right edge. */
+     only with the page's mobile margins. */
   .contrib-head {
     margin-left: 5%;
     margin-right: 5%;
     padding-top: 5%;
-    grid-template-columns: auto auto;
-    justify-content: start;
-    /* Both bits of copy have to fit one line together on a phone. */
-    column-gap: 0.5rem;
   }
 
-  .contrib-head .github-caption {
-    grid-area: 1 / 2;
-  }
-
-  /* In the copy's column now, so it reads from the same left edge as the
-     heading above it rather than right-aligning across the screen. */
-  .contrib-head .contrib-meta {
-    grid-area: 2 / 1;
-    text-align: left;
-  }
-
-  /* The controls read from the left here too, under the caption, instead of
-     being pushed to the right of their column as they are on a wide screen. */
-  .contrib-head .contrib-arrows {
-    justify-content: flex-start;
-  }
-
-  /* Sharing a line leaves each about half the screen, so the heading and
-     caption step down a size to sit on one line apiece rather than wrapping. */
+  /* Each line has to carry copy and a control side by side in half the width a
+     wide screen has, so the type steps down to keep both on one line. */
   .contrib-head h2 {
     font-size: 1.4em;
   }
 
   .contrib-head .github-caption {
     font-size: 1em;
+  }
+
+  .contrib-head .contrib-meta {
+    font-size: 1.15rem;
   }
 
   h3 {
