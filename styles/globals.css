@@ -333,37 +333,57 @@ li {
   margin: 0 auto;
 }
 
-/* The month controls share the heading's and caption's lines rather than
-   sitting in a row of their own: the date out to the right of the heading, the
-   arrows out to the right of the caption. Baseline alignment sits the date on
-   the heading's own baseline despite the two type sizes. */
-.contrib-title-row,
-.contrib-caption-row {
-  display: flex;
+/* Heading, caption, month label and arrows share one grid so which of them sits
+   beside which is a matter of placement rather than markup — that's what lets a
+   phone pair them up differently (see the mobile block) without reordering the
+   DOM. Two columns: the copy takes the space, the controls take what they need
+   on the right. Baselines align so the date sits on the heading's own baseline
+   despite the two type sizes.
+
+   Wide screens read as two labelled rows:
+     GitHub Activity        June, 2026
+     as migratory birds            < > */
+.contrib-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
+  column-gap: 1rem;
   margin-left: 20%;
   margin-right: 20%;
-}
-
-/* The heading and caption carry these margins themselves; inside a row they
-   would double up. The heading's leading space moves to the row, where a
-   percentage still resolves against the section's full width rather than the
-   narrower row — otherwise the gap above the heading would shrink. */
-.contrib-title-row {
+  /* The heading's leading space belongs to the grid now. A percentage here
+     still resolves against the section's full width rather than the narrower
+     grid, so the gap above the heading keeps its size. */
   margin-top: 8%;
   padding-top: 2%;
 }
 
-.contrib-title-row h2 {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
+.contrib-head h2 {
+  grid-area: 1 / 1;
+}
+
+.contrib-head .contrib-meta {
+  grid-area: 1 / 2;
+}
+
+.contrib-head .github-caption {
+  grid-area: 2 / 1;
+}
+
+/* The controls column is as wide as the widest of the two, so the arrows have
+   to be pushed to its right edge to line up under the date. */
+.contrib-head .contrib-arrows {
+  grid-area: 2 / 2;
+  justify-content: flex-end;
+}
+
+/* The heading and caption carry their own side margins and leading space for
+   the rest of the page; inside the grid those would double up. */
+.contrib-head h2 {
+  margin: 0;
   padding-top: 0;
 }
 
-.contrib-caption-row .github-caption {
+.contrib-head .github-caption {
   margin-left: 0;
   margin-right: 0;
 }
@@ -887,16 +907,41 @@ nav a:hover {
     margin-right: 5%;
   }
 
-  /* The rows take over the side margins, and the heading's leading space, from
-     the heading and caption they hold. */
-  .contrib-title-row,
-  .contrib-caption-row {
+  /* A phone hasn't the width to hang the controls off the copy, so the two
+     pair up differently: the copy shares the first line, the controls the
+     second, with the date under the heading and the arrows out to the right.
+
+       GitHub Activity   as migratory birds
+       June, 2026                       < >
+
+     Only the placement changes — the markup is the same. */
+  .contrib-head {
     margin-left: 5%;
     margin-right: 5%;
+    padding-top: 5%;
+    /* Both bits of copy have to fit one line together on a phone. */
+    column-gap: 0.5rem;
   }
 
-  .contrib-title-row {
-    padding-top: 5%;
+  .contrib-head .github-caption {
+    grid-area: 1 / 2;
+  }
+
+  /* In the copy's column now, so it reads from the same left edge as the
+     heading above it rather than right-aligning across the screen. */
+  .contrib-head .contrib-meta {
+    grid-area: 2 / 1;
+    text-align: left;
+  }
+
+  /* Sharing a line leaves each about half the screen, so the heading and
+     caption step down a size to sit on one line apiece rather than wrapping. */
+  .contrib-head h2 {
+    font-size: 1.4em;
+  }
+
+  .contrib-head .github-caption {
+    font-size: 1em;
   }
 
   h3 {

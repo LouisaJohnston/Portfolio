@@ -61,35 +61,33 @@ export default function GitHubContributions({ contributions, loading, heading, c
     tip.style.left = `${clamped}px`;
   }, [active]);
 
-  // The month label shares its line with the heading and the arrows share
-  // theirs with the caption, so the section's copy is rendered here rather than
-  // by the page. Passing it through on every branch keeps the heading and
-  // caption in place while the data loads, or if it never arrives.
-  const rows = (monthLabel = null, arrows = null) => (
-    <>
-      <div className="contrib-title-row">
-        <h2>{heading}</h2>
-        {monthLabel}
-      </div>
-      <div className="contrib-caption-row">
-        <p className="github-caption">{caption}</p>
-        {arrows}
-      </div>
-    </>
+  // The month label and arrows share their lines with the section's copy, so
+  // that copy is rendered here rather than by the page. All four sit in one
+  // grid and globals.css places them, which is what lets the pairing differ
+  // between a wide screen and a phone without reordering the markup. Passing it
+  // through on every branch keeps the heading and caption in place while the
+  // data loads, or if it never arrives.
+  const head = (monthLabel = null, arrows = null) => (
+    <div className="contrib-head">
+      <h2>{heading}</h2>
+      <p className="github-caption">{caption}</p>
+      {monthLabel}
+      {arrows}
+    </div>
   );
 
   if (loading) return (
     <>
-      {rows()}
+      {head()}
       <div className="graph-wrapper contrib-wrapper contrib-loading">
         <ContribSpinner />
       </div>
     </>
   );
-  if (!contributions) return rows();
+  if (!contributions) return head();
 
   const months = monthlyGrids(contributions);
-  if (months.length === 0) return rows();
+  if (months.length === 0) return head();
 
   // Clamp so an offset from a wider dataset can't fall off a narrower one.
   const maxBack = months.length - 1;
@@ -117,7 +115,7 @@ export default function GitHubContributions({ contributions, loading, heading, c
 
   return (
     <>
-      {rows(
+      {head(
         <p className="contrib-meta">
           <span className="contrib-month">{month.label}</span>
         </p>,

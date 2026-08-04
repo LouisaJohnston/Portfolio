@@ -68,7 +68,11 @@ describe("GitHubContributions", () => {
     expect(container.querySelectorAll(".bird-slot")).toHaveLength(0);
   });
 
-  it("puts the month label on the heading's line and the arrows on the caption's", () => {
+  // Which of these sits beside which is down to CSS placement, and differs
+  // between a wide screen and a phone. What the markup has to guarantee is that
+  // they share one grid, and that they read in a sensible order — heading, then
+  // what the section is, then which month, then the controls for it.
+  it("groups the heading, caption, month label and arrows into one head", () => {
     const { container } = render(
       <GitHubContributions
         loading={false}
@@ -77,12 +81,21 @@ describe("GitHubContributions", () => {
         caption="as migratory birds"
       />
     );
-    const titleRow = container.querySelector(".contrib-title-row");
-    const captionRow = container.querySelector(".contrib-caption-row");
-    expect(titleRow.querySelector("h2")).toHaveTextContent("GitHub Activity");
-    expect(titleRow.querySelector(".contrib-meta")).toHaveTextContent("January, 2026");
-    expect(captionRow.querySelector(".github-caption")).toHaveTextContent("as migratory birds");
-    expect(captionRow.querySelector(".contrib-arrows")).toBeInTheDocument();
+    const head = container.querySelector(".contrib-head");
+    expect(head.querySelector("h2")).toHaveTextContent("GitHub Activity");
+    expect(head.querySelector(".github-caption")).toHaveTextContent("as migratory birds");
+    expect(head.querySelector(".contrib-meta")).toHaveTextContent("January, 2026");
+    expect(head.querySelector(".contrib-arrows")).toBeInTheDocument();
+
+    const order = [...head.children].map((el) =>
+      el.tagName === "H2" ? "heading" : el.className
+    );
+    expect(order).toEqual([
+      "heading",
+      "github-caption",
+      "contrib-meta",
+      "contrib-arrows",
+    ]);
   });
 
   it("renders the selected month's 'Month, Year' label", () => {
