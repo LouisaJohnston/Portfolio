@@ -909,16 +909,20 @@ nav a:hover {
 
   /* A phone hasn't the width to hang the controls off the copy, so the two
      pair up differently: the copy shares the first line, the controls the
-     second, with the date under the heading and the arrows out to the right.
+     second, everything reading from the left.
 
-       GitHub Activity   as migratory birds
-       June, 2026                       < >
+       GitHub Activity  as migratory birds
+       June, 2026       < >
 
-     Only the placement changes — the markup is the same. */
+     Only the placement changes — the markup is the same. Columns hug their
+     content and pack to the left rather than spanning the screen, so nothing
+     is left stranded against the right edge. */
   .contrib-head {
     margin-left: 5%;
     margin-right: 5%;
     padding-top: 5%;
+    grid-template-columns: auto auto;
+    justify-content: start;
     /* Both bits of copy have to fit one line together on a phone. */
     column-gap: 0.5rem;
   }
@@ -932,6 +936,12 @@ nav a:hover {
   .contrib-head .contrib-meta {
     grid-area: 2 / 1;
     text-align: left;
+  }
+
+  /* The controls read from the left here too, under the caption, instead of
+     being pushed to the right of their column as they are on a wide screen. */
+  .contrib-head .contrib-arrows {
+    justify-content: flex-start;
   }
 
   /* Sharing a line leaves each about half the screen, so the heading and
