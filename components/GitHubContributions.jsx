@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { formatDate } from '../lib/formatDate';
 import { monthlyGrids } from '../lib/contributions';
-import { flockFromMonth, flockDepth, birdOffset } from '../lib/flock';
+import { flockFromMonth, flockDepth, birdOffset, birdDrift } from '../lib/flock';
 import Bird from './Bird';
 import ContribSpinner from './ContribSpinner';
 
@@ -23,6 +23,17 @@ function birdPosition(bird, maxDepth) {
   return {
     left: `calc(50% + (${x} * var(--flock-step-x)))`,
     top: `calc(50% + (${y} * var(--flock-step-y)))`,
+  };
+}
+
+// Hand the i-th bird's own wander to CSS (see .bird-drift in globals.css).
+function driftStyle(i) {
+  const { duration, delay, x, y } = birdDrift(i);
+  return {
+    '--drift-duration': `${duration}s`,
+    '--drift-delay': `${delay}s`,
+    '--drift-x': `${x}px`,
+    '--drift-y': `${y}px`,
   };
 }
 
@@ -136,8 +147,14 @@ export default function GitHubContributions({ contributions, loading }) {
                   onBlur={() => { focusFromPointer.current = false; hide(); }}
                   onClick={(e) => { toggle(day, e.currentTarget); focusFromPointer.current = false; }}
                 >
-                  {/* Stagger the flap over a 6-bird cycle so wings aren't synced. */}
-                  <Bird count={day.count} delay={-(i % 6) * 0.12} />
+                  {/* Its own wander, on its own timing, so the flock breathes
+                      rather than sliding about as one rigid block. Kept on a
+                      wrapper so this transform and the sprite's hover scale
+                      don't fight over the same property. */}
+                  <span className="bird-drift" style={driftStyle(i)}>
+                    {/* Stagger the flap over a 6-bird cycle so wings aren't synced. */}
+                    <Bird count={day.count} delay={-(i % 6) * 0.12} />
+                  </span>
                 </div>
               ))}
             </div>

@@ -430,22 +430,31 @@ li {
   border-radius: 3px;
 }
 
-/* The bird sprite bobs on its own rhythm; hover pauses the bob too. */
+/* Each bird rides the air on its own period, phase and amplitude (handed in per
+   bird by the component) so the flock breathes instead of moving as one rigid
+   block — it's what makes the V read as living birds. This sits on a wrapper of
+   its own so the wander and the sprite's hover scale don't fight over transform.
+   Hover pauses it, holding a bird still under its tooltip. */
+.bird-drift {
+  display: block;
+  animation: bird-drift var(--drift-duration, 3.5s) ease-in-out infinite;
+  animation-delay: var(--drift-delay, 0s);
+}
+
+.contrib-sky:hover .bird-drift {
+  animation-play-state: paused;
+}
+
 .bird {
   display: block;
   width: 100%;
   height: auto;
   overflow: visible;
-  animation: bird-bob 2.4s ease-in-out infinite;
   transition: transform 0.15s;
 }
 
 .bird-slot:hover .bird {
   transform: scale(1.25);
-}
-
-.contrib-sky:hover .bird {
-  animation-play-state: paused;
 }
 
 /* The five wing frames cycle high -> flat -> low and back for a smooth flap.
@@ -471,9 +480,12 @@ li {
 @keyframes bird-flap-3 { 0%, 37.49% { opacity: 0; } 37.5%, 49.99% { opacity: 1; } 50%, 62.49% { opacity: 0; } 62.5%, 74.99% { opacity: 1; } 75%, 100% { opacity: 0; } }
 @keyframes bird-flap-4 { 0%, 49.99% { opacity: 0; } 50%, 62.49% { opacity: 1; } 62.5%, 100% { opacity: 0; } }
 
-@keyframes bird-bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+/* An uneven loop — rise, a longer glide down, then back — so a bird doesn't
+   just bob metronomically. The amplitudes come from the bird's own variables. */
+@keyframes bird-drift {
+  0%, 100% { transform: translate(0, 0); }
+  30% { transform: translate(var(--drift-x, 2px), calc(-1 * var(--drift-y, 6px))); }
+  65% { transform: translate(calc(-0.5 * var(--drift-x, 2px)), calc(-0.35 * var(--drift-y, 6px))); }
 }
 
 @keyframes flock-drift {
@@ -546,11 +558,11 @@ li {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* Ground the flock — no sweeping drift across the sky, no bob — but keep the
-     wings flapping (a little slower) so the birds still read as flying rather
-     than frozen mid-air. */
+  /* Ground the flock — no sweeping drift across the sky, no individual wander —
+     but keep the wings flapping (a little slower) so the birds still read as
+     flying rather than frozen mid-air. */
   .flock,
-  .bird {
+  .bird-drift {
     animation: none;
   }
 
