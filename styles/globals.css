@@ -48,7 +48,12 @@ a {
   margin-right: 20%;
 }
 
+/* .container centres #main as a flex column, so #main would otherwise
+   shrink-wrap to its widest child — which makes every percentage margin inside
+   depend on whatever that child happens to be. Fill the container instead, so
+   the body copy and the flock keep the same measure whatever they contain. */
 #main {
+  width: 100%;
   margin-top: 10%;
   margin-bottom: 10%;
 }
