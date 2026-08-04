@@ -37,7 +37,7 @@ function driftStyle(i) {
   };
 }
 
-export default function GitHubContributions({ contributions, loading }) {
+export default function GitHubContributions({ contributions, loading, heading, caption }) {
   // The day the pointer/focus is currently on, plus where to anchor the tooltip.
   const [active, setActive] = useState(null);
   // Months back from the most recent (0 = current month). Kept as an offset so
@@ -61,15 +61,33 @@ export default function GitHubContributions({ contributions, loading }) {
     tip.style.left = `${clamped}px`;
   }, [active]);
 
-  if (loading) return (
-    <div className="graph-wrapper contrib-wrapper contrib-loading">
-      <ContribSpinner />
+  // The month label and arrows share their lines with the section's copy, so
+  // that copy is rendered here rather than by the page. All four sit in one
+  // grid and globals.css places them, which is what lets the pairing differ
+  // between a wide screen and a phone without reordering the markup. Passing it
+  // through on every branch keeps the heading and caption in place while the
+  // data loads, or if it never arrives.
+  const head = (monthLabel = null, arrows = null) => (
+    <div className="contrib-head">
+      <h2>{heading}</h2>
+      <p className="github-caption">{caption}</p>
+      {monthLabel}
+      {arrows}
     </div>
   );
-  if (!contributions) return null;
+
+  if (loading) return (
+    <>
+      {head()}
+      <div className="graph-wrapper contrib-wrapper contrib-loading">
+        <ContribSpinner />
+      </div>
+    </>
+  );
+  if (!contributions) return head();
 
   const months = monthlyGrids(contributions);
-  if (months.length === 0) return null;
+  if (months.length === 0) return head();
 
   // Clamp so an offset from a wider dataset can't fall off a narrower one.
   const maxBack = months.length - 1;
@@ -96,33 +114,34 @@ export default function GitHubContributions({ contributions, loading }) {
     setActive((cur) => (cur && cur.date === day.date ? null : anchor(day, el)));
 
   return (
-    <div className="graph-wrapper contrib-wrapper">
-      <div className="contrib-block">
-        <div className="contrib-nav">
-          <p className="contrib-meta">
-            <span className="contrib-month">{month.label}</span>
-          </p>
-          <div className="contrib-arrows">
-            <button
-              type="button"
-              className="contrib-arrow"
-              onClick={goOlder}
-              disabled={offset >= maxBack}
-              aria-label="Previous month"
-            >
-              &lsaquo;
-            </button>
-            <button
-              type="button"
-              className="contrib-arrow"
-              onClick={goNewer}
-              disabled={offset <= 0}
-              aria-label="Next month"
-            >
-              &rsaquo;
-            </button>
-          </div>
+    <>
+      {head(
+        <p className="contrib-meta">
+          <span className="contrib-month">{month.label}</span>
+        </p>,
+        <div className="contrib-arrows">
+          <button
+            type="button"
+            className="contrib-arrow"
+            onClick={goOlder}
+            disabled={offset >= maxBack}
+            aria-label="Previous month"
+          >
+            &lsaquo;
+          </button>
+          <button
+            type="button"
+            className="contrib-arrow"
+            onClick={goNewer}
+            disabled={offset <= 0}
+            aria-label="Next month"
+          >
+            &rsaquo;
+          </button>
         </div>
+      )}
+      <div className="graph-wrapper contrib-wrapper">
+        <div className="contrib-block">
         {/* --flock-depth is how deep this flock reaches. Only the mobile step
             reads it (to tighten an unusually full month so it still fits), but
             it belongs on the sky, where --flock-step-x is declared and so where
@@ -165,8 +184,9 @@ export default function GitHubContributions({ contributions, loading }) {
               <span className="contrib-tooltip-date">{formatDate(active.date)}</span>
             </div>
           )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

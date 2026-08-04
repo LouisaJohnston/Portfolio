@@ -48,7 +48,12 @@ a {
   margin-right: 20%;
 }
 
+/* .container centres #main as a flex column, so #main would otherwise
+   shrink-wrap to its widest child — which makes every percentage margin inside
+   depend on whatever that child happens to be. Fill the container instead, so
+   the body copy and the flock keep the same measure whatever they contain. */
 #main {
+  width: 100%;
   margin-top: 10%;
   margin-bottom: 10%;
 }
@@ -328,22 +333,78 @@ li {
   margin: 0 auto;
 }
 
-/* Month label on the left (aligned to the grid), navigation arrows on the
-   right edge of the grid. */
-.contrib-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+/* Heading, caption, month label and arrows share one grid so which of them sits
+   beside which is a matter of placement rather than markup — that's what lets a
+   phone pair them up differently (see the mobile block) without reordering the
+   DOM. Two columns: the copy takes the space, the controls take what they need
+   on the right. Baselines align so the date sits on the heading's own baseline
+   despite the two type sizes.
+
+   Wide screens read as two labelled rows:
+     GitHub Activity        June, 2026
+     as migratory birds            < > */
+.contrib-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  column-gap: 1rem;
+  row-gap: 0;
+  margin-left: 20%;
+  margin-right: 20%;
+  /* The heading's leading space belongs to the grid now. A percentage here
+     still resolves against the section's full width rather than the narrower
+     grid, so the gap above the heading keeps its size. */
+  margin-top: 8%;
+  padding-top: 2%;
+}
+
+.contrib-head h2 {
+  grid-area: 1 / 1;
+}
+
+.contrib-head .contrib-meta {
+  grid-area: 1 / 2;
+}
+
+.contrib-head .github-caption {
+  grid-area: 2 / 1;
+}
+
+/* The controls column is as wide as the widest of the two, so the arrows have
+   to be pushed to its right edge to line up under the date. */
+.contrib-head .contrib-arrows {
+  grid-area: 2 / 2;
+  justify-content: flex-end;
+}
+
+/* The heading and caption carry their own side margins and leading space for
+   the rest of the page; inside the grid those would double up. Their line boxes
+   hug the text too, so the two lines of the head sit close together rather than
+   being held apart by leading meant for running body copy. */
+.contrib-head h2 {
+  margin: 0;
+  padding-top: 0;
+  line-height: 1.1;
+}
+
+.contrib-head .github-caption {
+  margin-left: 0;
+  margin-right: 0;
+  line-height: 1.1;
+}
+
+.contrib-head .contrib-meta,
+.contrib-head .contrib-arrow {
+  line-height: 1.1;
 }
 
 .contrib-meta {
   margin: 0;
-  text-align: left;
-  font-size: 1.5rem;
+  text-align: right;
+  font-size: 1.2rem;
   color: #4d2b43;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .contrib-arrows {
@@ -352,11 +413,14 @@ li {
   flex-shrink: 0;
 }
 
+/* Kept close to the caption's own size: the arrows share its line, and being
+   the tallest thing there they set that line's baseline — an outsized glyph
+   pushes the caption down the page and opens a gap under the heading. */
 .contrib-arrow {
   border: none;
   background: transparent;
   color: #4d2b43;
-  font-size: 2.4rem;
+  font-size: 1.6rem;
   line-height: 1;
   padding: 0 0.4rem;
   cursor: pointer;
@@ -377,10 +441,11 @@ li {
    within, measured out from its centre. Also the positioning context for the
    tooltip.
 
-   The sky hangs two birds past the body copy on each side (the month label and
-   arrows above it stay at body width), giving flocks room to spill well beyond
-   the text. Two birds is as far as it can go and still fit the page at the
-   narrowest desktop width, where the body is only 60% of it.
+   The sky hangs three birds past the body copy on each side (the month label
+   and arrows above it stay at body width), giving flocks room to spill well
+   beyond the text. Three is about the limit: the body takes 60% of the page, so
+   there are only 20% of it — some 150px at the narrowest desktop width — spare
+   on each side to hang them in.
 
    The step variables set the gap between neighbouring birds. They're fixed
    rather than scaled to the bird count, so a quiet month makes a short V and a
@@ -392,7 +457,7 @@ li {
   height: 280px;
   margin: 0;
   --bird-size: 46px;
-  --sky-overhang: calc(2 * var(--bird-size));
+  --sky-overhang: calc(3 * var(--bird-size));
   width: calc(100% + (2 * var(--sky-overhang)));
   margin-left: calc(-1 * var(--sky-overhang));
   --flock-step-x: calc((100% - var(--bird-size)) / 15);
@@ -854,6 +919,33 @@ nav a:hover {
   .github-caption {
     margin-left: 5%;
     margin-right: 5%;
+  }
+
+  /* Same pairing as a wide screen — caption under the heading, controls hanging
+     off the right:
+
+       GitHub Activity   June, 2026
+       as migratory birds       < >
+
+     only with the page's mobile margins. */
+  .contrib-head {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 5%;
+  }
+
+  /* Each line has to carry copy and a control side by side in half the width a
+     wide screen has, so the type steps down to keep both on one line. */
+  .contrib-head h2 {
+    font-size: 1.4em;
+  }
+
+  .contrib-head .github-caption {
+    font-size: 1em;
+  }
+
+  .contrib-head .contrib-meta {
+    font-size: 1rem;
   }
 
   h3 {

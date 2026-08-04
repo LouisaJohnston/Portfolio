@@ -58,9 +58,11 @@ export default function Index() {
         </div>
 
         <div className="skill-anchor" id="github">
-          <h2>GitHub Activity</h2>
-          <p className="github-caption">as migratory birds</p>
+          {/* The heading and caption share their lines with the month label and
+              the arrows, so they're passed in rather than rendered here. */}
           <GitHubContributions
+            heading="GitHub Activity"
+            caption="as migratory birds"
             contributions={githubData?.contributions}
             loading={githubLoading}
           />

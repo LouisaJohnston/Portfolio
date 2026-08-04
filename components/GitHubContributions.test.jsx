@@ -37,11 +37,65 @@ describe("GitHubContributions", () => {
     expect(screen.getByRole("status")).toHaveAccessibleName(/loading/i);
   });
 
-  it("renders nothing when not loading and no data is available", () => {
-    const { container } = render(
-      <GitHubContributions loading={false} contributions={null} />
+  // The heading and caption share their lines with the month label and the
+  // arrows, so this component owns them — and must keep the section's copy on
+  // screen even when there are no birds to put beside it.
+  it("keeps the heading and caption while loading", () => {
+    render(
+      <GitHubContributions
+        loading={true}
+        contributions={null}
+        heading="GitHub Activity"
+        caption="as migratory birds"
+      />
     );
-    expect(container).toBeEmptyDOMElement();
+    expect(screen.getByRole("heading", { name: "GitHub Activity" })).toBeInTheDocument();
+    expect(screen.getByText("as migratory birds")).toBeInTheDocument();
+  });
+
+  it("keeps the heading and caption but shows no flock when no data is available", () => {
+    const { container } = render(
+      <GitHubContributions
+        loading={false}
+        contributions={null}
+        heading="GitHub Activity"
+        caption="as migratory birds"
+      />
+    );
+    expect(screen.getByRole("heading", { name: "GitHub Activity" })).toBeInTheDocument();
+    expect(screen.getByText("as migratory birds")).toBeInTheDocument();
+    expect(container.querySelector(".contrib-sky")).not.toBeInTheDocument();
+    expect(container.querySelectorAll(".bird-slot")).toHaveLength(0);
+  });
+
+  // Which of these sits beside which is down to CSS placement, and differs
+  // between a wide screen and a phone. What the markup has to guarantee is that
+  // they share one grid, and that they read in a sensible order — heading, then
+  // what the section is, then which month, then the controls for it.
+  it("groups the heading, caption, month label and arrows into one head", () => {
+    const { container } = render(
+      <GitHubContributions
+        loading={false}
+        contributions={sampleContributions}
+        heading="GitHub Activity"
+        caption="as migratory birds"
+      />
+    );
+    const head = container.querySelector(".contrib-head");
+    expect(head.querySelector("h2")).toHaveTextContent("GitHub Activity");
+    expect(head.querySelector(".github-caption")).toHaveTextContent("as migratory birds");
+    expect(head.querySelector(".contrib-meta")).toHaveTextContent("January, 2026");
+    expect(head.querySelector(".contrib-arrows")).toBeInTheDocument();
+
+    const order = [...head.children].map((el) =>
+      el.tagName === "H2" ? "heading" : el.className
+    );
+    expect(order).toEqual([
+      "heading",
+      "github-caption",
+      "contrib-meta",
+      "contrib-arrows",
+    ]);
   });
 
   it("renders the selected month's 'Month, Year' label", () => {
