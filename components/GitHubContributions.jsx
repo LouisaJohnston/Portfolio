@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { formatDate } from '../lib/formatDate';
 import { monthlyGrids } from '../lib/contributions';
-import { flockFromMonth } from '../lib/flock';
+import { flockFromMonth, flockDepth, birdOffset } from '../lib/flock';
 import Bird from './Bird';
 import ContribSpinner from './ContribSpinner';
 
@@ -9,21 +9,20 @@ function formatCount(count) {
   return `${count} contribution${count !== 1 ? 's' : ''}`;
 }
 
-// The flock flies rightward, like a real skein of geese: the leader sits at the
-// right, the two arms trail back to the left — one rising, one falling — as a
-// wide, open V lying on its side. The V scales to fill the sky whatever the
-// flock size, so a 3-bird month is a small tidy V and a 31-bird month a big
-// sweeping one.
-const ARM_REACH = 88; // % of sky width the arms trail back from the leader (wide V)
-const ARM_SPREAD = 26; // % of sky height each arm rises/falls from center (short V)
-const APEX_RIGHT = 5; // % from the right edge where the leader flies
-
-// Place a bird's V slot ({ side, depth }) as a percentage point in the sky.
-function birdPosition({ side, depth }, maxDepth) {
-  const steps = Math.max(maxDepth, 1);
+// The flock flies rightward, like a real skein of geese: the leader out front on
+// the right, the two arms trailing back to the left — one rising, one falling —
+// as a wide, open V lying on its side.
+//
+// Birds sit a fixed step apart (--flock-step-x / --flock-step-y, set per
+// breakpoint in globals.css) rather than stretching to fill the sky, so spacing
+// looks the same in a quiet month as a busy one. Offsets come from the centre,
+// which keeps the formation centred at any size — including a lone bird, which
+// lands dead centre instead of pinned to an edge.
+function birdPosition(bird, maxDepth) {
+  const { x, y } = birdOffset(bird, maxDepth);
   return {
-    left: `${100 - APEX_RIGHT - depth * (ARM_REACH / steps)}%`,
-    top: `${50 + side * depth * (ARM_SPREAD / steps)}%`,
+    left: `calc(50% + (${x} * var(--flock-step-x)))`,
+    top: `calc(50% + (${y} * var(--flock-step-y)))`,
   };
 }
 
@@ -61,7 +60,7 @@ export default function GitHubContributions({ contributions, loading }) {
   const offset = Math.min(monthsBack, maxBack);
   const month = months[maxBack - offset];
   const birds = flockFromMonth(month);
-  const maxDepth = birds.reduce((m, b) => Math.max(m, b.depth), 0);
+  const maxDepth = flockDepth(birds);
 
   const goOlder = () => { setMonthsBack(Math.min(offset + 1, maxBack)); setActive(null); };
   const goNewer = () => { setMonthsBack(Math.max(offset - 1, 0)); setActive(null); };
@@ -108,7 +107,11 @@ export default function GitHubContributions({ contributions, loading }) {
             </button>
           </div>
         </div>
-        <div className="contrib-sky">
+        {/* --flock-depth is how deep this flock reaches. Only the mobile step
+            reads it (to tighten an unusually full month so it still fits), but
+            it belongs on the sky, where --flock-step-x is declared and so where
+            it gets resolved — on the inner .flock it would be ignored. */}
+        <div className="contrib-sky" style={{ '--flock-depth': maxDepth }}>
           {birds.length === 0 ? (
             <p className="contrib-empty-msg">No contributions this month</p>
           ) : (

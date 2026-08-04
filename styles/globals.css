@@ -321,11 +321,10 @@ li {
   max-width: none;
 }
 
-/* Shrink-to-fit block (as wide as the grid) centered on the page, so the meta
-   line can left-align to the grid's left edge instead of the page center. */
+/* Spans the wrapper so the flock's sky, month label and arrows line up with the
+   body copy's edges instead of sitting in a narrower column of their own. */
 .contrib-block {
-  width: max-content;
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -375,14 +374,29 @@ li {
 }
 
 /* The sky the flock flies in: a fixed-height stage that birds are positioned
-   within by percentage, so the V scales with the month. Also the positioning
-   context for the tooltip. */
+   within, measured out from its centre. Also the positioning context for the
+   tooltip.
+
+   The sky hangs two birds past the body copy on each side (the month label and
+   arrows above it stay at body width), giving flocks room to spill well beyond
+   the text. Two birds is as far as it can go and still fit the page at the
+   narrowest desktop width, where the body is only 60% of it.
+
+   The step variables set the gap between neighbouring birds. They're fixed
+   rather than scaled to the bird count, so a quiet month makes a short V and a
+   busy one a long V at the same spacing. Sizing the step so that the longest
+   possible flock — a 31-bird month, MAX_ARM_DEPTH (15) steps per arm — exactly
+   spans the sky means every flock fits, at every screen width. */
 .contrib-sky {
   position: relative;
-  width: 680px;
-  max-width: 100%;
   height: 280px;
   margin: 0;
+  --bird-size: 46px;
+  --sky-overhang: calc(2 * var(--bird-size));
+  width: calc(100% + (2 * var(--sky-overhang)));
+  margin-left: calc(-1 * var(--sky-overhang));
+  --flock-step-x: calc((100% - var(--bird-size)) / 15);
+  --flock-step-y: 8px;
 }
 
 /* The whole flock drifts gently in a slow loop; the sky as a whole holds still.
@@ -397,10 +411,11 @@ li {
   animation-play-state: paused;
 }
 
-/* Each bird sits at a percentage point in the sky, centered on that point. */
+/* Each bird sits at a point measured from the sky's centre, centred on it. The
+   shared --bird-size keeps the sprite, the sky's overhang and the step in step. */
 .bird-slot {
   position: absolute;
-  width: 46px;
+  width: var(--bird-size);
   transform: translate(-50%, -50%);
   cursor: pointer;
 }
@@ -935,26 +950,38 @@ nav a:hover {
     margin-right: 5%;
   }
 
-  /* Override the wide desktop side margins so the heatmap can use the
-     screen on mobile (replaces the old inline 20% margins). */
+  /* Match the body copy's mobile margins so the flock lines up with the text
+     above it (replaces the old inline 20% margins). */
   .contrib-wrapper {
-    margin-left: 4%;
-    margin-right: 4%;
-    max-width: 92vw;
+    margin-left: 5%;
+    margin-right: 5%;
+    max-width: 90vw;
   }
 
   .contrib-block {
     width: 100%;
   }
 
-  /* Shorter sky and smaller birds so the flock fits a phone screen. */
-  .contrib-sky {
-    width: 100%;
-    height: 220px;
-  }
+  /* Shorter sky and smaller birds so the flock fits a phone screen. A phone has
+     only the page gutter to spare, not a whole bird, so the sky hangs out by
+     that instead — near enough the full screen width.
 
-  .bird-slot {
-    width: 34px;
+     Dividing the sky by all 15 steps (as a wide screen does) would leave the
+     step narrower than a bird here, crowding them into each other. This step is
+     sized for a busy month instead — 10 steps, ~21 birds — which gives the same
+     step-to-bird ratio as a wide screen. Dividing by the larger of that and the
+     flock's own depth (--flock-depth, set on the element by the component)
+     means a rarer, fuller month tightens up to fit rather than spilling out.
+     This override is deliberately scoped to mobile: wide screens keep the plain
+     /15 step above. */
+  .contrib-sky {
+    height: 220px;
+    --bird-size: 28px;
+    --sky-overhang: 5%;
+    --flock-step-y: 6px;
+    --flock-step-x: calc(
+      (100% - var(--bird-size)) / max(10, var(--flock-depth, 0))
+    );
   }
 
   /* The sky is shorter on mobile, so reserve less height while loading. */
