@@ -383,18 +383,27 @@ li {
 
    The step variables set the gap between neighbouring birds. They're fixed
    rather than scaled to the bird count, so a quiet month makes a short V and a
-   busy one a long V at the same spacing. Sizing the step so that the longest
-   possible flock — a 31-bird month, MAX_ARM_DEPTH (15) steps per arm — exactly
-   spans the sky means every flock fits, at every screen width. */
+   busy one a long V at the same spacing.
+
+   The step divides the sky by --flock-span: the arm length the spacing is sized
+   for. On a wide screen that's 15 — the longest a flock can ever reach, a
+   31-bird month — so every flock fits and the fullest exactly spans the sky.
+   Taking the larger of that and the flock's own depth is what keeps a narrower
+   span (see the mobile block) safe: a rarer, fuller month tightens up to fit
+   rather than spilling out. */
 .contrib-sky {
   position: relative;
   height: 280px;
   margin: 0;
   --bird-size: 46px;
   --sky-overhang: var(--bird-size);
+  --flock-span: 15;
+  --flock-depth: 0;
   width: calc(100% + (2 * var(--sky-overhang)));
   margin-left: calc(-1 * var(--sky-overhang));
-  --flock-step-x: calc((100% - var(--bird-size)) / 15);
+  --flock-step-x: calc(
+    (100% - var(--bird-size)) / max(var(--flock-span), var(--flock-depth))
+  );
   --flock-step-y: 8px;
 }
 
@@ -963,12 +972,18 @@ nav a:hover {
 
   /* Shorter sky and smaller birds so the flock fits a phone screen. A phone has
      only the page gutter to spare, not a whole bird, so the sky hangs out by
-     that instead — near enough the full screen width. --flock-step-x is
-     inherited: it tracks the sky and the smaller bird automatically. */
+     that instead — near enough the full screen width.
+
+     Sizing the step against all 15 steps would leave it narrower than a bird
+     here, crowding them into each other. Spacing is sized for a busy month
+     instead (10 steps, ~21 birds), which gives the same step-to-bird ratio as a
+     wide screen; the rare fuller month falls back to its own depth and tightens
+     to fit. --flock-step-x is inherited and tracks both automatically. */
   .contrib-sky {
     height: 220px;
-    --bird-size: 34px;
+    --bird-size: 28px;
     --sky-overhang: 5%;
+    --flock-span: 10;
     --flock-step-y: 6px;
   }
 
