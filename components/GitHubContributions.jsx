@@ -33,6 +33,11 @@ export default function GitHubContributions({ contributions, loading }) {
   // it survives the data loading in without needing to know the month count.
   const [monthsBack, setMonthsBack] = useState(0);
   const tipRef = useRef(null);
+  // Whether the focus about to land was caused by a pointer rather than the
+  // keyboard. A tap focuses the bird before its click arrives, so without this
+  // the focus would open the tooltip and the click would immediately toggle it
+  // shut — leaving a touch device with no way to see a bird's details.
+  const focusFromPointer = useRef(false);
 
   // Keep the tooltip inside the sky horizontally so an edge bird can't push it
   // past the viewport (which on mobile spawns a horizontal-scroll jump).
@@ -126,9 +131,10 @@ export default function GitHubContributions({ contributions, loading }) {
                   aria-label={`${day.date}: ${formatCount(day.count)}`}
                   onPointerEnter={(e) => e.pointerType !== 'touch' && show(day, e.currentTarget)}
                   onPointerLeave={(e) => e.pointerType !== 'touch' && hide()}
-                  onFocus={(e) => show(day, e.currentTarget)}
-                  onBlur={hide}
-                  onClick={(e) => toggle(day, e.currentTarget)}
+                  onPointerDown={() => { focusFromPointer.current = true; }}
+                  onFocus={(e) => !focusFromPointer.current && show(day, e.currentTarget)}
+                  onBlur={() => { focusFromPointer.current = false; hide(); }}
+                  onClick={(e) => { toggle(day, e.currentTarget); focusFromPointer.current = false; }}
                 >
                   {/* Stagger the flap over a 6-bird cycle so wings aren't synced. */}
                   <Bird count={day.count} delay={-(i % 6) * 0.12} />

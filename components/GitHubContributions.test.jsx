@@ -145,6 +145,45 @@ describe("GitHubContributions", () => {
       fireEvent.click(bird);
       expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
     });
+
+    // A real tap on a focusable element focuses it before the click lands.
+    // If focus opens the tooltip, the click that follows must not close it
+    // again, or the details never appear on a touch device.
+    const tap = (el) => {
+      fireEvent.pointerDown(el, { pointerType: "touch" });
+      fireEvent.focus(el);
+      fireEvent.pointerUp(el, { pointerType: "touch" });
+      fireEvent.click(el);
+    };
+
+    it("shows the tooltip on a tap that also focuses the bird", () => {
+      render(<GitHubContributions loading={false} contributions={sampleContributions} />);
+      const bird = screen.getByLabelText("2026-01-02: 5 contributions");
+
+      tap(bird);
+      expect(screen.getByRole("tooltip")).toHaveTextContent("5 contributions");
+    });
+
+    it("dismisses the tooltip when the same bird is tapped again", () => {
+      render(<GitHubContributions loading={false} contributions={sampleContributions} />);
+      const bird = screen.getByLabelText("2026-01-02: 5 contributions");
+
+      tap(bird);
+      expect(screen.getByRole("tooltip")).toBeInTheDocument();
+
+      tap(bird);
+      expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
+    });
+
+    it("moves the tooltip to another bird when that one is tapped", () => {
+      render(<GitHubContributions loading={false} contributions={sampleContributions} />);
+      tap(screen.getByLabelText("2026-01-02: 5 contributions"));
+      // Focus leaves the first bird as the second takes it.
+      fireEvent.blur(screen.getByLabelText("2026-01-02: 5 contributions"));
+      tap(screen.getByLabelText("2026-01-03: 20 contributions"));
+
+      expect(screen.getByRole("tooltip")).toHaveTextContent("20 contributions");
+    });
   });
 
   describe("month navigation", () => {
