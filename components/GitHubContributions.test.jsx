@@ -37,11 +37,52 @@ describe("GitHubContributions", () => {
     expect(screen.getByRole("status")).toHaveAccessibleName(/loading/i);
   });
 
-  it("renders nothing when not loading and no data is available", () => {
-    const { container } = render(
-      <GitHubContributions loading={false} contributions={null} />
+  // The heading and caption share their lines with the month label and the
+  // arrows, so this component owns them — and must keep the section's copy on
+  // screen even when there are no birds to put beside it.
+  it("keeps the heading and caption while loading", () => {
+    render(
+      <GitHubContributions
+        loading={true}
+        contributions={null}
+        heading="GitHub Activity"
+        caption="as migratory birds"
+      />
     );
-    expect(container).toBeEmptyDOMElement();
+    expect(screen.getByRole("heading", { name: "GitHub Activity" })).toBeInTheDocument();
+    expect(screen.getByText("as migratory birds")).toBeInTheDocument();
+  });
+
+  it("keeps the heading and caption but shows no flock when no data is available", () => {
+    const { container } = render(
+      <GitHubContributions
+        loading={false}
+        contributions={null}
+        heading="GitHub Activity"
+        caption="as migratory birds"
+      />
+    );
+    expect(screen.getByRole("heading", { name: "GitHub Activity" })).toBeInTheDocument();
+    expect(screen.getByText("as migratory birds")).toBeInTheDocument();
+    expect(container.querySelector(".contrib-sky")).not.toBeInTheDocument();
+    expect(container.querySelectorAll(".bird-slot")).toHaveLength(0);
+  });
+
+  it("puts the month label on the heading's line and the arrows on the caption's", () => {
+    const { container } = render(
+      <GitHubContributions
+        loading={false}
+        contributions={sampleContributions}
+        heading="GitHub Activity"
+        caption="as migratory birds"
+      />
+    );
+    const titleRow = container.querySelector(".contrib-title-row");
+    const captionRow = container.querySelector(".contrib-caption-row");
+    expect(titleRow.querySelector("h2")).toHaveTextContent("GitHub Activity");
+    expect(titleRow.querySelector(".contrib-meta")).toHaveTextContent("January, 2026");
+    expect(captionRow.querySelector(".github-caption")).toHaveTextContent("as migratory birds");
+    expect(captionRow.querySelector(".contrib-arrows")).toBeInTheDocument();
   });
 
   it("renders the selected month's 'Month, Year' label", () => {

@@ -328,22 +328,48 @@ li {
   margin: 0 auto;
 }
 
-/* Month label on the left (aligned to the grid), navigation arrows on the
-   right edge of the grid. */
-.contrib-nav {
+/* The month controls share the heading's and caption's lines rather than
+   sitting in a row of their own: the date out to the right of the heading, the
+   arrows out to the right of the caption. Baseline alignment sits the date on
+   the heading's own baseline despite the two type sizes. */
+.contrib-title-row,
+.contrib-caption-row {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+/* The heading and caption carry these margins themselves; inside a row they
+   would double up. The heading's leading space moves to the row, where a
+   percentage still resolves against the section's full width rather than the
+   narrower row — otherwise the gap above the heading would shrink. */
+.contrib-title-row {
+  margin-top: 8%;
+  padding-top: 2%;
+}
+
+.contrib-title-row h2 {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.contrib-caption-row .github-caption {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .contrib-meta {
   margin: 0;
-  text-align: left;
+  text-align: right;
   font-size: 1.5rem;
   color: #4d2b43;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .contrib-arrows {
@@ -854,6 +880,18 @@ nav a:hover {
   .github-caption {
     margin-left: 5%;
     margin-right: 5%;
+  }
+
+  /* The rows take over the side margins, and the heading's leading space, from
+     the heading and caption they hold. */
+  .contrib-title-row,
+  .contrib-caption-row {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .contrib-title-row {
+    padding-top: 5%;
   }
 
   h3 {

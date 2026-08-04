@@ -37,7 +37,7 @@ function driftStyle(i) {
   };
 }
 
-export default function GitHubContributions({ contributions, loading }) {
+export default function GitHubContributions({ contributions, loading, heading, caption }) {
   // The day the pointer/focus is currently on, plus where to anchor the tooltip.
   const [active, setActive] = useState(null);
   // Months back from the most recent (0 = current month). Kept as an offset so
@@ -61,15 +61,35 @@ export default function GitHubContributions({ contributions, loading }) {
     tip.style.left = `${clamped}px`;
   }, [active]);
 
-  if (loading) return (
-    <div className="graph-wrapper contrib-wrapper contrib-loading">
-      <ContribSpinner />
-    </div>
+  // The month label shares its line with the heading and the arrows share
+  // theirs with the caption, so the section's copy is rendered here rather than
+  // by the page. Passing it through on every branch keeps the heading and
+  // caption in place while the data loads, or if it never arrives.
+  const rows = (monthLabel = null, arrows = null) => (
+    <>
+      <div className="contrib-title-row">
+        <h2>{heading}</h2>
+        {monthLabel}
+      </div>
+      <div className="contrib-caption-row">
+        <p className="github-caption">{caption}</p>
+        {arrows}
+      </div>
+    </>
   );
-  if (!contributions) return null;
+
+  if (loading) return (
+    <>
+      {rows()}
+      <div className="graph-wrapper contrib-wrapper contrib-loading">
+        <ContribSpinner />
+      </div>
+    </>
+  );
+  if (!contributions) return rows();
 
   const months = monthlyGrids(contributions);
-  if (months.length === 0) return null;
+  if (months.length === 0) return rows();
 
   // Clamp so an offset from a wider dataset can't fall off a narrower one.
   const maxBack = months.length - 1;
@@ -96,33 +116,34 @@ export default function GitHubContributions({ contributions, loading }) {
     setActive((cur) => (cur && cur.date === day.date ? null : anchor(day, el)));
 
   return (
-    <div className="graph-wrapper contrib-wrapper">
-      <div className="contrib-block">
-        <div className="contrib-nav">
-          <p className="contrib-meta">
-            <span className="contrib-month">{month.label}</span>
-          </p>
-          <div className="contrib-arrows">
-            <button
-              type="button"
-              className="contrib-arrow"
-              onClick={goOlder}
-              disabled={offset >= maxBack}
-              aria-label="Previous month"
-            >
-              &lsaquo;
-            </button>
-            <button
-              type="button"
-              className="contrib-arrow"
-              onClick={goNewer}
-              disabled={offset <= 0}
-              aria-label="Next month"
-            >
-              &rsaquo;
-            </button>
-          </div>
+    <>
+      {rows(
+        <p className="contrib-meta">
+          <span className="contrib-month">{month.label}</span>
+        </p>,
+        <div className="contrib-arrows">
+          <button
+            type="button"
+            className="contrib-arrow"
+            onClick={goOlder}
+            disabled={offset >= maxBack}
+            aria-label="Previous month"
+          >
+            &lsaquo;
+          </button>
+          <button
+            type="button"
+            className="contrib-arrow"
+            onClick={goNewer}
+            disabled={offset <= 0}
+            aria-label="Next month"
+          >
+            &rsaquo;
+          </button>
         </div>
+      )}
+      <div className="graph-wrapper contrib-wrapper">
+        <div className="contrib-block">
         {/* --flock-depth is how deep this flock reaches. Only the mobile step
             reads it (to tighten an unusually full month so it still fits), but
             it belongs on the sky, where --flock-step-x is declared and so where
@@ -165,8 +186,9 @@ export default function GitHubContributions({ contributions, loading }) {
               <span className="contrib-tooltip-date">{formatDate(active.date)}</span>
             </div>
           )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
