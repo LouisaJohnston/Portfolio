@@ -10,6 +10,13 @@ body {
   scrollbar-width: thin;
 }
 
+/* The ground runs the full width of the page. Where the scrollbar takes up
+   room of its own, 100vw is a little wider than what's on screen, so absorb
+   the difference rather than letting it push out a sideways scrollbar. */
+body {
+  overflow-x: hidden;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -498,14 +505,21 @@ li {
    parallax — rather than being switched off. */
 /******** Seasonal weather ********/
 
-/* The month's weather fills the sky behind the flock. Clipped to the sky so a
-   mote that sways wide can't wander onto the page, and untouchable so it never
-   steals a tap meant for a bird. */
+/* The month's weather fills the sky behind the flock, and is untouchable so it
+   never steals a tap meant for a bird. */
 .season {
   position: absolute;
   inset: 0;
-  overflow: hidden;
   pointer-events: none;
+}
+
+/* Everything in the air is clipped to the sky, so a mote that sways wide can't
+   wander onto the page. The ground deliberately sits outside this, being the
+   one part that runs wider than the sky. */
+.season-air {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
 }
 
 /* Summer: a sun up in the top-left corner, well clear of the leader out on the
@@ -590,8 +604,13 @@ li {
    other pixel in the sky. */
 .season-ground {
   position: absolute;
-  left: 0;
-  right: 0;
+  /* Runs the full width of the page rather than just the sky's, so it meets a
+     footer that spans the page — the sky stops short of the edges, which left
+     the grass floating with a strip of page showing at either end. The sky is
+     centred on the page, so centring this on the sky centres it on the page. */
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
   bottom: 0;
   height: calc(7 * var(--pixel));
   background:

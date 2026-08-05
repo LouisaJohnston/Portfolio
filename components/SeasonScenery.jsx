@@ -115,13 +115,18 @@ export default function SeasonScenery({ season }) {
 
   return (
     <div className={`season season-${season}`} aria-hidden="true">
-      {season === 'summer' ? (
-        <Sun />
-      ) : (
-        Array.from({ length: MOTE_COUNT }, (_, i) => (
-          <Mote key={i} index={i} season={season} />
-        ))
-      )}
+      {/* What's in the air is clipped to the sky, so a mote swaying wide can't
+          wander onto the page. The ground isn't: it runs the full width of the
+          page, to meet a footer that does the same. */}
+      <div className="season-air">
+        {season === 'summer' ? (
+          <Sun />
+        ) : (
+          Array.from({ length: MOTE_COUNT }, (_, i) => (
+            <Mote key={i} index={i} season={season} />
+          ))
+        )}
+      </div>
       <Ground season={season} />
     </div>
   );
