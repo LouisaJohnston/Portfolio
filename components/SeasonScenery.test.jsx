@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
 import SeasonScenery, { MOTE_PIXELS } from "./SeasonScenery";
-import { MOTE_COUNT } from "../lib/seasons";
+import { MOTE_COUNT, GROUND_COUNT } from "../lib/seasons";
 
 describe("SeasonScenery", () => {
   it("renders nothing without a season", () => {
@@ -57,5 +57,28 @@ describe("SeasonScenery", () => {
   it("stays out of the accessibility tree", () => {
     const { container } = render(<SeasonScenery season="spring" />);
     expect(container.querySelector(".season")).toHaveAttribute("aria-hidden", "true");
+  });
+});
+
+// The ground under the flock: grass most of the year, snow in winter, with
+// flowers growing in it in spring and fallen leaves lying on it in autumn.
+describe("SeasonScenery ground", () => {
+  it.each(["spring", "summer", "fall", "winter"])("lays ground under %s", (season) => {
+    const { container } = render(<SeasonScenery season={season} />);
+    expect(container.querySelector(".season-ground")).toBeInTheDocument();
+  });
+
+  it.each(["spring", "fall"])("strews the %s ground with what falls from its sky", (season) => {
+    const { container } = render(<SeasonScenery season={season} />);
+    const strewn = container.querySelectorAll(".season-ground-item");
+    expect(strewn).toHaveLength(GROUND_COUNT);
+    // The same five-pixel sprite as the ones drifting overhead.
+    expect(strewn[0].querySelectorAll("rect")).toHaveLength(MOTE_PIXELS);
+    expect(new Set([...strewn].map((s) => s.style.left)).size).toBe(GROUND_COUNT);
+  });
+
+  it.each(["summer", "winter"])("leaves the %s ground bare", (season) => {
+    const { container } = render(<SeasonScenery season={season} />);
+    expect(container.querySelectorAll(".season-ground-item")).toHaveLength(0);
   });
 });
