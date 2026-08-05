@@ -50,12 +50,23 @@ a {
 
 /* .container centres #main as a flex column, so #main would otherwise
    shrink-wrap to its widest child — which makes every percentage margin inside
-   depend on whatever that child happens to be. Fill the container instead, so
-   the body copy and the flock keep the same measure whatever they contain. */
+   depend on whatever that child happens to be. Filling the container keeps the
+   body copy and the flock to the same measure whatever they contain, and gives
+   the sky at the foot of the page a full height to grow into, so its ground can
+   reach the footer rather than stopping short. The flex that carries that
+   height down runs #main > #github > .contrib-wrapper > .contrib-block. */
 #main {
   width: 100%;
   margin-top: 10%;
-  margin-bottom: 10%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+#github {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 #hello {
@@ -324,6 +335,9 @@ li {
   margin-right: 20%;
   margin-top: 2.5rem;
   max-width: none;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 /* Spans the wrapper so the flock's sky, month label and arrows line up with the
@@ -331,6 +345,9 @@ li {
 .contrib-block {
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 /* Heading, caption, month label and arrows share one grid so which of them sits
@@ -454,7 +471,10 @@ li {
    spans the sky means every flock fits, at every screen width. */
 .contrib-sky {
   position: relative;
-  height: 280px;
+  /* Grows to the bottom of the page so the ground meets the footer, but never
+     shorter than this — on a long page there's no slack to grow into. */
+  flex: 1;
+  min-height: 280px;
   margin: 0;
   --bird-size: 46px;
   /* One pixel, shared by everything drawn in this sky. A bird's sprite is 11
@@ -467,9 +487,6 @@ li {
   margin-left: calc(-1 * var(--sky-overhang));
   --flock-step-x: calc((100% - var(--bird-size)) / 15);
   --flock-step-y: 8px;
-  /* A shade more than the height above, so a mote is clear of the bottom
-     before its fall restarts (see .season-mote). */
-  --sky-fall: 310px;
 }
 
 /* The whole flock drifts gently in a slow loop; the sky as a whole holds still.
@@ -546,19 +563,23 @@ li {
 }
 
 /* Falls past the bottom of the sky while swaying across it, so the path is a
-   drift rather than a drop. --sky-fall is a little more than the sky's own
-   height, set with it on .contrib-sky. Fades at either end so nothing pops. */
+   drift rather than a drop. The fall is `top` in percentages of the sky rather
+   than a distance in pixels, so it carries whatever height the sky ends up —
+   it stretches to meet the footer. Sway stays a transform. Fades at either end
+   so nothing pops. */
 @keyframes mote-fall {
   0% {
-    transform: translate(0, 0);
+    top: -8%;
+    transform: translateX(0);
     opacity: 0;
   }
   8%, 88% { opacity: 1; }
   50% {
-    transform: translate(var(--mote-sway, 15px), calc(0.5 * var(--sky-fall, 300px)));
+    transform: translateX(var(--mote-sway, 15px));
   }
   100% {
-    transform: translate(0, var(--sky-fall, 300px));
+    top: 105%;
+    transform: translateX(0);
     opacity: 0;
   }
 }
@@ -1229,11 +1250,10 @@ nav a:hover {
      This override is deliberately scoped to mobile: wide screens keep the plain
      /15 step above. */
   .contrib-sky {
-    height: 220px;
+    min-height: 220px;
     --bird-size: 28px;
     --sky-overhang: 5%;
     --flock-step-y: 6px;
-    --sky-fall: 250px;
     --flock-step-x: calc(
       (100% - var(--bird-size)) / max(10, var(--flock-depth, 0))
     );
